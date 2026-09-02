@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Failure Ledger</title>
+<meta name="description" content="I sent an AI agent to buy one item at each of six stores and logged every step. One refusal named a cause that was not there. Twice a size or shade was already selected. Readability predicted none of it.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F6F3EC;--ink:#161412;--ink-70:rgba(22,20,18,.7);--ink-45:rgba(22,20,18,.45);--ink-12:rgba(22,20,18,.12);--ink-06:rgba(22,20,18,.06);--accent:#8B2D3A;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Inter,system-ui,-apple-system,Segoe UI,sans-serif;--serif:Fraunces,Georgia,"Times New Roman",serif;--pad:clamp(56px,9vw,128px);--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-align:left}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0;padding:0 clamp(20px,4vw,56px)}
+@media(min-width:1320px){.wrap{margin-left:max(0px,calc((100vw - var(--max))/2 - 80px))}}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink-70)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(40px,6.2vw,84px);line-height:1.02;max-width:16ch;font-variation-settings:"opsz" 144}
+h2{font-size:clamp(30px,3.6vw,46px);line-height:1.08;max-width:22ch;font-variation-settings:"opsz" 96}
+h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1}
+h4{font-family:var(--sans);font-size:15px;font-weight:600;margin:0 0 4px}
+p{margin:0}
+.lede{font-size:clamp(18px,1.5vw,21px);line-height:1.5;max-width:62ch;color:var(--ink);margin-top:28px}
+.small{font-size:13.5px;color:var(--ink-70)}
+section.block{padding-top:var(--pad)}
+.kicker{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-bottom:28px}
+.kicker .mono{color:var(--ink-70)}
+.masthead{padding-top:clamp(40px,7vw,96px)}
+.glance{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:1px solid var(--ink);margin-top:48px}
+.g{display:block;text-decoration:none;padding:18px 16px 22px 0;border-right:1px solid var(--ink-12);align-self:start}
+.g:last-child{border-right:0}
+.g-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-right:16px}
+.g-brand{font-family:var(--serif);font-size:24px;margin-top:14px;line-height:1.1}
+.g-what{font-size:13.5px;color:var(--ink-70);margin-top:6px;padding-right:16px;min-height:2.6em}
+.g-score{margin-top:10px}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px 2px;border-radius:999px;line-height:1.3;white-space:nowrap}
+.badge.pass{background:var(--ink);color:var(--paper)}
+.badge.blocked{border:1px solid var(--accent);color:var(--accent);background:transparent}
+.method{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:36px}
+.method dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:10px 22px;font-size:14.5px;align-items:start}
+.method dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--ink-70);padding-top:2px}
+.method dd{margin:0}
+.rules{list-style:none;padding:0;margin:0;font-size:14.5px}
+.rules li{padding:10px 0;border-top:1px solid var(--ink-12)}
+.rules li:first-child{border-top:0}
+.entry{border-top:1px solid var(--ink);padding:40px 0 72px}
+.entry-head{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:start}
+.entry-idx{padding-top:10px}
+.entry-product{font-size:15px;color:var(--ink-70);margin-top:8px}
+.entry-outcome{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-top:8px}
+.entry-label{text-transform:none;letter-spacing:0;color:var(--ink-70)}
+.entry-headline{font-family:var(--serif);font-size:clamp(22px,2.1vw,30px);line-height:1.2;max-width:30ch;margin:30px 0 0 74px;font-variation-settings:"opsz" 60}
+.entry-task{margin:18px 0 0 74px;font-size:14.5px;color:var(--ink-70);max-width:70ch}
+.entry-task .mono{margin-right:10px}
+.entry-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,64px);margin:36px 0 0 74px;align-items:start}
+.sec-label{margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--ink-12)}
+.steps{list-style:none;margin:0;padding:0}
+.step{display:grid;grid-template-columns:28px minmax(0,1fr) 168px;gap:14px;padding:14px 0;border-top:1px solid var(--ink-06);align-items:start}
+.step:first-child{border-top:0}
+.step-n{padding-top:3px}
+.step-act{text-transform:none;letter-spacing:0;color:var(--ink);font-size:12.5px;word-break:break-word}
+.step-act .res{color:var(--accent)}
+.step-why{font-size:14px;line-height:1.5;color:var(--ink-70);margin-top:6px}
+.step-meta{margin-top:8px;font-size:11px;color:var(--ink-45)}
+.step-fail .step-act{color:var(--accent)}
+.thumb{display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--ink-12);background:#fff;border-radius:2px}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.thumb-empty{display:flex;align-items:flex-start;padding:8px;color:var(--ink-45);font-size:11px}
+.outcome-line{margin-top:22px;font-size:14.5px;line-height:1.55;padding-top:16px;border-top:1px solid var(--ink-12)}
+.outcome-line .mono{margin-right:10px}
+.saw-block{margin-bottom:14px}
+.saw-step{font-size:11px;margin-bottom:6px;color:var(--ink-45)}
+pre.tree{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5;white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--ink-12);padding:12px 14px;border-radius:2px;color:var(--ink)}
+.finding{margin-bottom:16px}
+.finding p{font-size:14px;line-height:1.55;color:var(--ink-70)}
+.score-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:4px}
+.score{font-family:var(--serif);font-size:34px;line-height:1}
+.score .of{font-size:14px;color:var(--ink-45);margin-left:2px}
+.score.na{font-size:16px;font-family:var(--mono);text-transform:uppercase;color:var(--ink-45);padding-top:6px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+td,th{vertical-align:top;text-align:left;padding:9px 12px 9px 0;border-top:1px solid var(--ink-12)}
+th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-70);font-weight:500;border-top:0;padding-bottom:6px}
+.rubric{margin-top:14px}
+.rubric td:nth-child(1){width:34%}.rubric td:nth-child(2){width:16%}
+.rubric td:nth-child(3){color:var(--ink-70)}
+.proto{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:11px;text-transform:none;letter-spacing:0}
+.tax{margin-top:36px}
+.tax td{font-size:13.5px;line-height:1.5}
+.tax .tax-name{font-family:var(--serif);font-size:19px;line-height:1.15;font-variation-settings:"opsz" 40}
+.tax th:nth-child(1),.tax td:nth-child(1){width:15%}.tax th:nth-child(2),.tax td:nth-child(2){width:19%}
+.tax th:nth-child(3),.tax td:nth-child(3){width:16%}.tax th:nth-child(4),.tax td:nth-child(4){width:16%}.tax th:nth-child(5),.tax td:nth-child(5){width:14%}
+.insight{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);margin-top:36px;align-items:start}
+.insight p{font-size:16.5px;line-height:1.55;max-width:60ch}
+.insight p+p{margin-top:16px}
+.quote{font-family:var(--serif);font-size:clamp(20px,1.8vw,25px);line-height:1.3;max-width:34ch;font-variation-settings:"opsz" 48;margin-top:6px}
+.quote cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;text-transform:uppercase;color:var(--ink-70);margin-top:12px}
+.protoTable{margin-top:28px;max-width:860px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px);margin-top:32px;align-items:start}
+.cols h4{margin-bottom:10px}
+.cols p,.cols li{font-size:14.5px;line-height:1.55;color:var(--ink-70)}
+.cols ul{padding-left:18px;margin:0}
+.cols li+li{margin-top:6px}
+.files{list-style:none;padding:0;margin:18px 0 0;font-size:14px}
+.files li{padding:8px 0;border-top:1px solid var(--ink-12)}
+.files li:first-child{border-top:0}
+.files a{font-family:var(--mono);font-size:12.5px;text-decoration:none;border-bottom:1px solid var(--ink-45)}
+footer.foot{padding:var(--pad) 0 64px;margin-top:var(--pad);border-top:1px solid var(--ink)}
+footer.foot p{font-size:14px;color:var(--ink-70);max-width:60ch}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);width:auto}
+dialog.lb::backdrop{background:rgba(22,20,18,.82)}
+dialog.lb img{display:block;max-width:min(96vw,1400px);max-height:84vh;width:auto;height:auto;border:1px solid rgba(255,255,255,.2)}
+dialog.lb .cap{color:#fff;font-family:var(--mono);font-size:12px;margin-top:10px}
+dialog.lb button{position:fixed;top:18px;right:22px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);font-family:var(--mono);font-size:12px;padding:8px 12px;cursor:pointer}
+.overflow{overflow-x:auto}
+@media(max-width:980px){.glance{grid-template-columns:repeat(3,minmax(0,1fr))}.g:nth-child(3n){border-right:0}.method,.entry-grid,.insight{grid-template-columns:1fr}.entry-headline,.entry-task,.entry-grid{margin-left:0}.entry-head{grid-template-columns:40px minmax(0,1fr)}.entry-outcome{grid-column:2}.cols{grid-template-columns:1fr}.tax{min-width:900px}}
+@media(max-width:600px){.glance{grid-template-columns:repeat(2,minmax(0,1fr))}.g:nth-child(3n){border-right:1px solid var(--ink-12)}.g:nth-child(2n){border-right:0}.step{grid-template-columns:22px minmax(0,1fr)}.thumb{grid-column:2;max-width:220px}}
+
+.hero{padding-top:clamp(40px,7vw,96px)}
+.hero h1{max-width:16ch;font-size:clamp(32px,4.4vw,60px)}
+.hero-art{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
+.hero-shot{aspect-ratio:4/3}
+.hero-copy .lede{margin-top:22px;font-size:clamp(16px,1.3vw,18.5px)}
+@media(max-width:980px){.hero-art{grid-template-columns:1fr}}
+.readif{margin-top:22px;font-size:15.5px;line-height:1.5;max-width:62ch;color:var(--ink)}
+.readif .mono{margin-right:10px}
+.strip-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.claim{margin-top:48px;padding-top:32px;border-top:1px solid var(--ink-12)}
+.six{max-width:560px}.six td:nth-child(2){width:22%}
+.hero .lede{max-width:58ch}
+.claim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);margin-top:40px;align-items:start}
+.claim p{font-size:16.5px;line-height:1.55;max-width:52ch}
+.num{font-family:var(--serif);font-size:clamp(48px,6vw,84px);line-height:.95;letter-spacing:-.02em;font-variation-settings:"opsz" 144}
+.num-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.num-lab{font-size:13.5px;color:var(--ink-70);margin-top:10px;max-width:18ch}
+.glance{margin-top:44px}
+.g-what{min-height:0}
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:36px;align-items:start}
+.frame{margin:0}
+.frame .thumb{aspect-ratio:4/3}
+.frame-n{margin:12px 0 6px;font-size:11px;color:var(--ink-45)}
+.frame p{font-size:14px;line-height:1.5;color:var(--ink-70)}
+.small-tree{font-size:11.5px;margin-top:10px;padding:10px 12px}
+.after{margin-top:36px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
+.after p{font-size:16.5px;line-height:1.55;max-width:52ch}
+.pays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,44px);margin-top:40px;align-items:start}
+.pay h3{font-size:26px}
+.pay-what{font-size:14.5px;line-height:1.5;color:var(--ink-70);margin-top:10px}
+.pay-where{font-size:14.5px;line-height:1.5;margin-top:12px}
+.pay-pays{font-size:14.5px;line-height:1.5;margin-top:14px;padding-top:12px;border-top:1px solid var(--ink-12)}
+.pay-pays .mono{display:block;margin-bottom:4px}
+.ask{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);margin-top:36px;align-items:start}
+.ask ol{margin:0;padding-left:0;list-style:none;counter-reset:a}
+.ask li{counter-increment:a;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px 0;border-top:1px solid var(--ink-12);font-size:16px;line-height:1.5}
+.ask li:first-child{border-top:1px solid var(--ink)}
+.ask li::before{content:counter(a,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--ink-70);padding-top:4px}
+.ask li strong{display:block;font-weight:600}
+.ask li span{grid-column:2;color:var(--ink-70);font-size:14.5px}
+.why{font-size:15px;line-height:1.55;color:var(--ink-70);max-width:44ch}
+.why strong{color:var(--ink)}
+.cta{display:inline-block;margin-top:28px;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border:1px solid var(--ink);padding:12px 16px;border-radius:999px}
+.cta:hover{background:var(--ink);color:var(--paper)}
+.foot-note{font-size:13.5px;color:var(--ink-70);max-width:60ch;margin-top:28px}
+@media(max-width:980px){.claim,.after,.ask{grid-template-columns:1fr}.strip,.strip-3{grid-template-columns:repeat(2,minmax(0,1fr))}.pays{grid-template-columns:1fr}}
+@media(max-width:600px){.strip,.strip-3{grid-template-columns:1fr}.num-row{grid-template-columns:1fr;gap:18px}}
+</style></head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker"><span class="mono">Agent Failure Ledger</span><span class="mono">Issue 01, recorded 22 Aug 2026</span><span class="mono">Shrutika Rajput</span></div>
+  <div class="hero-art">
+    <a class="thumb hero-shot" href="shots/nike-05.jpg" data-cap="Nike, step 5: the modal returned on Add to Bag"><img src="shots/nike-05.jpg" alt="Nike modal: We Couldn't Complete Your Request. Close this tab, disable any browser extensions, and reopen nike.com."></a>
+    <div class="hero-copy">
+      <h1>My AI had no browser extensions. The store blamed them anyway.</h1>
+      <p class="lede">The refusal was right: an automated session was present. The reason was not. It came back identical on a clean session, from a page that scores 98 out of 100 for machine readability. I sent one AI agent to buy one item at each of six stores and logged every step. This was the strangest thing it was told. It was not the only one.</p>
+      <p class="readif"><span class="mono">Read this if</span> you run a store, you build agents, or you are deciding whether to let one spend your money.</p>
+    </div>
+  </div>
+  <div class="glance"><a class="g" href="ledger.html#glossier"><div class="g-top"><span class="badge pass">Pass</span><span class="mono">95</span></div><div class="g-brand">Glossier</div><div class="g-what">Pass in 3 actions</div></a><a class="g" href="ledger.html#nike"><div class="g-top"><span class="badge blocked">Blocked</span><span class="mono">98</span></div><div class="g-brand">Nike</div><div class="g-what">Blocked at Add to Bag</div></a><a class="g" href="ledger.html#zara"><div class="g-top"><span class="badge pass">Pass</span><span class="mono">100</span></div><div class="g-brand">Zara</div><div class="g-what">Pass in 5 actions</div></a><a class="g" href="ledger.html#ssense"><div class="g-top"><span class="badge blocked">Blocked</span><span class="mono">no page</span></div><div class="g-brand">SSENSE</div><div class="g-what">Blocked at page load</div></a><a class="g" href="ledger.html#allbirds"><div class="g-top"><span class="badge pass">Pass</span><span class="mono">95</span></div><div class="g-brand">Allbirds</div><div class="g-what">Pass in 3 actions (after a redirect)</div></a><a class="g" href="ledger.html#amazon"><div class="g-top"><span class="badge pass">Pass</span><span class="mono">37</span></div><div class="g-brand">Amazon</div><div class="g-what">Pass in 9 actions, 2 dead ends, 1 harness restart</div></a></div>
+  <div class="claim">
+    <div><div class="mono" style="margin-bottom:14px">Six stores, six runs, one afternoon</div>
+      <table class="six"><thead><tr><th>Store</th><th>Readability</th><th>What happened</th></tr></thead><tbody><tr><td>Glossier</td><td class="mono">95</td><td>Pass in 3 actions</td></tr><tr><td>Nike</td><td class="mono">98</td><td>Blocked at Add to Bag</td></tr><tr><td>Zara</td><td class="mono">100</td><td>Pass in 5 actions</td></tr><tr><td>SSENSE</td><td class="mono">no page</td><td>Blocked at page load</td></tr><tr><td>Allbirds</td><td class="mono">95</td><td>Pass in 3 actions (after a redirect)</td></tr><tr><td>Amazon</td><td class="mono">37</td><td>Pass in 9 actions, 2 dead ends, 1 harness restart</td></tr></tbody></table></div>
+    <p><strong>Readability did not predict whether the agent could buy.</strong> A page scoring 90 out of 100 was refused; one scoring 0 completed the task. Before this, I was about to build a readability checker: four checks, structured data, headings, control names, alt text. Zero of the four touched anything that actually blocked or steered the agent. What did: whether the store allowed the session, and what the page had already selected before the agent chose. n=6, add-to-cart not purchase, one model, one harness. Every trace is in the <a href="ledger.html">full record</a>.</p>
+  </div>
+</header>
+
+<section class="block" id="wrong">
+  <h2>What the page had already selected</h2>
+  <p class="lede" style="margin-top:20px;max-width:56ch">Four of six passed. Here is the step in each that a less careful agent, or the same agent with a vaguer instruction, would have skipped, and what the page would have done about it: nothing.</p>
+  <div class="strip strip-3"><figure class="frame"><a class="thumb" href="shots/amazon-05.jpg" data-cap="Amazon, step 5"><img loading="lazy" src="shots/amazon-05.jpg" alt="Amazon, step 5"></a><figcaption><div class="mono frame-n">Amazon, step 5</div><p>The search result linked to the 10.5 child listing, so the size arrived pre-set, in a select with no accessible name. Skip the picker and whatever size the ranking chose ships.</p><pre class="tree small-tree">text &quot;Size:&quot;
+[e168] combobox (unnamed) expanded=false value=&quot;10.5&quot;</pre></figcaption></figure><figure class="frame"><a class="thumb" href="shots/glossier-02.jpg" data-cap="Glossier, step 2"><img loading="lazy" src="shots/glossier-02.jpg" alt="Glossier, step 2"></a><figcaption><div class="mono frame-n">Glossier, step 2</div><p>Shopify opens on the first available variant, Dark Brown. After choosing Brown, two shades both report checked. Trust the state and Dark Brown ships.</p><pre class="tree small-tree">[e22] radio &quot;Dark Brown variant option&quot; checked=true
+[e25] radio &quot;Brown variant option&quot; checked=true</pre></figcaption></figure><figure class="frame"><a class="thumb" href="shots/allbirds-03.jpg" data-cap="Allbirds, step 3"><img loading="lazy" src="shots/allbirds-03.jpg" alt="Allbirds, step 3"></a><figcaption><div class="mono frame-n">Allbirds, step 3</div><p>Size 9 clicked. The button never says so; the only evidence is the add-to-cart label changing.</p><pre class="tree small-tree">[e30] button &quot;Select size 9&quot;
+[e37] button &quot;ADD TO CART - $100&quot;</pre></figcaption></figure></div>
+  <div class="after">
+    <p><strong>The page lets a machine act on an assumption.</strong> Amazon's search result sent the agent to the 10.5 listing, where the size sat pre-set in a control with no name; that is how parent and child listings work, and it is exactly why the agent inherits a choice the ranking made. Glossier opened on Shopify's default shade, and after I picked Brown the tree said both were checked. Allbirds' size button never says it is selected; the only clue is the add-to-cart label changing. Zara adds to cart the instant you tap a size. None of these is an accessibility failure in the compliance sense. Each is a place where an agent buying on your behalf proceeds on a guess, and the receipt is the first time anyone finds out.</p>
+    <p class="why">Today the answer to the title question is: you do. You pay the return, the merchant pays the logistics, and the agent vendor pays in trust. Nobody has written down whose fault it was.</p>
+  </div>
+</section>
+
+<section class="block" id="nike">
+  <h2>The refusal was right. The reason was not.</h2>
+  <p class="lede" style="margin-top:20px;max-width:56ch">The other two did not fail on the page. They were refused. Nike, Air Jordan 1 Low, men's size 9: the agent read the page, found the first colorway sold out in its size, switched colorway, selected M 9, and clicked Add to Bag. This is what came back.</p>
+  <div class="strip"><figure class="frame"><a class="thumb" href="shots/nike-02.jpg" data-cap="Nike, step 2"><img loading="lazy" src="shots/nike-02.jpg" alt="Nike, step 2"></a><figcaption><div class="mono frame-n">step 2</div><p>First colorway. Price absent from the tree, only &quot;23% off&quot;. Every adult size disabled except M 12.</p><pre class="tree small-tree">text &quot;23% off&quot;
+[e61] radio &quot;M 9 / W 10.5&quot; disabled</pre></figcaption></figure><figure class="frame"><a class="thumb" href="shots/nike-04.jpg" data-cap="Nike, step 4"><img loading="lazy" src="shots/nike-04.jpg" alt="Nike, step 4"></a><figcaption><div class="mono frame-n">step 4</div><p>Switched colorway. M 9 in stock, selected.</p><pre class="tree small-tree">[e60] radio &quot;M 9 / W 10.5&quot; checked=true
+[e75] button &quot;Add to Bag&quot;</pre></figcaption></figure><figure class="frame"><a class="thumb" href="shots/nike-05.jpg" data-cap="Nike, step 5"><img loading="lazy" src="shots/nike-05.jpg" alt="Nike, step 5"></a><figcaption><div class="mono frame-n">step 5</div><p>Clicked Add to Bag. The whole tree collapses to this.</p><pre class="tree small-tree">heading &quot;We Couldn't Complete Your Request&quot; h1
+text &quot;Close this tab, disable any browser extensions (such as coupon or promo code tools), and reopen nike.com.&quot;</pre></figcaption></figure><figure class="frame"><a class="thumb" href="shots/nike-06.jpg" data-cap="Nike, step 6"><img loading="lazy" src="shots/nike-06.jpg" alt="Nike, step 6"></a><figcaption><div class="mono frame-n">step 6</div><p>Checked the bag anyway.</p><pre class="tree small-tree">text &quot;There are no items in your bag.&quot;</pre></figcaption></figure></div>
+  <div class="after">
+    <p><strong>The refusal was right. The reason was not.</strong> Nike was correct to stop an automated session. The modal named a cause that did not exist (browser extensions; there were none) and not the one that did (automation). That copy is written for the common case, a human with a coupon plugin, and an agent relaying it will tell its user the same false thing. SSENSE's gate offered a checkbox the agent cannot see. Amazon's first page said "something went wrong". None of them said "automated sessions are not allowed here", or pointed at the lane where they are. Nike's page scored 98 on readability. It did not matter.</p>
+    <p class="why">This is the part nobody building "agent-readiness" scores is measuring: not whether the page can be read, but whether the transaction will be honored, and what the person is told when it is not. Identified-agent lanes exist (Cloudflare's Web Bot Auth, Shopify's UCP). This run did not use one. The finding is what an unidentified agent gets: a generic wall with no pointer to the lane.</p>
+  </div>
+</section>
+
+<section class="block" id="pays">
+  <h2>These are design decisions, not bugs</h2>
+  <p class="lede" style="margin-top:20px;max-width:58ch">A preselected shade, a size button that never says it is selected, a refusal that names a cause that was not there: none of these is a broken line of code. Each is a choice a store made about what to hand a user before they choose, and what to tell them when it says no. When the user is an agent, the choice is inherited and the message is relayed. Three of those choices, with the tree line that proves each, and who is left holding it.</p>
+  <div class="pays"><div class="pay"><h3>Inherited default</h3><p class="pay-what">A variant is already selected on arrival, by a search ranking or a platform default, and the page accepts it without a choice ever being made.</p><pre class="tree small-tree">[e168] combobox (unnamed) expanded=false value=&quot;10.5&quot;</pre><p class="pay-where">Amazon: the search result linked to the 10.5 listing, so the size sat pre-set in a select with no name. Glossier: Shopify opened on the first available shade.</p><p class="pay-pays"><span class="mono">Who pays</span>The person, on delivery day, and again at the returns desk. The merchant pays the logistics. The agent vendor pays the trust.</p></div><div class="pay"><h3>Refused at the till</h3><p class="pay-what">Reading and operating succeed; the cart call is rejected, and the stated reason is not the real one.</p><pre class="tree small-tree">text &quot;Close this tab, disable any browser extensions (such as coupon or promo code tools), and reopen nike.com.&quot;</pre><p class="pay-where">Nike. The refusal was correct; the stated cause (extensions) did not exist in the session and the real one (automation) was not named. Bag stayed at zero.</p><p class="pay-pays"><span class="mono">Who pays</span>The merchant loses the sale. The person is told to fix something that is not broken, and believes it.</p></div><div class="pay"><h3>Walled at the gate</h3><p class="pay-what">The session is refused before a product is shown, and the control that would let it through is not in the tree.</p><pre class="tree small-tree">heading &quot;Performing security verification&quot; h2</pre><p class="pay-where">SSENSE on every load. Amazon once, then not. The Turnstile checkbox sits in a cross-origin iframe the agent cannot see, and the wall does not mention the identified-agent lane that would let it through.</p><p class="pay-pays"><span class="mono">Who pays</span>Nobody notices. The agent says &quot;could not load&quot;, the person assumes the store is down, the merchant never knows.</p></div></div>
+</section>
+
+<section class="block" id="ask">
+  <h2>What a merchant should tell an agent before it buys</h2>
+  <div class="ask">
+    <ol>
+      <li><strong>Whether automated sessions can check out.</strong><span>In the refusal, not in a modal about extensions. If the answer is no, point to the path that is yes: a feed, UCP, the Shop skill.</span></li>
+      <li><strong>What is preselected.</strong><span>Size, shade, quantity, subscription. Either ship variant pickers empty or require the default to be confirmed.</span></li>
+      <li><strong>Whether choosing commits.</strong><span>On Zara, tapping a size is the add-to-cart. One explicit action between choice and commitment, for agents and for humans.</span></li>
+      <li><strong>What state it is in.</strong><span>aria-pressed, aria-checked or aria-selected on every variant control, exactly one true. Allbirds' size button never says it is selected. Glossier's says two shades are.</span></li>
+    </ol>
+    <div>
+      <p class="why"><strong>Why now.</strong> Humans arriving at US retail sites from AI assistants grew 393% year over year in Q1 2026 and convert 42% better than other traffic, per Adobe. That is people clicking through, not agents buying. Agents that act, not just refer, are the next step, and nobody is measuring what happens to them at the cart. Two of the six brands here already publish agent instructions and a commerce-protocol endpoint without having built either: Shopify ships them. Glossier's file tells agents to prefer that path "over screen-scraping or scripting the storefront directly." The feed layer is arriving; the page layer is where the wrong shoe still gets bought.</p>
+      <p class="why" style="margin-top:18px">This is a starting list, not a standard. Four lines a merchant can check in an afternoon, and four lines an agent vendor could demand before letting a model spend someone's money.</p>
+      <a class="cta" href="refused-at-the-till.html">Pattern 01: the refusal, redesigned, before and after</a>
+      <a class="cta" href="ledger.html" style="margin-left:10px">Full record: six traces, every snapshot, raw data</a>
+      <p class="foot-note">Agent: Claude Fable 5 via Claude Code, one logged action per step, reading the Chromium accessibility tree. Headed Chromium with a stock Chrome user agent, not identified as an agent, launched with the AutomationControlled flag disabled (a common Playwright setting that hides the webdriver signal; disclosed because it matters). Nike and SSENSE were re-run without it on a stock session: same refusal, same wall; both re-run traces are in the full record. No proxies, no CAPTCHA solving, read-only past the cart, one run per brand, dead ends kept. Tree-only findings are a lower bound for tool-driving agents; vision agents can see selection state the tree omits. All six runs on 22 August 2026. Full method, limits and corrections log in the full record.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <p>Agent Failure Ledger, issue 01. Recorded and written by Shrutika Rajput, August 2026. Brands were chosen for recognizability; none were contacted. Nothing here is a claim about what a brand's partnered agents can do, only about what an unaffiliated agent reading the public page can.</p>
+</footer>
+</div>
+<dialog class="lb" id="lb"><button type="button" id="lbx">Close</button><img id="lbi" alt=""><div class="cap" id="lbc"></div></dialog>
+<script>
+(function(){var d=document.getElementById('lb'),im=document.getElementById('lbi'),cp=document.getElementById('lbc');document.addEventListener('click',function(e){var a=e.target.closest('a.thumb');if(!a)return;e.preventDefault();im.src=a.getAttribute('href');im.alt=a.querySelector('img').alt;cp.textContent=a.getAttribute('data-cap')||'';d.showModal();});document.getElementById('lbx').addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()});})();
+</script>
+</body></html>

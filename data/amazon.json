@@ -1,0 +1,196 @@
+{
+  "site": "amazon",
+  "url": "https://www.amazon.com/s?k=under+armour+charged+assert+10+men",
+  "task": "Find the price of the Under Armour Men's Charged Assert 10 running shoe, choose size 9, and add it to the cart.",
+  "agent": "Claude Fable 5 (claude-fable-5) operating via Claude Code",
+  "perception": "Chromium accessibility tree over CDP (Accessibility.getFullAXTree), filtered to rendered, non-hidden nodes; actionable nodes get refs. Same representation class Playwright MCP sends to agents.",
+  "actuation": "Playwright click/fill/selectOption on the resolved DOM node",
+  "browser": "Chromium 1223 (Playwright 1.60), headed, persistent profile, 1280x860",
+  "started": "2026-08-22T20:05:53.070Z",
+  "steps": [
+    {
+      "n": 1,
+      "t": "2026-08-22T20:05:55.876Z",
+      "url": "https://www.amazon.com/s?k=under+armour+charged+assert+10+men",
+      "action": {
+        "type": "goto",
+        "url": "https://www.amazon.com/s?k=under+armour+charged+assert+10+men"
+      },
+      "reasoning": "Open the product page given in the task.",
+      "screenshot": "shots/amazon-01.png",
+      "snapshotLines": 6,
+      "actionableRefs": 5
+    },
+    {
+      "n": 2,
+      "t": "2026-08-22T20:06:06.961Z",
+      "url": "https://www.amazon.com/",
+      "action": {
+        "type": "goto",
+        "url": "https://www.amazon.com/"
+      },
+      "reasoning": "Search URL returned Amazon's 'Sorry! Something went wrong' page (the Dogs of Amazon bot-block page), not results. Retrying from the homepage as a human would.",
+      "screenshot": "shots/amazon-02.png",
+      "snapshotLines": 593,
+      "actionableRefs": 262
+    },
+    {
+      "n": 3,
+      "t": "2026-08-22T20:06:21.651Z",
+      "url": "https://www.amazon.com/",
+      "action": {
+        "type": "type",
+        "ref": "e71",
+        "role": "searchbox",
+        "name": "Search Amazon",
+        "text": "under armour charged assert 10 men"
+      },
+      "reasoning": "Homepage loaded. Typing the product query into the 'Search Amazon' searchbox (e71).",
+      "screenshot": "shots/amazon-03.png",
+      "snapshotLines": 676,
+      "actionableRefs": 273,
+      "result": "ok"
+    },
+    {
+      "n": 4,
+      "t": "2026-08-22T20:06:23.899Z",
+      "url": "https://www.amazon.com/s?k=under+armour+charged+assert+10+men&crid=3SIMM3DKNER08&sprefix=under+armour+charged+assert+10+men%2Caps%2C107&ref=nb_sb_noss_1",
+      "action": {
+        "type": "press",
+        "key": "Enter"
+      },
+      "reasoning": "Submitting the search with Enter.",
+      "screenshot": "shots/amazon-04.png",
+      "snapshotLines": 2341,
+      "actionableRefs": 980
+    },
+    {
+      "n": 5,
+      "t": "2026-08-22T20:06:37.165Z",
+      "url": "https://www.amazon.com/Under-Armour-Charged-Assert-Running/dp/B09XBV1X8S/ref=sr_1_2?crid=3SIMM3DKNER08&dib=eyJ2IjoiMSJ9.HZwq4biqdgXxfXUOzlMQtLIHc8BE67gQkdCma6CMycBaskUZwSrg7viBKkzKYyW_Q38o-RadZpmjVu6Hrh6oBwXwuNSm9xKJZFLbYh2_DyKrB1oMPlwejrxLUF-8YhPMXnvr4r55-8Z0TAc3zkq5OFR34nANL6f22MxwT-018Dw3ViI6gyQNBbwIJRHSbFBTZ8aQ7jQ0QWMkN41usoKEeIiixYtfF2hSO0HqTfcW6v-uN8zqcDrw91yv9WMSA10U7pAQ5BXY1qs8bgZdhDqeLxqbzxPPQ-vhHqpIpJXhJWI.r9EKy6O5dzP5KqPApSUSniNiSk77dzQJRSPSjwhxadI&dib_tag=se&keywords=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen&qid=1787429182&sprefix=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen%2Caps%2C107&sr=8-2&th=1&psc=1",
+      "action": {
+        "type": "click",
+        "ref": "e135",
+        "role": "link",
+        "name": "Men's Charged Assert 10 Shoes"
+      },
+      "reasoning": "57 results; the first two cards are Sponsored (Assert 11). The first organic card is 'Men's Charged Assert 10 Shoes' by Under Armour (e135). Opening it. The page tree is 2,341 lines, most of it sponsored and recommendation rows.",
+      "screenshot": "shots/amazon-05.png",
+      "snapshotLines": 1332,
+      "actionableRefs": 612,
+      "result": "ok"
+    },
+    {
+      "n": 6,
+      "t": "2026-08-22T20:07:23.509Z",
+      "url": "https://www.amazon.com/Under-Armour-Charged-Assert-Running/dp/B09XBV1X8S/ref=sr_1_2?crid=3SIMM3DKNER08&dib=eyJ2IjoiMSJ9.HZwq4biqdgXxfXUOzlMQtLIHc8BE67gQkdCma6CMycBaskUZwSrg7viBKkzKYyW_Q38o-RadZpmjVu6Hrh6oBwXwuNSm9xKJZFLbYh2_DyKrB1oMPlwejrxLUF-8YhPMXnvr4r55-8Z0TAc3zkq5OFR34nANL6f22MxwT-018Dw3ViI6gyQNBbwIJRHSbFBTZ8aQ7jQ0QWMkN41usoKEeIiixYtfF2hSO0HqTfcW6v-uN8zqcDrw91yv9WMSA10U7pAQ5BXY1qs8bgZdhDqeLxqbzxPPQ-vhHqpIpJXhJWI.r9EKy6O5dzP5KqPApSUSniNiSk77dzQJRSPSjwhxadI&dib_tag=se&keywords=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen&qid=1787429182&sprefix=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen%2Caps%2C107&sr=8-2&th=1&psc=1",
+      "action": {
+        "type": "select",
+        "ref": "e168",
+        "role": "combobox",
+        "name": "",
+        "value": "9"
+      },
+      "reasoning": "PDP reached. h1 'Under Armour Men's Charged Assert 10 Shoes'. Color radios are richly named (color, price, savings, stock); the checked one is '(002) Black/Black/Black $63.08'. The size control is an UNNAMED combobox (e168) preset to '10.5' with a 'Size:' text label beside it, not associated. Selecting option '9'.",
+      "screenshot": "shots/amazon-06.png",
+      "snapshotLines": 1337,
+      "actionableRefs": 617,
+      "result": "error: locator.selectOption: Timeout 15000ms exceeded."
+    },
+    {
+      "n": 7,
+      "t": "2026-08-22T20:07:59.117Z",
+      "url": "https://www.amazon.com/Under-Armour-Charged-Assert-Running/dp/B09XBV1X8S/ref=sr_1_2?crid=3SIMM3DKNER08&dib=eyJ2IjoiMSJ9.HZwq4biqdgXxfXUOzlMQtLIHc8BE67gQkdCma6CMycBaskUZwSrg7viBKkzKYyW_Q38o-RadZpmjVu6Hrh6oBwXwuNSm9xKJZFLbYh2_DyKrB1oMPlwejrxLUF-8YhPMXnvr4r55-8Z0TAc3zkq5OFR34nANL6f22MxwT-018Dw3ViI6gyQNBbwIJRHSbFBTZ8aQ7jQ0QWMkN41usoKEeIiixYtfF2hSO0HqTfcW6v-uN8zqcDrw91yv9WMSA10U7pAQ5BXY1qs8bgZdhDqeLxqbzxPPQ-vhHqpIpJXhJWI.r9EKy6O5dzP5KqPApSUSniNiSk77dzQJRSPSjwhxadI&dib_tag=se&keywords=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen&qid=1787429182&sprefix=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen%2Caps%2C107&sr=8-2&th=1&psc=1",
+      "action": {
+        "type": "click",
+        "ref": "e169",
+        "role": "combobox",
+        "name": ""
+      },
+      "reasoning": "Direct selection on the size combobox timed out (the native select is hidden behind a custom dropdown). Clicking the combobox (e169) to open the visible size list instead.",
+      "screenshot": "shots/amazon-07.png",
+      "snapshotLines": 1337,
+      "actionableRefs": 617,
+      "result": "error: locator.click: Timeout 4000ms exceeded."
+    },
+    {
+      "n": 8,
+      "t": "2026-08-22T20:08:28.756Z",
+      "url": "https://www.amazon.com/Under-Armour-Charged-Assert-Running/dp/B09XBV1X8S/ref=sr_1_2?crid=3SIMM3DKNER08&dib=eyJ2IjoiMSJ9.HZwq4biqdgXxfXUOzlMQtLIHc8BE67gQkdCma6CMycBaskUZwSrg7viBKkzKYyW_Q38o-RadZpmjVu6Hrh6oBwXwuNSm9xKJZFLbYh2_DyKrB1oMPlwejrxLUF-8YhPMXnvr4r55-8Z0TAc3zkq5OFR34nANL6f22MxwT-018Dw3ViI6gyQNBbwIJRHSbFBTZ8aQ7jQ0QWMkN41usoKEeIiixYtfF2hSO0HqTfcW6v-uN8zqcDrw91yv9WMSA10U7pAQ5BXY1qs8bgZdhDqeLxqbzxPPQ-vhHqpIpJXhJWI.r9EKy6O5dzP5KqPApSUSniNiSk77dzQJRSPSjwhxadI&dib_tag=se&keywords=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen&qid=1787429182&sprefix=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen%2Caps%2C107&sr=8-2&th=1&psc=1",
+      "action": {
+        "type": "observe"
+      },
+      "reasoning": "The page navigated after the forced click on the size combobox. Re-observing where I am.",
+      "screenshot": "shots/amazon-08.png",
+      "snapshotLines": 1337,
+      "actionableRefs": 617
+    },
+    {
+      "n": 9,
+      "t": "2026-08-22T20:09:29.963Z",
+      "url": "https://www.amazon.com/Under-Armour-Charged-Assert-Running/dp/B09XBV1X8S/ref=sr_1_2?crid=3SIMM3DKNER08&dib=eyJ2IjoiMSJ9.HZwq4biqdgXxfXUOzlMQtLIHc8BE67gQkdCma6CMycBaskUZwSrg7viBKkzKYyW_Q38o-RadZpmjVu6Hrh6oBwXwuNSm9xKJZFLbYh2_DyKrB1oMPlwejrxLUF-8YhPMXnvr4r55-8Z0TAc3zkq5OFR34nANL6f22MxwT-018Dw3ViI6gyQNBbwIJRHSbFBTZ8aQ7jQ0QWMkN41usoKEeIiixYtfF2hSO0HqTfcW6v-uN8zqcDrw91yv9WMSA10U7pAQ5BXY1qs8bgZdhDqeLxqbzxPPQ-vhHqpIpJXhJWI.r9EKy6O5dzP5KqPApSUSniNiSk77dzQJRSPSjwhxadI&dib_tag=se&keywords=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen&qid=1787429182&sprefix=under%2Barmour%2Bcharged%2Bassert%2B10%2Bmen%2Caps%2C107&sr=8-2&th=1&psc=1",
+      "action": {
+        "type": "observe"
+      },
+      "reasoning": "DOM inspection keeps returning an empty document (no title, no selects) while the accessibility tree still lists the page; checking whether Amazon has swapped or is reloading the page.",
+      "screenshot": "shots/amazon-09.png",
+      "snapshotLines": 1337,
+      "actionableRefs": 617
+    },
+    {
+      "n": 10,
+      "t": "2026-08-22T20:11:40.734Z",
+      "url": "https://www.amazon.com/dp/B09XBV1X8S?th=1&psc=1",
+      "action": {
+        "type": "goto",
+        "url": "https://www.amazon.com/dp/B09XBV1X8S"
+      },
+      "reasoning": "Harness browser restarted (Playwright lost its handle to the tab after Amazon's in-page reload). Reopening the same product page by ASIN and continuing.",
+      "screenshot": "shots/amazon-10.png",
+      "snapshotLines": 1342,
+      "actionableRefs": 624
+    },
+    {
+      "n": 11,
+      "t": "2026-08-22T20:11:51.967Z",
+      "url": "https://www.amazon.com/dp/B09XBV3828?th=1&psc=1",
+      "action": {
+        "type": "select",
+        "ref": "e173",
+        "role": "combobox",
+        "name": "",
+        "value": "9"
+      },
+      "reasoning": "Size combobox (e173) is unnamed and preselected to '10.5' (an agent that skips this step would add a 10.5). Selecting option '9'.",
+      "screenshot": "shots/amazon-11.png",
+      "snapshotLines": 1339,
+      "actionableRefs": 623,
+      "result": "ok"
+    },
+    {
+      "n": 12,
+      "t": "2026-08-22T20:12:05.675Z",
+      "url": "https://www.amazon.com/cart/smart-wagon?newItems=05cfd910-188d-4ca2-a04b-84315fbd607a,1&ref_=sw_refresh",
+      "action": {
+        "type": "click",
+        "ref": "e289",
+        "role": "button",
+        "name": "Add to cart"
+      },
+      "reasoning": "Size combobox now reads '9'; checked color radio is '(002) Black/Black/Black $63.08'. The main price text near the title reads the sale price with savings. Clicking the 'Add to cart' button (e289) in the buy box (not the header shortcut e10).",
+      "screenshot": "shots/amazon-12.png",
+      "snapshotLines": 702,
+      "actionableRefs": 298,
+      "result": "ok"
+    }
+  ],
+  "outcome": {
+    "status": "pass",
+    "failedAt": null,
+    "reason": "'Added to cart' dialog: Under Armour Men's Charged Assert 10 Shoes, (002) Black/Black/Black, size 9, $63.08, 1 item. 9 logged steps incl. one bot-block page, one harness restart. Friction: first search URL served the 'Sorry! Something went wrong' bot page; size picker is an unnamed native select at opacity 0.01 behind a custom widget and was PRESELECTED to 10.5; 7 image radios named 'Submit'; three h1s; control names contain raw '&#39;' entities; 'Size:' label in the confirmation has no value next to it; tree is 1,300-2,300 lines of mostly sponsored/recommendation content.",
+    "finalUrl": "https://www.amazon.com/cart/smart-wagon?newItems=05cfd910-188d-4ca2-a04b-84315fbd607a,1&ref_=sw_refresh",
+    "finalScreenshot": "shots/amazon-final.png",
+    "finished": "2026-08-22T20:12:32.838Z",
+    "stepCount": 12
+  }
+}

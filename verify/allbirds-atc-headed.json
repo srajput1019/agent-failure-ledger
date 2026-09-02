@@ -1,0 +1,47 @@
+{
+  "site": "allbirds",
+  "label": "headed",
+  "sessionType": "automated / Playwright Chromium, HEADED, persistent profile",
+  "url": "https://www.allbirds.com/products/mens-tree-runners-mist",
+  "ranAt": "2026-09-01T23:41:39.833Z",
+  "sizeSelected": true,
+  "addToCartClicked": true,
+  "refusal": {
+    "hits": [],
+    "excerpt": null
+  },
+  "finalUrl": "https://www.allbirds.com/products/mens-tree-runners-mist?size=9&variant=33191200784464",
+  "finalDialog": "Added to CartYou've earned free shipping!You may also likeAnytime No Show Sock$14Anytime Ankle Sock$162 colorsAnytime Crew Sock$182 colorsAnytime No Show Heel Grip Sock$14+14 colors",
+  "steps": [
+    {
+      "n": 1,
+      "what": "product page loaded",
+      "t": "2026-09-01T23:41:29.708Z",
+      "url": "https://www.allbirds.com/products/mens-tree-runners-mist",
+      "screenshot": "verify/allbirds-atc-headed-01.png",
+      "tree": "verify/allbirds-atc-headed-01-tree.txt",
+      "dialogText": "Added to Cart Spend $100 more to earn free shipping! You may also likeAnytime No Show Sock$14Anytime Ankle Sock$162 colorsAnytime Crew Sock$182 colorsAnytime No Show Heel Grip Sock$14+14 colors",
+      "treeLines": 275
+    },
+    {
+      "n": 2,
+      "what": "select size (Select size 9) -> clicked",
+      "t": "2026-09-01T23:41:32.567Z",
+      "url": "https://www.allbirds.com/products/mens-tree-runners-mist?size=9&variant=33191200784464",
+      "screenshot": "verify/allbirds-atc-headed-02.png",
+      "tree": "verify/allbirds-atc-headed-02-tree.txt",
+      "dialogText": "Added to Cart Spend $100 more to earn free shipping! You may also likeAnytime No Show Sock$14Anytime Ankle Sock$162 colorsAnytime Crew Sock$182 colorsAnytime No Show Heel Grip Sock$14+14 colors",
+      "treeLines": 277
+    },
+    {
+      "n": 3,
+      "what": "click add-to-cart (add to cart|^add [-–—\\$]|^add$) -> clicked",
+      "t": "2026-09-01T23:41:39.832Z",
+      "url": "https://www.allbirds.com/products/mens-tree-runners-mist?size=9&variant=33191200784464",
+      "screenshot": "verify/allbirds-atc-headed-03.png",
+      "tree": "verify/allbirds-atc-headed-03-tree.txt",
+      "dialogText": "Added to CartYou've earned free shipping!You may also likeAnytime No Show Sock$14Anytime Ankle Sock$162 colorsAnytime Crew Sock$182 colorsAnytime No Show Heel Grip Sock$14+14 colors",
+      "treeLines": 359
+    }
+  ]
+}

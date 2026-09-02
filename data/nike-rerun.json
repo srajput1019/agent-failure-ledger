@@ -1,0 +1,66 @@
+{
+  "site": "nike-rerun",
+  "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+  "task": "Re-run on a stock Chromium session (AutomationControlled flag removed, fresh profile). Same task: choose size M 9 and add the Air Jordan 1 Low to the bag.",
+  "agent": "Claude Fable 5 (claude-fable-5) operating via Claude Code",
+  "perception": "Chromium accessibility tree over CDP (Accessibility.getFullAXTree), filtered to rendered, non-hidden nodes; actionable nodes get refs. Same representation class Playwright MCP sends to agents.",
+  "actuation": "Playwright click/fill/selectOption on the resolved DOM node",
+  "browser": "Chromium 1223 (Playwright 1.60), headed, persistent profile, 1280x860",
+  "started": "2026-08-27T20:40:12.927Z",
+  "steps": [
+    {
+      "n": 1,
+      "t": "2026-08-27T20:40:17.176Z",
+      "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+      "action": {
+        "type": "goto",
+        "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136"
+      },
+      "reasoning": "Open the product page given in the task.",
+      "screenshot": "shots/nike-rerun-01.png",
+      "snapshotLines": 214,
+      "actionableRefs": 117
+    },
+    {
+      "n": 2,
+      "t": "2026-08-27T20:40:37.700Z",
+      "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+      "action": {
+        "type": "click",
+        "ref": "e62",
+        "role": "radio",
+        "name": "M 9 / W 10.5"
+      },
+      "reasoning": "Clean session. 'M 9 / W 10.5' (e62) is enabled; selecting it.",
+      "screenshot": "shots/nike-rerun-02.png",
+      "snapshotLines": 214,
+      "actionableRefs": 117,
+      "result": "ok (forced)"
+    },
+    {
+      "n": 3,
+      "t": "2026-08-27T20:40:39.986Z",
+      "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+      "action": {
+        "type": "click",
+        "ref": "e77",
+        "role": "button",
+        "name": "Add to Bag"
+      },
+      "reasoning": "Size 9 checked. Clicking Add to Bag (e77) on the clean session to see whether the earlier refusal repeats without the automation-hiding flag.",
+      "screenshot": "shots/nike-rerun-03.png",
+      "snapshotLines": 6,
+      "actionableRefs": 2,
+      "result": "ok"
+    }
+  ],
+  "outcome": {
+    "status": "blocked",
+    "failedAt": "step 3 (Add to Bag)",
+    "reason": "Re-run on a stock Chromium session with the AutomationControlled flag removed and a fresh profile: identical refusal modal ('We Couldn't Complete Your Request... disable any browser extensions') on Add to Bag. The original finding stands without the disguise.",
+    "finalUrl": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+    "finalScreenshot": "shots/nike-rerun-final.png",
+    "finished": "2026-08-27T20:40:51.045Z",
+    "stepCount": 3
+  }
+}

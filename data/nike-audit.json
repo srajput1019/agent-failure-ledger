@@ -1,0 +1,128 @@
+{
+  "site": "nike",
+  "auditedAt": "2026-08-22T20:14:18.766Z",
+  "title": "Air Jordan 1 Low Men's Shoes. Nike.com",
+  "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-404",
+  "structured": {
+    "jsonLdBlocks": 1,
+    "productNodes": 2,
+    "productName": "Jordan 1 Low Alt Baby/Toddler Shoes",
+    "productType": "ProductGroup",
+    "offers": [
+      {
+        "price": 91.97,
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    ],
+    "microdataProducts": 0,
+    "hasVariants": true,
+    "schemaPrice": 91.97,
+    "priceMatch": true,
+    "domPricesSample": [
+      "$50",
+      "$91.97",
+      "$1202",
+      "$42.97",
+      "$65.00",
+      "$95.00"
+    ]
+  },
+  "headings": {
+    "h1Count": 1,
+    "firstH1": "Air Jordan 1 Low",
+    "h1InMain": true,
+    "firstH1NamesProduct": true,
+    "total": 135,
+    "skippedLevels": 6,
+    "navOrHeaderHeadings": 0,
+    "h1Texts": [
+      "Air Jordan 1 Low"
+    ],
+    "visibleH1Count": 1
+  },
+  "controls": {
+    "visible": 358,
+    "unnamed": 2,
+    "unnamedInMain": 2,
+    "unnamedSample": [
+      {
+        "tag": "button",
+        "role": null,
+        "cls": "carousel-btn prev-btn",
+        "inMain": true
+      },
+      {
+        "tag": "button",
+        "role": null,
+        "cls": "carousel-btn next-btn",
+        "inMain": true
+      }
+    ],
+    "addToCart": [
+      {
+        "tag": "button",
+        "name": "Add to Bag",
+        "disabled": false
+      }
+    ],
+    "variant": {
+      "count": 27,
+      "unnamed": 0,
+      "kinds": [
+        "a[role=menuitem]",
+        "input[radio]"
+      ]
+    }
+  },
+  "images": {
+    "visibleInMain": 22,
+    "noAltAttribute": 0,
+    "emptyAltDecorative": 6,
+    "junkAlt": 0,
+    "thumbControls": 15,
+    "thumbControlsUnnamed": 0
+  },
+  "platform": {
+    "shopify": false
+  },
+  "protocol": {
+    "robots": {
+      "status": 200,
+      "bots": {
+        "GPTBot": "unlisted",
+        "ChatGPT-User": "unlisted",
+        "OAI-SearchBot": "unlisted",
+        "ClaudeBot": "unlisted",
+        "Claude-User": "unlisted",
+        "PerplexityBot": "unlisted",
+        "Perplexity-User": "unlisted",
+        "Google-Extended": "unlisted",
+        "Amazonbot": "unlisted",
+        "Bytespider": "unlisted",
+        "CCBot": "unlisted"
+      }
+    },
+    "llmsTxt": {
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "sample": ""
+    },
+    "ucpWellKnown": {
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "sample": ""
+    },
+    "shopify": false
+  },
+  "score": {
+    "structuredData": 35,
+    "operability": 35,
+    "headings": 13,
+    "images": 15,
+    "total": 98
+  },
+  "rubric": "structuredData 35 (Product+Offer price/currency/availability, -10 if schema price not in DOM) | operability 35 (named add-to-cart 15, variant controls named 12, price as text 8) | headings 15 (first h1 names product 8, no skipped levels 4, no nav/header headings 3, -3 if 3+ h1) | images 15 (no img in main without alt attr 9, thumbnail controls named 6, -2 junk alt). alt=\"\" counts as compliant."
+}

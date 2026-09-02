@@ -1,0 +1,22 @@
+alertdialog "We stopped this request" desc="This session looks like a browser being driven by software, so we did ..."
+  [e1] button "Close"
+  heading "We stopped this request" h1
+    text "We stopped this request"
+  text "This session looks like a browser being driven by software, so we did not add anything to your bag. If you are a person, reload nike.com in a normal window and try again."
+  DescriptionList "What happened"
+    term "Reason"
+      text "Reason"
+    definition (unnamed)
+      text "Automated session detected"
+    term "Your bag"
+      text "Your bag"
+    definition (unnamed)
+      text "Unchanged, 0 items"
+    term "For shopping assistants"
+      text "For shopping assistants"
+    definition (unnamed)
+      text "This page does not accept agent purchases. No agent path is published for this store."
+  [e2] link "Reload and try again"
+    text "Reload and try again"
+  [e3] link "View bag (0)"
+    text "View bag (0)"

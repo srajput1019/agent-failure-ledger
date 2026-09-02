@@ -1,0 +1,44 @@
+{
+  "site": "ssense",
+  "label": "headed",
+  "sessionType": "automated / Playwright Chromium, HEADED, persistent profile",
+  "url": "https://www.ssense.com/en-us/men?q=rick%20owens%20sneakers",
+  "verifiedAt": "2026-09-01T23:32:51.370Z",
+  "navigation": {
+    "ok": true,
+    "status": 403,
+    "error": null
+  },
+  "blocked": true,
+  "gate": {
+    "title": "Just a moment...",
+    "bodyChars": 262,
+    "interactive": 3,
+    "challengeHits": [
+      "just a moment",
+      "performing security verification",
+      "security verification"
+    ],
+    "bodySample": "www.ssense.com Performing security verification This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot. Ray ID: a348136bb899eef5 Performance and Security by Cloudflare Privacy",
+    "cfIframe": false
+  },
+  "metrics": null,
+  "prdScore": null,
+  "treeLines": 12,
+  "artifacts": {
+    "screenshot": "verify/ssense-headed.png",
+    "tree": "verify/ssense-headed-tree.txt"
+  },
+  "finalScore": null,
+  "finalRubric": {
+    "name": "Agent-readability (open standards), 100 points",
+    "bands": [
+      "Structured data 40 - complete Product schema (Product/ProductGroup + price + availability) = 40; schema present but missing price or availability = 20; none = 0",
+      "Heading clarity 20 - exactly one h1 = 20; two h1 = 10; three or more, or zero = 0",
+      "Named controls 20 - zero unnamed buttons = 20; one to three = 10; four or more = 0",
+      "Image alt text 20 - 95% or more of img elements carry an alt attribute = 20; 80 to 94% = 10; under 80% = 0"
+    ],
+    "grades": "90+ A, 80-89 B, 70-79 C, 55-69 D, under 55 F",
+    "note": "Measured on the rendered DOM of one product page, one load, automated Chromium. A blocked page is not scored."
+  }
+}

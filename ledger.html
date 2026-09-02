@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Failure Ledger, full record</title>
+<meta name="description" content="I asked an AI agent to buy six things from six brands and logged every step. Here is where it broke, why, and who pays.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F6F3EC;--ink:#161412;--ink-70:rgba(22,20,18,.7);--ink-45:rgba(22,20,18,.45);--ink-12:rgba(22,20,18,.12);--ink-06:rgba(22,20,18,.06);--accent:#8B2D3A;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Inter,system-ui,-apple-system,Segoe UI,sans-serif;--serif:Fraunces,Georgia,"Times New Roman",serif;--pad:clamp(56px,9vw,128px);--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-align:left}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0;padding:0 clamp(20px,4vw,56px)}
+@media(min-width:1320px){.wrap{margin-left:max(0px,calc((100vw - var(--max))/2 - 80px))}}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink-70)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(40px,6.2vw,84px);line-height:1.02;max-width:16ch;font-variation-settings:"opsz" 144}
+h2{font-size:clamp(30px,3.6vw,46px);line-height:1.08;max-width:22ch;font-variation-settings:"opsz" 96}
+h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1}
+h4{font-family:var(--sans);font-size:15px;font-weight:600;margin:0 0 4px}
+p{margin:0}
+.lede{font-size:clamp(18px,1.5vw,21px);line-height:1.5;max-width:62ch;color:var(--ink);margin-top:28px}
+.small{font-size:13.5px;color:var(--ink-70)}
+section.block{padding-top:var(--pad)}
+.kicker{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-bottom:28px}
+.kicker .mono{color:var(--ink-70)}
+.masthead{padding-top:clamp(40px,7vw,96px)}
+.glance{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:1px solid var(--ink);margin-top:48px}
+.g{display:block;text-decoration:none;padding:18px 16px 22px 0;border-right:1px solid var(--ink-12);align-self:start}
+.g:last-child{border-right:0}
+.g-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-right:16px}
+.g-brand{font-family:var(--serif);font-size:24px;margin-top:14px;line-height:1.1}
+.g-what{font-size:13.5px;color:var(--ink-70);margin-top:6px;padding-right:16px;min-height:2.6em}
+.g-score{margin-top:10px}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px 2px;border-radius:999px;line-height:1.3;white-space:nowrap}
+.badge.pass{background:var(--ink);color:var(--paper)}
+.badge.blocked{border:1px solid var(--accent);color:var(--accent);background:transparent}
+.method{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:36px}
+.method dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:10px 22px;font-size:14.5px;align-items:start}
+.method dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--ink-70);padding-top:2px}
+.method dd{margin:0}
+.rules{list-style:none;padding:0;margin:0;font-size:14.5px}
+.rules li{padding:10px 0;border-top:1px solid var(--ink-12)}
+.rules li:first-child{border-top:0}
+.entry{border-top:1px solid var(--ink);padding:40px 0 72px}
+.entry-head{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:start}
+.entry-idx{padding-top:10px}
+.entry-product{font-size:15px;color:var(--ink-70);margin-top:8px}
+.entry-outcome{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-top:8px}
+.entry-label{text-transform:none;letter-spacing:0;color:var(--ink-70)}
+.entry-headline{font-family:var(--serif);font-size:clamp(22px,2.1vw,30px);line-height:1.2;max-width:30ch;margin:30px 0 0 74px;font-variation-settings:"opsz" 60}
+.entry-task{margin:18px 0 0 74px;font-size:14.5px;color:var(--ink-70);max-width:70ch}
+.entry-task .mono{margin-right:10px}
+.entry-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,64px);margin:36px 0 0 74px;align-items:start}
+.sec-label{margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--ink-12)}
+.steps{list-style:none;margin:0;padding:0}
+.step{display:grid;grid-template-columns:28px minmax(0,1fr) 168px;gap:14px;padding:14px 0;border-top:1px solid var(--ink-06);align-items:start}
+.step:first-child{border-top:0}
+.step-n{padding-top:3px}
+.step-act{text-transform:none;letter-spacing:0;color:var(--ink);font-size:12.5px;word-break:break-word}
+.step-act .res{color:var(--accent)}
+.step-why{font-size:14px;line-height:1.5;color:var(--ink-70);margin-top:6px}
+.step-meta{margin-top:8px;font-size:11px;color:var(--ink-45)}
+.step-fail .step-act{color:var(--accent)}
+.thumb{display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--ink-12);background:#fff;border-radius:2px}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.thumb-empty{display:flex;align-items:flex-start;padding:8px;color:var(--ink-45);font-size:11px}
+.outcome-line{margin-top:22px;font-size:14.5px;line-height:1.55;padding-top:16px;border-top:1px solid var(--ink-12)}
+.outcome-line .mono{margin-right:10px}
+.saw-block{margin-bottom:14px}
+.saw-step{font-size:11px;margin-bottom:6px;color:var(--ink-45)}
+pre.tree{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5;white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--ink-12);padding:12px 14px;border-radius:2px;color:var(--ink)}
+.finding{margin-bottom:16px}
+.finding p{font-size:14px;line-height:1.55;color:var(--ink-70)}
+.score-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:4px}
+.score{font-family:var(--serif);font-size:34px;line-height:1}
+.score .of{font-size:14px;color:var(--ink-45);margin-left:2px}
+.score.na{font-size:16px;font-family:var(--mono);text-transform:uppercase;color:var(--ink-45);padding-top:6px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+td,th{vertical-align:top;text-align:left;padding:9px 12px 9px 0;border-top:1px solid var(--ink-12)}
+th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-70);font-weight:500;border-top:0;padding-bottom:6px}
+.rubric{margin-top:14px}
+.rubric td:nth-child(1){width:34%}.rubric td:nth-child(2){width:16%}
+.rubric td:nth-child(3){color:var(--ink-70)}
+.proto{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:11px;text-transform:none;letter-spacing:0}
+.tax{margin-top:36px}
+.tax td{font-size:13.5px;line-height:1.5}
+.tax .tax-name{font-family:var(--serif);font-size:19px;line-height:1.15;font-variation-settings:"opsz" 40}
+.tax th:nth-child(1),.tax td:nth-child(1){width:15%}.tax th:nth-child(2),.tax td:nth-child(2){width:19%}
+.tax th:nth-child(3),.tax td:nth-child(3){width:16%}.tax th:nth-child(4),.tax td:nth-child(4){width:16%}.tax th:nth-child(5),.tax td:nth-child(5){width:14%}
+.insight{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);margin-top:36px;align-items:start}
+.insight p{font-size:16.5px;line-height:1.55;max-width:60ch}
+.insight p+p{margin-top:16px}
+.quote{font-family:var(--serif);font-size:clamp(20px,1.8vw,25px);line-height:1.3;max-width:34ch;font-variation-settings:"opsz" 48;margin-top:6px}
+.quote cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;text-transform:uppercase;color:var(--ink-70);margin-top:12px}
+.protoTable{margin-top:28px;max-width:860px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px);margin-top:32px;align-items:start}
+.cols h4{margin-bottom:10px}
+.cols p,.cols li{font-size:14.5px;line-height:1.55;color:var(--ink-70)}
+.cols ul{padding-left:18px;margin:0}
+.cols li+li{margin-top:6px}
+.files{list-style:none;padding:0;margin:18px 0 0;font-size:14px}
+.files li{padding:8px 0;border-top:1px solid var(--ink-12)}
+.files li:first-child{border-top:0}
+.files a{font-family:var(--mono);font-size:12.5px;text-decoration:none;border-bottom:1px solid var(--ink-45)}
+footer.foot{padding:var(--pad) 0 64px;margin-top:var(--pad);border-top:1px solid var(--ink)}
+footer.foot p{font-size:14px;color:var(--ink-70);max-width:60ch}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);width:auto}
+dialog.lb::backdrop{background:rgba(22,20,18,.82)}
+dialog.lb img{display:block;max-width:min(96vw,1400px);max-height:84vh;width:auto;height:auto;border:1px solid rgba(255,255,255,.2)}
+dialog.lb .cap{color:#fff;font-family:var(--mono);font-size:12px;margin-top:10px}
+dialog.lb button{position:fixed;top:18px;right:22px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);font-family:var(--mono);font-size:12px;padding:8px 12px;cursor:pointer}
+.overflow{overflow-x:auto}
+@media(max-width:980px){.glance{grid-template-columns:repeat(3,minmax(0,1fr))}.g:nth-child(3n){border-right:0}.method,.entry-grid,.insight{grid-template-columns:1fr}.entry-headline,.entry-task,.entry-grid{margin-left:0}.entry-head{grid-template-columns:40px minmax(0,1fr)}.entry-outcome{grid-column:2}.cols{grid-template-columns:1fr}.tax{min-width:900px}}
+@media(max-width:600px){.glance{grid-template-columns:repeat(2,minmax(0,1fr))}.g:nth-child(3n){border-right:1px solid var(--ink-12)}.g:nth-child(2n){border-right:0}.step{grid-template-columns:22px minmax(0,1fr)}.thumb{grid-column:2;max-width:220px}}
+</style></head>
+<body>
+<div class="wrap">
+<header class="masthead">
+  <div class="kicker"><span class="mono"><a href="index.html" style="text-decoration:none;border-bottom:1px solid var(--ink-45)">Back to the summary</a></span><span class="mono">Agent Failure Ledger, full record</span><span class="mono">Issue 01, recorded 22 Aug 2026</span></div>
+  <h1>I asked an AI agent to buy six things. Here is where it broke.</h1>
+  <p class="lede">Same agent, same task shape, six brands: find the price, pick a size or shade, add it to the cart. Every step was logged with what the agent saw and why it acted. Three passed cleanly, one passed after two dead ends, two never got to a cart. The interesting part is not the count. It is how close the ones that passed came to buying the wrong thing, and how the ones that failed were told why.</p>
+  <div class="glance"><a class="g" href="#glossier"><div class="g-top"><span class="mono">01</span><span class="badge pass">Pass</span></div><div class="g-brand">Glossier</div><div class="g-what">Pass in 3 actions</div><div class="g-score mono">readability 95</div></a><a class="g" href="#nike"><div class="g-top"><span class="mono">02</span><span class="badge blocked">Blocked</span></div><div class="g-brand">Nike</div><div class="g-what">Blocked at Add to Bag</div><div class="g-score mono">readability 98</div></a><a class="g" href="#zara"><div class="g-top"><span class="mono">03</span><span class="badge pass">Pass</span></div><div class="g-brand">Zara</div><div class="g-what">Pass in 5 actions</div><div class="g-score mono">readability 100</div></a><a class="g" href="#ssense"><div class="g-top"><span class="mono">04</span><span class="badge blocked">Blocked</span></div><div class="g-brand">SSENSE</div><div class="g-what">Blocked at page load</div><div class="g-score mono">no page served</div></a><a class="g" href="#allbirds"><div class="g-top"><span class="mono">05</span><span class="badge pass">Pass</span></div><div class="g-brand">Allbirds</div><div class="g-what">Pass in 3 actions (after a redirect)</div><div class="g-score mono">readability 95</div></a><a class="g" href="#amazon"><div class="g-top"><span class="mono">06</span><span class="badge pass">Pass</span></div><div class="g-brand">Amazon</div><div class="g-what">Pass in 9 actions, 2 dead ends, 1 harness restart</div><div class="g-score mono">readability 37</div></a></div>
+</header>
+
+<section class="block" id="method">
+  <h2>How this was run</h2>
+  <div class="method">
+    <dl>
+      <dt>Agent</dt><dd>Claude Fable 5 (claude-fable-5), operating through Claude Code. One action per step, reasoning written before each action and recorded verbatim.</dd>
+      <dt>What it read</dt><dd>The Chromium accessibility tree, pulled over CDP (Accessibility.getFullAXTree), filtered to rendered, non-hidden nodes. This is the same class of representation Playwright MCP and similar tool-driving agents consume. No screenshots were used to decide actions; they were captured after each step for this record.</dd>
+      <dt>How it acted</dt><dd>Playwright click, fill and selectOption on the node behind each tree reference. Headed Chromium 1223 (Playwright 1.60), persistent profile, 1280 by 860, US locale, New York timezone, no extensions.</dd>
+      <dt>Task</dt><dd>"Find the price of [product], choose [size or shade], and add it to the cart." One product per brand, chosen before the run. Runs started from the product URL where I had one, otherwise from the site's own search.</dd>
+      <dt>Supporting score</dt><dd>An open-readability audit of the product page, run after each trace on a clean load. 35 structured data, 35 operability, 15 headings, 15 images. Weights are mine and are explained below. The score is the footnote; the trace is the finding.</dd>
+      <dt>Date</dt><dd>All six runs and audits: 22 August 2026, between 15:58 and 16:15 US Eastern. Pages change; this is a snapshot.</dd>
+    </dl>
+    <ul class="rules">
+      <li><strong>Read-only past the cart.</strong> Nothing was purchased. No checkout was started. Items added to carts were left there.</li>
+      <li><strong>No bypassing, one disclosed exception.</strong> When a site showed a bot check or refused a request, I retried once the way a person would (reload, or start from the homepage) and then stopped. No CAPTCHA solving, no proxies, stock Chrome user agent. The browser was launched with Chromium's AutomationControlled feature disabled, a common Playwright setting that hides the navigator.webdriver signal. That is a partial disguise and it is disclosed here because it matters. To check that it did not shape the two blocked results, Nike and SSENSE were re-run on 27 August on a stock session (flag removed, fresh profile): same refusal modal on Nike's Add to Bag, same Turnstile wall on SSENSE. Both re-run traces are in the raw data. The session was not identified as an agent at the HTTP level; there is no settled standard for a person-directed browser agent to do so (Cloudflare's Web Bot Auth is the emerging one), and this run did not use it.</li>
+      <li><strong>One run each.</strong> No cherry-picking across attempts. The Amazon run includes its dead ends and a harness restart because that is what happened.</li>
+      <li><strong>What I could not see.</strong> Vision-based agents (Operator, Comet, Atlas and their kind use screenshots plus DOM and can see a highlighted size button or a Turnstile box that the tree omits, so tree-only findings are a lower bound for tool-driving agents, not a claim about all agents), merchant feeds, logged-in states, mobile layouts, and whatever these sites serve to agents they have partnered with. One run per brand, one afternoon, one model, one harness.</li>
+      <li><strong>Amazon, knowingly.</strong> Amazon's robots.txt disallows ClaudeBot and Claude-User by name and its Conditions of Use restrict automated access. This run proceeded as an unidentified browser session: one item, read-only, nothing purchased. It stays in the record because it is the one site that refused and then did not, and because the tension between "no automated access" and "an agent shopping for a person" is the subject of this ledger, not a footnote to it.</li>
+      <li><strong>Raw data is published.</strong> Every trace, every accessibility snapshot, every audit, every screenshot. Corrections log at the bottom.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="ledger">
+  <h2>The ledger</h2>
+  <p class="lede" style="margin-top:20px;max-width:56ch">Six entries. For each: the trace as it happened, the lines of the tree the decision rested on, why it went the way it did, and the supporting score.</p>
+  <div style="margin-top:40px"><article class="entry" id="glossier">
+    <header class="entry-head">
+      <div class="entry-idx mono">01</div>
+      <div class="entry-title"><h3>Glossier</h3><p class="entry-product">Boy Brow, shade Brown. $22.</p></div>
+      <div class="entry-outcome"><span class="badge pass">Pass</span><span class="mono entry-label">Pass in 3 actions</span></div>
+    </header>
+    <p class="entry-headline">Passed. Two shade radios both claimed to be checked while it did.</p>
+    <p class="entry-task"><span class="mono">Task</span> Find the price of Boy Brow, choose the shade Brown, and add it to the bag.</p>
+    <div class="entry-grid">
+      <section class="trace"><h4 class="mono sec-label">Trace, 4 logged steps</h4><ol class="steps"><li class="step">
+      <div class="step-n mono">1</div>
+      <div class="step-body">
+        <div class="step-act mono">open glossier.com/products/boy-brow</div>
+        <p class="step-why">Open the product page given in the task.</p>
+        <div class="step-meta mono">1021 lines in tree, 553 actionable</div>
+      </div>
+      <a class="thumb" href="shots/glossier-01.jpg" data-cap="Glossier, step 1: open glossier.com/products/boy-brow"><img loading="lazy" src="shots/glossier-01.jpg" alt="Screenshot after step 1 on Glossier"></a>
+    </li><li class="step">
+      <div class="step-n mono">2</div>
+      <div class="step-body">
+        <div class="step-act mono">click radio &quot;Brown variant option&quot;</div>
+        <p class="step-why">Task asks for shade Brown. The shade picker is a radio group; 'Dark Brown variant option' is checked by default, so I must explicitly select 'Brown variant option' (e24). Note the nested duplicate radios (e24 wraps e25): each shade appears twice in the tree.</p>
+        <div class="step-meta mono">1016 lines in tree, 552 actionable</div>
+      </div>
+      <a class="thumb" href="shots/glossier-02.jpg" data-cap="Glossier, step 2: click radio &quot;Brown variant option&quot;"><img loading="lazy" src="shots/glossier-02.jpg" alt="Screenshot after step 2 on Glossier"></a>
+    </li><li class="step">
+      <div class="step-n mono">3</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;Add to bag $22&quot;</div>
+        <p class="step-why">Visible label now reads 'Brown' and the inner Brown radio (e25) is checked, but the outer 'Dark Brown variant option' (e22) STILL reports checked=true. Two radios in one group both claim checked. I trust the label text 'Brown' and proceed. Price is in the button name: 'Add to bag $22'. Clicking it.</p>
+        <div class="step-meta mono">1082 lines in tree, 576 actionable</div>
+      </div>
+      <a class="thumb" href="shots/glossier-03.jpg" data-cap="Glossier, step 3: click button &quot;Add to bag $22&quot;"><img loading="lazy" src="shots/glossier-03.jpg" alt="Screenshot after step 3 on Glossier"></a>
+    </li><li class="step">
+      <div class="step-n mono">4</div>
+      <div class="step-body">
+        <div class="step-act mono">observe</div>
+        <p class="step-why">Bag count went 0 -&gt; 1 and the cart drawer opened. Verifying the line item shade and price before declaring success.</p>
+        <div class="step-meta mono">1078 lines in tree, 574 actionable</div>
+      </div>
+      <a class="thumb" href="shots/glossier-04.jpg" data-cap="Glossier, step 4: observe"><img loading="lazy" src="shots/glossier-04.jpg" alt="Screenshot after step 4 on Glossier"></a>
+    </li></ol>
+        <p class="outcome-line"><span class="mono">Outcome</span> Cart shows Boy Brow, shade Brown, $22, qty 1. Task complete in 3 actions. Friction noted: duplicate nested radios per shade with contradictory checked state after selection; an unnamed purchase-frequency combobox in the cart drawer.</p></section>
+      <aside class="side">
+        <h4 class="mono sec-label">What the agent saw</h4><div class="saw-block"><div class="mono saw-step">after step 1</div><pre class="tree">heading &quot;Boy Brow&quot; h1
+[e22] radio &quot;Dark Brown variant option&quot; checked=true
+[e24] radio &quot;Brown variant option&quot;
+[e45] button &quot;Add to bag $22&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 2</div><pre class="tree">[e22] radio &quot;Dark Brown variant option&quot; checked=true
+[e25] radio &quot;Brown variant option&quot; checked=true
+text &quot;Brown&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 4</div><pre class="tree">heading &quot;SHOPPING BAG&quot; h2
+text &quot;Brown&quot;
+[e555] combobox (unnamed) expanded=false value=&quot;One-time purchase&quot;
+text &quot;$22&quot;</pre></div>
+        <h4 class="mono sec-label">Why it went the way it did</h4><div class="finding"><h4>State you cannot trust</h4><p>After selecting Brown, the tree reported two radios in the same group as checked: the outer &quot;Dark Brown&quot; wrapper and the inner &quot;Brown&quot;. The visible label said Brown. I trusted the label. An agent that trusts the checked state ships Dark Brown.</p></div><div class="finding"><h4>Platform default</h4><p>Shopify opens a product on its first available variant; on Boy Brow that is Dark Brown, and the page passes it into the cart with no confirmation. An agent told &quot;buy Boy Brow&quot; with no shade, or one that skips the picker, adds Dark Brown without anyone choosing it. The two-radios-both-checked state after selection is the real defect.</p></div><div class="finding"><h4>Control with no name</h4><p>The purchase-frequency combobox in the cart drawer has no accessible name. It reads as combobox (unnamed) with options like &quot;Ship every month&quot;.</p></div><div class="finding"><h4>The store asks agents not to do this</h4><p>glossier.com/llms.txt says agents should prefer the Shop skill and UCP &quot;over screen-scraping or scripting the storefront directly&quot;. The UCP discovery document is live at /.well-known/ucp. Shopify provides both.</p></div>
+        <h4 class="mono sec-label">Supporting score</h4><div class="score-row"><span class="mono">Open-readability</span><span class="score">95<span class="of">/100</span></span></div>
+    <table class="rubric"><tbody>
+      <tr><td>Structured data</td><td class="mono">35/35</td><td>Product + Offer, price 22 matches DOM</td></tr>
+      <tr><td>Operability</td><td class="mono">35/35</td><td>named add-to-cart, 263 variant controls, 0 unnamed</td></tr>
+      <tr><td>Headings</td><td class="mono">10/15</td><td>1 h1, 1 skipped level, 5 nav/header headings</td></tr>
+      <tr><td>Images</td><td class="mono">15/15</td><td>0 without alt attribute, 17 decorative (alt=""), 0 unnamed thumbnail controls</td></tr>
+    </tbody></table>
+    <div class="proto mono">
+      <span>llms.txt yes</span><span>UCP yes</span><span>AI crawlers in robots not blocked</span><span>Shopify</span>
+    </div>
+      </aside>
+    </div>
+  </article>
+<article class="entry" id="nike">
+    <header class="entry-head">
+      <div class="entry-idx mono">02</div>
+      <div class="entry-title"><h3>Nike</h3><p class="entry-product">Air Jordan 1 Low, M 9. $120 (white), $91.97 (sale colorway).</p></div>
+      <div class="entry-outcome"><span class="badge blocked">Blocked</span><span class="mono entry-label">Blocked at Add to Bag</span></div>
+    </header>
+    <p class="entry-headline">Read everything, picked the right size, refused at the cart for a reason that was not the reason.</p>
+    <p class="entry-task"><span class="mono">Task</span> Find the price of the men's Air Jordan 1 Low, choose size M 9, and add it to the bag.</p>
+    <div class="entry-grid">
+      <section class="trace"><h4 class="mono sec-label">Trace, 6 logged steps</h4><ol class="steps"><li class="step">
+      <div class="step-n mono">1</div>
+      <div class="step-body">
+        <div class="step-act mono">open nike.com/w?q=air%20jordan%201%20low&amp;vst=air%20jo</div>
+        <p class="step-why">Open the product page given in the task.</p>
+        <div class="step-meta mono">486 lines in tree, 303 actionable</div>
+      </div>
+      <a class="thumb" href="shots/nike-01.jpg" data-cap="Nike, step 1: open nike.com/w?q=air%20jordan%201%20low&amp;vst=air%20jo"><img loading="lazy" src="shots/nike-01.jpg" alt="Screenshot after step 1 on Nike"></a>
+    </li><li class="step">
+      <div class="step-n mono">2</div>
+      <div class="step-body">
+        <div class="step-act mono">click link &quot;Air Jordan 1 Low&quot; <span class="res">ok (forced)</span></div>
+        <p class="step-why">Search results list 219 items. The first card reads 'Air Jordan 1 Low' / 'Men's Shoes' / 'current price $91.97, original price $120' (e65-e67). That matches the task (men's AJ1 Low), so I open it. Note the card exposes price via a link name, which is readable.</p>
+        <div class="step-meta mono">210 lines in tree, 116 actionable</div>
+      </div>
+      <a class="thumb" href="shots/nike-02.jpg" data-cap="Nike, step 2: click link &quot;Air Jordan 1 Low&quot;"><img loading="lazy" src="shots/nike-02.jpg" alt="Screenshot after step 2 on Nike"></a>
+    </li><li class="step">
+      <div class="step-n mono">3</div>
+      <div class="step-body">
+        <div class="step-act mono">click link &quot;White/White/White&quot;</div>
+        <p class="step-why">This colorway (553558-404) has every adult size disabled except 'M 12 / W 13.5'; 'M 9 / W 10.5' (e61) is disabled, so I cannot complete the task here. The page also exposes no price in the tree, only '23% off'. The colorway links (e47-e53) are named by color; I try 'White/White/White' (e47) hoping size 9 is in stock there.</p>
+        <div class="step-meta mono">212 lines in tree, 115 actionable</div>
+      </div>
+      <a class="thumb" href="shots/nike-03.jpg" data-cap="Nike, step 3: click link &quot;White/White/White&quot;"><img loading="lazy" src="shots/nike-03.jpg" alt="Screenshot after step 3 on Nike"></a>
+    </li><li class="step">
+      <div class="step-n mono">4</div>
+      <div class="step-body">
+        <div class="step-act mono">click radio &quot;M 9 / W 10.5&quot; <span class="res">ok (forced)</span></div>
+        <p class="step-why">In the White/White/White colorway 'M 9 / W 10.5' (e60) is enabled. Selecting it.</p>
+        <div class="step-meta mono">212 lines in tree, 115 actionable</div>
+      </div>
+      <a class="thumb" href="shots/nike-04.jpg" data-cap="Nike, step 4: click radio &quot;M 9 / W 10.5&quot;"><img loading="lazy" src="shots/nike-04.jpg" alt="Screenshot after step 4 on Nike"></a>
+    </li><li class="step step-fail">
+      <div class="step-n mono">5</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;Add to Bag&quot;</div>
+        <p class="step-why">Size 'M 9 / W 10.5' is checked. The price visible in the tree for this colorway is '$120' (static text) plus a '$11/month' financing line. Clicking 'Add to Bag' (e75).</p>
+        <div class="step-meta mono">6 lines in tree, 2 actionable</div>
+      </div>
+      <a class="thumb" href="shots/nike-05.jpg" data-cap="Nike, step 5: click button &quot;Add to Bag&quot;"><img loading="lazy" src="shots/nike-05.jpg" alt="Screenshot after step 5 on Nike"></a>
+    </li><li class="step">
+      <div class="step-n mono">6</div>
+      <div class="step-body">
+        <div class="step-act mono">click link &quot;View Bag&quot;</div>
+        <p class="step-why">A modal titled 'We Couldn't Complete Your Request' appeared instead of a confirmation, telling me to disable extensions and reopen nike.com. This reads like bot/automation detection at the cart call. Checking 'View Bag' (e2) to see whether the item was added anyway.</p>
+        <div class="step-meta mono">156 lines in tree, 74 actionable</div>
+      </div>
+      <a class="thumb" href="shots/nike-06.jpg" data-cap="Nike, step 6: click link &quot;View Bag&quot;"><img loading="lazy" src="shots/nike-06.jpg" alt="Screenshot after step 6 on Nike"></a>
+    </li></ol>
+        <p class="outcome-line"><span class="mono">Outcome</span> Agent found the product, switched colorway to one with size M 9 in stock, selected it, and clicked Add to Bag. Nike returned 'We Couldn't Complete Your Request' (automation/extension detection at the cart call). Bag shows 0 items. Read and operate succeeded; the transaction was refused.</p></section>
+      <aside class="side">
+        <h4 class="mono sec-label">What the agent saw</h4><div class="saw-block"><div class="mono saw-step">after step 1</div><pre class="tree">[e67] link &quot;current price $91.97, original price $120 23% off&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 2</div><pre class="tree">heading &quot;Air Jordan 1 Low&quot; h1
+text &quot;23% off&quot;
+[e61] radio &quot;M 9 / W 10.5&quot; disabled
+[e67] radio &quot;M 12 / W 13.5&quot;
+[e76] button &quot;Add to Bag&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 4</div><pre class="tree">[e60] radio &quot;M 9 / W 10.5&quot; checked=true
+[e75] button &quot;Add to Bag&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 5</div><pre class="tree">heading &quot;We Couldn't Complete Your Request&quot; h1
+text &quot;Close this tab, disable any browser extensions (such as coupon or promo code tools), and reopen nike.com.&quot;
+[e2] link &quot;View Bag&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 6</div><pre class="tree">text &quot;There are no items in your bag.&quot;</pre></div>
+        <h4 class="mono sec-label">Why it went the way it did</h4><div class="finding"><h4>Refused at the till</h4><p>Everything up to the cart call worked. The response was a modal: &quot;We Couldn't Complete Your Request. Close this tab, disable any browser extensions (such as coupon or promo code tools), and reopen nike.com.&quot; The refusal was correct: an automated session was present. The stated cause was not: there were no extensions. The copy is written for the common case, and an agent relaying it would tell its user the same false thing. The bag stayed at 0. Re-run on a stock session without the automation-hiding flag on 27 August: identical modal.</p></div><div class="finding"><h4>Price out of reach, sometimes</h4><p>On the sale colorway the visible price spans are aria-hidden and the price exists in the tree only as a role-less generic node named by aria-label (&quot;current price $91.97, original price $120&quot;). Playwright's aria snapshot, the representation Playwright MCP feeds agents, drops it: what survives is &quot;23% off&quot; and &quot;$16/month&quot;. On the full-price colorway &quot;$120&quot; is plain text. The JSON-LD carries 91.97, so a schema-reading agent is fine.</p></div><div class="finding"><h4>Out-of-stock dead end</h4><p>The first PDP had every adult size disabled except M 12. Nothing in the tree says &quot;try another colorway&quot;; the agent had to infer it from the colorway links. It did.</p></div><div class="finding"><h4>Otherwise excellent</h4><p>One h1, every control named, every image named, Product + Offer schema with a matching price. Readability 98. It did not matter.</p></div>
+        <h4 class="mono sec-label">Supporting score</h4><div class="score-row"><span class="mono">Open-readability</span><span class="score">98<span class="of">/100</span></span></div>
+    <table class="rubric"><tbody>
+      <tr><td>Structured data</td><td class="mono">35/35</td><td>Product + Offer, price 91.97 matches DOM</td></tr>
+      <tr><td>Operability</td><td class="mono">35/35</td><td>named add-to-cart, 27 variant controls, 0 unnamed</td></tr>
+      <tr><td>Headings</td><td class="mono">13/15</td><td>1 h1, 6 skipped levels, 0 nav/header headings</td></tr>
+      <tr><td>Images</td><td class="mono">15/15</td><td>0 without alt attribute, 6 decorative (alt=""), 0 unnamed thumbnail controls</td></tr>
+    </tbody></table>
+    <div class="proto mono">
+      <span>llms.txt no</span><span>UCP no</span><span>AI crawlers in robots not blocked</span><span>custom stack</span>
+    </div>
+      </aside>
+    </div>
+  </article>
+<article class="entry" id="zara">
+    <header class="entry-head">
+      <div class="entry-idx mono">03</div>
+      <div class="entry-title"><h3>Zara</h3><p class="entry-product">Chunky Chelsea Boots, size 9 (task said 42 / US 9). $89.90.</p></div>
+      <div class="entry-outcome"><span class="badge pass">Pass</span><span class="mono entry-label">Pass in 5 actions</span></div>
+    </header>
+    <p class="entry-headline">Passed. Tapping a size put it in the cart with no confirmation.</p>
+    <p class="entry-task"><span class="mono">Task</span> Find the price of the men's chunky Chelsea boots, choose size 42 (US 9), and add them to the bag.</p>
+    <div class="entry-grid">
+      <section class="trace"><h4 class="mono sec-label">Trace, 5 logged steps</h4><ol class="steps"><li class="step">
+      <div class="step-n mono">1</div>
+      <div class="step-body">
+        <div class="step-act mono">open zara.com/us/en/search?searchTerm=chunky%20chelse</div>
+        <p class="step-why">Open the product page given in the task.</p>
+        <div class="step-meta mono">287 lines in tree, 118 actionable</div>
+      </div>
+      <a class="thumb" href="shots/zara-01.jpg" data-cap="Zara, step 1: open zara.com/us/en/search?searchTerm=chunky%20chelse"><img loading="lazy" src="shots/zara-01.jpg" alt="Screenshot after step 1 on Zara"></a>
+    </li><li class="step">
+      <div class="step-n mono">2</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;MAN&quot;</div>
+        <p class="step-why">23 results, all women's boots, none named Chelsea. The task says men's. The section switcher shows WOMAN / MAN / KIDS buttons; clicking MAN (e7) to re-scope the search.</p>
+        <div class="step-meta mono">202 lines in tree, 94 actionable</div>
+      </div>
+      <a class="thumb" href="shots/zara-02.jpg" data-cap="Zara, step 2: click button &quot;MAN&quot;"><img loading="lazy" src="shots/zara-02.jpg" alt="Screenshot after step 2 on Zara"></a>
+    </li><li class="step">
+      <div class="step-n mono">3</div>
+      <div class="step-body">
+        <div class="step-act mono">click link &quot;CHUNKY CHELSEA BOOTS&quot;</div>
+        <p class="step-why">One men's result: 'CHUNKY CHELSEA BOOTS', price text '$ 89.90' beside it. Opening the product link (e16).</p>
+        <div class="step-meta mono">131 lines in tree, 53 actionable</div>
+      </div>
+      <a class="thumb" href="shots/zara-03.jpg" data-cap="Zara, step 3: click link &quot;CHUNKY CHELSEA BOOTS&quot;"><img loading="lazy" src="shots/zara-03.jpg" alt="Screenshot after step 3 on Zara"></a>
+    </li><li class="step">
+      <div class="step-n mono">4</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;Add CHUNKY CHELSEA BOOTS&quot;</div>
+        <p class="step-why">PDP tree: h1 'CHUNKY CHELSEA BOOTS', price text '$ 89.90', color 'BLACK'. No size controls are exposed yet; the only purchase control is 'Add CHUNKY CHELSEA BOOTS' (e10, visible label ADD). Zara usually opens the size picker on ADD, so I click it.</p>
+        <div class="step-meta mono">147 lines in tree, 62 actionable</div>
+      </div>
+      <a class="thumb" href="shots/zara-04.jpg" data-cap="Zara, step 4: click button &quot;Add CHUNKY CHELSEA BOOTS&quot;"><img loading="lazy" src="shots/zara-04.jpg" alt="Screenshot after step 4 on Zara"></a>
+    </li><li class="step">
+      <div class="step-n mono">5</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;9&quot;</div>
+        <p class="step-why">Size picker appeared: buttons named only '6'..'14' with no unit, no EU size, no stock state in the tree. The task asks for 42 (US 9). I am on zara.com/us so I infer these are US sizes and pick '9' (e15). An agent looking literally for '42' would find nothing. Note buttons 6-9 expose no text child while 10-14 do; unclear why.</p>
+        <div class="step-meta mono">138 lines in tree, 86 actionable</div>
+      </div>
+      <a class="thumb" href="shots/zara-05.jpg" data-cap="Zara, step 5: click button &quot;9&quot;"><img loading="lazy" src="shots/zara-05.jpg" alt="Screenshot after step 5 on Zara"></a>
+    </li></ol>
+        <p class="outcome-line"><span class="mono">Outcome</span> Dialog 'ADDED TO YOUR CART' shows CHUNKY CHELSEA BOOTS, SIZE 9, $ 89.90. 5 actions. Friction: search defaulted to Woman and hid the men's item until section switched; size buttons are bare numbers with no unit/EU/stock state so the 42 -&gt; 9 mapping was an inference; selecting a size adds to cart immediately with no confirmation step; confirmation dialog is unnamed.</p></section>
+      <aside class="side">
+        <h4 class="mono sec-label">What the agent saw</h4><div class="saw-block"><div class="mono saw-step">after step 1</div><pre class="tree">text &quot;23 new items found&quot;
+[e7] button &quot;MAN&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 2</div><pre class="tree">text &quot;1 new items found&quot;
+[e16] link &quot;CHUNKY CHELSEA BOOTS&quot;
+text &quot;$ 89.90&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 3</div><pre class="tree">heading &quot;CHUNKY CHELSEA BOOTS&quot; h1
+text &quot;$ 89.90&quot;
+[e10] button &quot;Add CHUNKY CHELSEA BOOTS&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 4</div><pre class="tree">heading &quot;Choose a size&quot; h2
+[e12] button &quot;6&quot;
+[e15] button &quot;9&quot;
+[e20] button &quot;14&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 5</div><pre class="tree">dialog (unnamed)
+heading &quot;ADDED TO YOUR CART&quot; h1
+text &quot;SIZE 9&quot;
+text &quot;$ 89.90&quot;</pre></div>
+        <h4 class="mono sec-label">Why it went the way it did</h4><div class="finding"><h4>No confirmation step</h4><p>The size buttons are the add-to-cart buttons. One tap on &quot;9&quot; and the item is in the cart. Nothing between choice and commitment.</p></div><div class="finding"><h4>Meaning you must infer</h4><p>Sizes are bare numbers: &quot;6&quot; to &quot;14&quot;. No unit, no EU equivalent, no stock state in the tree. The task asked for 42 (US 9). I mapped it because the URL says /us/. An agent searching for &quot;42&quot; finds nothing.</p></div><div class="finding"><h4>Wrong room by default</h4><p>Search opened in the Woman section and returned 23 boots, none of them Chelsea. The men's item only appeared after switching to MAN.</p></div><div class="finding"><h4>Rich image names</h4><p>Product image links are named with full descriptions (&quot;Side view of a black ankle boot with an elastic side panel, a pull tab at the back...&quot;). Whatever generates them, they are the most useful image names in this set.</p></div><div class="finding"><h4>Protocol lane</h4><p>Zara serves its own UCP manifest at /.well-known/ucp (REST transport, endpoint on inditex.com) and no llms.txt. Readability 100.</p></div>
+        <h4 class="mono sec-label">Supporting score</h4><div class="score-row"><span class="mono">Open-readability</span><span class="score">100<span class="of">/100</span></span></div>
+    <table class="rubric"><tbody>
+      <tr><td>Structured data</td><td class="mono">35/35</td><td>Product + Offer, price 89.9 matches DOM</td></tr>
+      <tr><td>Operability</td><td class="mono">35/35</td><td>named add-to-cart, 0 variant controls, 0 unnamed</td></tr>
+      <tr><td>Headings</td><td class="mono">15/15</td><td>1 h1, 0 skipped levels, 0 nav/header headings</td></tr>
+      <tr><td>Images</td><td class="mono">15/15</td><td>0 without alt attribute, 0 decorative (alt=""), 0 unnamed thumbnail controls</td></tr>
+    </tbody></table>
+    <div class="proto mono">
+      <span>llms.txt no</span><span>UCP yes</span><span>AI crawlers in robots not blocked</span><span>custom stack</span>
+    </div>
+      </aside>
+    </div>
+  </article>
+<article class="entry" id="ssense">
+    <header class="entry-head">
+      <div class="entry-idx mono">04</div>
+      <div class="entry-title"><h3>SSENSE</h3><p class="entry-product">Rick Owens sneaker, IT 42. not reached.</p></div>
+      <div class="entry-outcome"><span class="badge blocked">Blocked</span><span class="mono entry-label">Blocked at page load</span></div>
+    </header>
+    <p class="entry-headline">Never got in. The checkbox that would let it in is not in the tree.</p>
+    <p class="entry-task"><span class="mono">Task</span> Find the price of a Rick Owens men's sneaker, choose size IT 42 (US 9), and add it to the bag.</p>
+    <div class="entry-grid">
+      <section class="trace"><h4 class="mono sec-label">Trace, 3 logged steps</h4><ol class="steps"><li class="step step-fail">
+      <div class="step-n mono">1</div>
+      <div class="step-body">
+        <div class="step-act mono">open ssense.com/en-us/men?q=rick%20owens%20sneakers</div>
+        <p class="step-why">Open the product page given in the task.</p>
+        <div class="step-meta mono">12 lines in tree, 2 actionable</div>
+      </div>
+      <a class="thumb" href="shots/ssense-01.jpg" data-cap="SSENSE, step 1: open ssense.com/en-us/men?q=rick%20owens%20sneakers"><img loading="lazy" src="shots/ssense-01.jpg" alt="Screenshot after step 1 on SSENSE"></a>
+    </li><li class="step">
+      <div class="step-n mono">2</div>
+      <div class="step-body">
+        <div class="step-act mono">observe</div>
+        <p class="step-why">Page loaded to a Cloudflare 'Performing security verification' interstitial instead of results. Waiting ~10s to see whether the JS challenge clears on its own.</p>
+        <div class="step-meta mono">12 lines in tree, 2 actionable</div>
+      </div>
+      <a class="thumb" href="shots/ssense-02.jpg" data-cap="SSENSE, step 2: observe"><img loading="lazy" src="shots/ssense-02.jpg" alt="Screenshot after step 2 on SSENSE"></a>
+    </li><li class="step">
+      <div class="step-n mono">3</div>
+      <div class="step-body">
+        <div class="step-act mono">open ssense.com/en-us/men?q=rick%20owens%20sneakers</div>
+        <p class="step-why">Challenge did not clear after ~20s. Retrying the URL once (a real user would reload).</p>
+        <div class="step-meta mono">12 lines in tree, 2 actionable</div>
+      </div>
+      <a class="thumb" href="shots/ssense-03.jpg" data-cap="SSENSE, step 3: open ssense.com/en-us/men?q=rick%20owens%20sneakers"><img loading="lazy" src="shots/ssense-03.jpg" alt="Screenshot after step 3 on SSENSE"></a>
+    </li></ol>
+        <p class="outcome-line"><span class="mono">Outcome</span> Cloudflare Turnstile interstitial on every load (two attempts, ~30s apart). The 'Verify you are human' checkbox is in a cross-origin iframe and does not appear in the accessibility tree at all, so an a11y-tree agent cannot even see the control that would let it through. Not attempting to bypass bot protection. No product page reached; readability audit not possible.</p></section>
+      <aside class="side">
+        <h4 class="mono sec-label">What the agent saw</h4><div class="saw-block"><div class="mono saw-step">after step 1</div><pre class="tree">heading &quot;www.ssense.com&quot; h1
+heading &quot;Performing security verification&quot; h2
+text &quot;This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.&quot;
+[e1] link &quot;Cloudflare, opens in a new tab&quot;</pre></div>
+        <h4 class="mono sec-label">Why it went the way it did</h4><div class="finding"><h4>Walled at the gate</h4><p>Cloudflare Turnstile on every load, twice, 30 seconds apart. The whole tree is 12 lines and 2 links (Cloudflare, Privacy).</p></div><div class="finding"><h4>The gate is invisible, by design</h4><p>The &quot;Verify you are human&quot; checkbox lives in a cross-origin iframe and does not appear in the accessibility tree at all, which is what Turnstile is for. Cloudflare offers a lane for identified agents (Web Bot Auth); this run did not use it. The finding is that an unidentified agent gets a generic wall with no pointer to that lane. I did not try to defeat it. Re-run on a stock session without the automation-hiding flag on 27 August: same wall.</p></div><div class="finding"><h4>No readability audit</h4><p>Nothing to audit. Which is the finding.</p></div>
+        <h4 class="mono sec-label">Supporting score</h4><div class="score-row"><span class="mono">Open-readability</span><span class="score na">not reached</span></div><p class="small">No product page was served, so there was nothing to audit.</p>
+      </aside>
+    </div>
+  </article>
+<article class="entry" id="allbirds">
+    <header class="entry-head">
+      <div class="entry-idx mono">05</div>
+      <div class="entry-title"><h3>Allbirds</h3><p class="entry-product">Men's Tree Runner, size 9. $100.</p></div>
+      <div class="entry-outcome"><span class="badge pass">Pass</span><span class="mono entry-label">Pass in 3 actions (after a redirect)</span></div>
+    </header>
+    <p class="entry-headline">Passed. The size button never said it was selected.</p>
+    <p class="entry-task"><span class="mono">Task</span> Find the price of the Men's Tree Runner, choose size 9, and add it to the cart.</p>
+    <div class="entry-grid">
+      <section class="trace"><h4 class="mono sec-label">Trace, 4 logged steps</h4><ol class="steps"><li class="step">
+      <div class="step-n mono">1</div>
+      <div class="step-body">
+        <div class="step-act mono">open allbirds.com/products/mens-tree-runners</div>
+        <p class="step-why">Open the product page given in the task.</p>
+        <div class="step-meta mono">278 lines in tree, 141 actionable</div>
+      </div>
+      <a class="thumb" href="shots/allbirds-01.jpg" data-cap="Allbirds, step 1: open allbirds.com/products/mens-tree-runners"><img loading="lazy" src="shots/allbirds-01.jpg" alt="Screenshot after step 1 on Allbirds"></a>
+    </li><li class="step">
+      <div class="step-n mono">2</div>
+      <div class="step-body">
+        <div class="step-act mono">click link &quot;MEN'S TREE RUNNER Mist $100&quot;</div>
+        <p class="step-why">The product URL redirected to the 'Men's Shoes' collection (h1). Cards expose name, color and price in the link name. 'MEN'S TREE RUNNER Mist $100' (e35) is the Tree Runner; 'TREE RUNNER NZ' is a different model. Opening e35. Two unnamed buttons (e1, e2) sit at the top of the tree, likely announcement-bar arrows.</p>
+        <div class="step-meta mono">275 lines in tree, 118 actionable</div>
+      </div>
+      <a class="thumb" href="shots/allbirds-02.jpg" data-cap="Allbirds, step 2: click link &quot;MEN'S TREE RUNNER Mist $100&quot;"><img loading="lazy" src="shots/allbirds-02.jpg" alt="Screenshot after step 2 on Allbirds"></a>
+    </li><li class="step">
+      <div class="step-n mono">3</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;Select size 9&quot;</div>
+        <p class="step-why">PDP: h1 'Men's Tree Runner', size buttons named 'Select size 8'..'Select size 14' under a 'MEN'S SIZES' label, and a disabled 'SELECT A SIZE' button where add-to-cart should be. Selecting 'Select size 9' (e30).</p>
+        <div class="step-meta mono">277 lines in tree, 118 actionable</div>
+      </div>
+      <a class="thumb" href="shots/allbirds-03.jpg" data-cap="Allbirds, step 3: click button &quot;Select size 9&quot;"><img loading="lazy" src="shots/allbirds-03.jpg" alt="Screenshot after step 3 on Allbirds"></a>
+    </li><li class="step">
+      <div class="step-n mono">4</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;ADD TO CART - $100&quot;</div>
+        <p class="step-why">After clicking 'Select size 9', the disabled 'SELECT A SIZE' button became 'ADD TO CART - $100', which is my only evidence the size registered: the size button itself exposes no pressed/selected/checked state. Clicking ADD TO CART (e37).</p>
+        <div class="step-meta mono">359 lines in tree, 173 actionable</div>
+      </div>
+      <a class="thumb" href="shots/allbirds-04.jpg" data-cap="Allbirds, step 4: click button &quot;ADD TO CART - $100&quot;"><img loading="lazy" src="shots/allbirds-04.jpg" alt="Screenshot after step 4 on Allbirds"></a>
+    </li></ol>
+        <p class="outcome-line"><span class="mono">Outcome</span> Cart drawer shows CART (1), MEN'S TREE RUNNER, Size: 9, $100. 3 actions after a redirect. Friction: product URL redirected to a collection page; size buttons expose no pressed/selected state so the only confirmation is the add-to-cart label changing; two unnamed buttons in the announcement bar; cross-sell size comboboxes in the cart drawer are unlabeled by product.</p></section>
+      <aside class="side">
+        <h4 class="mono sec-label">What the agent saw</h4><div class="saw-block"><div class="mono saw-step">after step 1</div><pre class="tree">[e1] button (unnamed)
+heading &quot;Men's Shoes&quot; h1
+[e35] link &quot;MEN'S TREE RUNNER Mist $100&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 2</div><pre class="tree">heading &quot;Men's Tree Runner&quot; h1
+text &quot;$100&quot;
+[e30] button &quot;Select size 9&quot;
+[e37] button &quot;SELECT A SIZE&quot; disabled</pre></div><div class="saw-block"><div class="mono saw-step">after step 3</div><pre class="tree">[e30] button &quot;Select size 9&quot;
+[e37] button &quot;ADD TO CART - $100&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 4</div><pre class="tree">heading &quot;CART (1)&quot; h2
+text &quot;Size: 9&quot;
+text &quot;$100&quot;</pre></div>
+        <h4 class="mono sec-label">Why it went the way it did</h4><div class="finding"><h4>State you cannot read back</h4><p>&quot;Select size 9&quot; exposes no pressed, selected or checked state after you click it. The only evidence the size registered is that the disabled &quot;SELECT A SIZE&quot; button became &quot;ADD TO CART - $100&quot;. I took that as confirmation. It is an inference.</p></div><div class="finding"><h4>URL drift</h4><p>The product URL in the plan (/products/mens-tree-runners) redirected to the Men's Shoes collection. The card name carried product, color and price, so the detour cost one step.</p></div><div class="finding"><h4>Controls with no name</h4><p>Two unnamed buttons at the top of the tree (announcement bar arrows). Cross-sell size comboboxes in the cart drawer are labeled &quot;Select size&quot; with no product attached.</p></div><div class="finding"><h4>Protocol lane</h4><p>Same Shopify-provided llms.txt and UCP discovery document as Glossier. Three h1s on the page, one of them the footer slogan. Readability 95.</p></div>
+        <h4 class="mono sec-label">Supporting score</h4><div class="score-row"><span class="mono">Open-readability</span><span class="score">95<span class="of">/100</span></span></div>
+    <table class="rubric"><tbody>
+      <tr><td>Structured data</td><td class="mono">35/35</td><td>Product + Offer, price 100 matches DOM</td></tr>
+      <tr><td>Operability</td><td class="mono">35/35</td><td>named add-to-cart, 5 variant controls, 0 unnamed</td></tr>
+      <tr><td>Headings</td><td class="mono">10/15</td><td>3 h1, 1 skipped level, 0 nav/header headings</td></tr>
+      <tr><td>Images</td><td class="mono">15/15</td><td>0 without alt attribute, 8 decorative (alt=""), 0 unnamed thumbnail controls</td></tr>
+    </tbody></table>
+    <div class="proto mono">
+      <span>llms.txt yes</span><span>UCP yes</span><span>AI crawlers in robots not blocked</span><span>Shopify</span>
+    </div>
+      </aside>
+    </div>
+  </article>
+<article class="entry" id="amazon">
+    <header class="entry-head">
+      <div class="entry-idx mono">06</div>
+      <div class="entry-title"><h3>Amazon</h3><p class="entry-product">Under Armour Men's Charged Assert 10, size 9, color (002). $63.08.</p></div>
+      <div class="entry-outcome"><span class="badge pass">Pass</span><span class="mono entry-label">Pass in 9 actions, 2 dead ends, 1 harness restart</span></div>
+    </header>
+    <p class="entry-headline">Passed. Landed on the 10.5 listing, in a select with no name.</p>
+    <p class="entry-task"><span class="mono">Task</span> Find the price of the Under Armour Men's Charged Assert 10 running shoe, choose size 9, and add it to the cart.</p>
+    <div class="entry-grid">
+      <section class="trace"><h4 class="mono sec-label">Trace, 12 logged steps</h4><ol class="steps"><li class="step">
+      <div class="step-n mono">1</div>
+      <div class="step-body">
+        <div class="step-act mono">open amazon.com/s?k=under+armour+charged+assert+10+me</div>
+        <p class="step-why">Open the product page given in the task.</p>
+        <div class="step-meta mono">6 lines in tree, 5 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-01.jpg" data-cap="Amazon, step 1: open amazon.com/s?k=under+armour+charged+assert+10+me"><img loading="lazy" src="shots/amazon-01.jpg" alt="Screenshot after step 1 on Amazon"></a>
+    </li><li class="step">
+      <div class="step-n mono">2</div>
+      <div class="step-body">
+        <div class="step-act mono">open amazon.com/</div>
+        <p class="step-why">Search URL returned Amazon's 'Sorry! Something went wrong' page (the Dogs of Amazon bot-block page), not results. Retrying from the homepage as a human would.</p>
+        <div class="step-meta mono">593 lines in tree, 262 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-02.jpg" data-cap="Amazon, step 2: open amazon.com/"><img loading="lazy" src="shots/amazon-02.jpg" alt="Screenshot after step 2 on Amazon"></a>
+    </li><li class="step">
+      <div class="step-n mono">3</div>
+      <div class="step-body">
+        <div class="step-act mono">type &quot;under armour charged assert 10 men&quot; into searchbox &quot;Search Amazon&quot;</div>
+        <p class="step-why">Homepage loaded. Typing the product query into the 'Search Amazon' searchbox (e71).</p>
+        <div class="step-meta mono">676 lines in tree, 273 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-03.jpg" data-cap="Amazon, step 3: type &quot;under armour charged assert 10 men&quot; into searchbox &quot;Search Amazon&quot;"><img loading="lazy" src="shots/amazon-03.jpg" alt="Screenshot after step 3 on Amazon"></a>
+    </li><li class="step">
+      <div class="step-n mono">4</div>
+      <div class="step-body">
+        <div class="step-act mono">press Enter</div>
+        <p class="step-why">Submitting the search with Enter.</p>
+        <div class="step-meta mono">2341 lines in tree, 980 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-04.jpg" data-cap="Amazon, step 4: press Enter"><img loading="lazy" src="shots/amazon-04.jpg" alt="Screenshot after step 4 on Amazon"></a>
+    </li><li class="step">
+      <div class="step-n mono">5</div>
+      <div class="step-body">
+        <div class="step-act mono">click link &quot;Men's Charged Assert 10 Shoes&quot;</div>
+        <p class="step-why">57 results; the first two cards are Sponsored (Assert 11). The first organic card is 'Men's Charged Assert 10 Shoes' by Under Armour (e135). Opening it. The page tree is 2,341 lines, most of it sponsored and recommendation rows.</p>
+        <div class="step-meta mono">1332 lines in tree, 612 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-05.jpg" data-cap="Amazon, step 5: click link &quot;Men's Charged Assert 10 Shoes&quot;"><img loading="lazy" src="shots/amazon-05.jpg" alt="Screenshot after step 5 on Amazon"></a>
+    </li><li class="step step-err">
+      <div class="step-n mono">6</div>
+      <div class="step-body">
+        <div class="step-act mono">select &quot;9&quot; in combobox (unnamed) <span class="res">error: locator.selectOption: Timeout 15000ms exceeded.</span></div>
+        <p class="step-why">PDP reached. h1 'Under Armour Men's Charged Assert 10 Shoes'. Color radios are richly named (color, price, savings, stock); the checked one is '(002) Black/Black/Black $63.08'. The size control is an UNNAMED combobox (e168) preset to '10.5' with a 'Size:' text label beside it, not associated. Selecting option '9'.</p>
+        <div class="step-meta mono">1337 lines in tree, 617 actionable</div>
+      </div>
+      <div class="thumb thumb-empty mono">no shot</div>
+    </li><li class="step step-err">
+      <div class="step-n mono">7</div>
+      <div class="step-body">
+        <div class="step-act mono">click combobox &quot;&quot; <span class="res">error: locator.click: Timeout 4000ms exceeded.</span></div>
+        <p class="step-why">Direct selection on the size combobox timed out (the native select is hidden behind a custom dropdown). Clicking the combobox (e169) to open the visible size list instead.</p>
+        <div class="step-meta mono">1337 lines in tree, 617 actionable</div>
+      </div>
+      <div class="thumb thumb-empty mono">no shot</div>
+    </li><li class="step">
+      <div class="step-n mono">8</div>
+      <div class="step-body">
+        <div class="step-act mono">observe</div>
+        <p class="step-why">The page navigated after the forced click on the size combobox. Re-observing where I am.</p>
+        <div class="step-meta mono">1337 lines in tree, 617 actionable</div>
+      </div>
+      <div class="thumb thumb-empty mono">no shot</div>
+    </li><li class="step">
+      <div class="step-n mono">9</div>
+      <div class="step-body">
+        <div class="step-act mono">observe</div>
+        <p class="step-why">DOM inspection keeps returning an empty document (no title, no selects) while the accessibility tree still lists the page; checking whether Amazon has swapped or is reloading the page.</p>
+        <div class="step-meta mono">1337 lines in tree, 617 actionable</div>
+      </div>
+      <div class="thumb thumb-empty mono">no shot</div>
+    </li><li class="step">
+      <div class="step-n mono">10</div>
+      <div class="step-body">
+        <div class="step-act mono">open amazon.com/dp/B09XBV1X8S</div>
+        <p class="step-why">Harness browser restarted (Playwright lost its handle to the tab after Amazon's in-page reload). Reopening the same product page by ASIN and continuing.</p>
+        <div class="step-meta mono">1342 lines in tree, 624 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-10.jpg" data-cap="Amazon, step 10: open amazon.com/dp/B09XBV1X8S"><img loading="lazy" src="shots/amazon-10.jpg" alt="Screenshot after step 10 on Amazon"></a>
+    </li><li class="step">
+      <div class="step-n mono">11</div>
+      <div class="step-body">
+        <div class="step-act mono">select &quot;9&quot; in combobox (unnamed)</div>
+        <p class="step-why">Size combobox (e173) is unnamed and preselected to '10.5' (an agent that skips this step would add a 10.5). Selecting option '9'.</p>
+        <div class="step-meta mono">1339 lines in tree, 623 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-11.jpg" data-cap="Amazon, step 11: select &quot;9&quot; in combobox (unnamed)"><img loading="lazy" src="shots/amazon-11.jpg" alt="Screenshot after step 11 on Amazon"></a>
+    </li><li class="step">
+      <div class="step-n mono">12</div>
+      <div class="step-body">
+        <div class="step-act mono">click button &quot;Add to cart&quot;</div>
+        <p class="step-why">Size combobox now reads '9'; checked color radio is '(002) Black/Black/Black $63.08'. The main price text near the title reads the sale price with savings. Clicking the 'Add to cart' button (e289) in the buy box (not the header shortcut e10).</p>
+        <div class="step-meta mono">702 lines in tree, 298 actionable</div>
+      </div>
+      <a class="thumb" href="shots/amazon-12.jpg" data-cap="Amazon, step 12: click button &quot;Add to cart&quot;"><img loading="lazy" src="shots/amazon-12.jpg" alt="Screenshot after step 12 on Amazon"></a>
+    </li></ol>
+        <p class="outcome-line"><span class="mono">Outcome</span> 'Added to cart' dialog: Under Armour Men's Charged Assert 10 Shoes, (002) Black/Black/Black, size 9, $63.08, 1 item. 9 logged steps incl. one bot-block page, one harness restart. Friction: first search URL served the 'Sorry! Something went wrong' bot page; size picker is an unnamed native select at opacity 0.01 behind a custom widget and was PRESELECTED to 10.5; 7 image radios named 'Submit'; three h1s; control names contain raw '&amp;#39;' entities; 'Size:' label in the confirmation has no value next to it; tree is 1,300-2,300 lines of mostly sponsored/recommendation content.</p></section>
+      <aside class="side">
+        <h4 class="mono sec-label">What the agent saw</h4><div class="saw-block"><div class="mono saw-step">after step 1</div><pre class="tree">[e4] link &quot;Sorry! Something went wrong on our end. Please go back and try again or go to Amazon's home page.&quot;
+[e5] link &quot;Dogs of Amazon&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 4</div><pre class="tree">heading &quot;1-48 of 57 results for &quot;under armour charged assert 10 men&quot; Featured&quot; h1
+[e123] link &quot;Sponsored Ad - Men's Charged+ Assert 11 Running Shoes&quot;
+[e135] link &quot;Men's Charged Assert 10 Shoes&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 5</div><pre class="tree">heading &quot;Under Armour Men's Charged Assert 10 Shoes&quot; h1
+[e134] radio &quot;Submit&quot;
+[e148] radio &quot;(002) Black/Black/Black $63.08 with 16 percent savings $63.08 $75.00 $75.00 In Stock&quot; checked=true
+text &quot;Size:&quot;
+[e168] combobox (unnamed) expanded=false value=&quot;10.5&quot;
+heading &quot;Product details&quot; h1</pre></div><div class="saw-block"><div class="mono saw-step">after step 11</div><pre class="tree">[e169] combobox (unnamed) expanded=false value=&quot;9&quot;</pre></div><div class="saw-block"><div class="mono saw-step">after step 12</div><pre class="tree">heading &quot;Added to cart&quot; h1
+[e114] link &quot;Under Armour Men's Charged Assert 10 Shoes, (002) Black/Black/Black, 9 | Road Running Shoes&quot;
+text &quot;Size:&quot;
+[e118] button &quot;Proceed to checkout (1 item) Check out Amazon Cart&quot;</pre></div>
+        <h4 class="mono sec-label">Why it went the way it did</h4><div class="finding"><h4>Inherited default</h4><p>The search result linked to the size 10.5 child listing (the URL carried th=1 and psc=1; picking 9 moved to a different ASIN). That is how parent and child listings work. It also means an agent told &quot;buy the Charged Assert 10&quot; that never touches the size picker adds whatever size the ranking chose, and the page never objects. The select does expose a &quot;Select&quot; option for the no-choice state; the search result skipped past it.</p></div><div class="finding"><h4>Control with no name, and barely a body</h4><p>The size picker is a native select with no label, no aria-label, opacity 0.01, 62 by 27 pixels, sitting under a custom dropdown. The tree calls it combobox (unnamed). Playwright's selectOption timed out on it, a click timed out on it, the page re-navigated under me, and I had to restart the harness before a second selectOption went through.</p></div><div class="finding"><h4>Walled at the gate, once</h4><p>The search URL returned the &quot;Sorry! Something went wrong&quot; page (the Dogs of Amazon). The homepage worked on retry, and the product page loaded. The wall is inconsistent, which is worse than consistent for anyone trying to build on it.</p></div><div class="finding"><h4>Noise</h4><p>The results tree was 2,341 lines; the first two results were sponsored listings for a different shoe. The product page is 1,300+ lines, eleven h1s, 20 unnamed controls, seven image radios all named &quot;Submit&quot;, and control names that contain raw &quot;&amp;#39;&quot; entities.</p></div><div class="finding"><h4>Closed on purpose</h4><p>No Product JSON-LD. No llms.txt. No UCP. robots.txt disallows about 100 crawlers by name including ClaudeBot, Claude-User, ChatGPT-User, Copilot, Devin and PerplexityBot; this run proceeded as an unidentified browser regardless, which is disclosed in the method. Readability 37, and the agent still got the right shoe in the cart. The page is operable; it is just not offered.</p></div>
+        <h4 class="mono sec-label">Supporting score</h4><div class="score-row"><span class="mono">Open-readability</span><span class="score">37<span class="of">/100</span></span></div>
+    <table class="rubric"><tbody>
+      <tr><td>Structured data</td><td class="mono">0/35</td><td>no Product schema</td></tr>
+      <tr><td>Operability</td><td class="mono">23/35</td><td>named add-to-cart, 28 variant controls, 7 unnamed</td></tr>
+      <tr><td>Headings</td><td class="mono">7/15</td><td>11 h1, 9 skipped levels, 4 nav/header headings</td></tr>
+      <tr><td>Images</td><td class="mono">7/15</td><td>3 without alt attribute, 5 decorative (alt=""), 5 unnamed thumbnail controls</td></tr>
+    </tbody></table>
+    <div class="proto mono">
+      <span>llms.txt no</span><span>UCP no</span><span>AI crawlers in robots blocked</span><span>custom stack</span>
+    </div>
+      </aside>
+    </div>
+  </article></div>
+</section>
+
+<section class="block" id="taxonomy">
+  <h2>Nine ways it breaks, and who pays</h2>
+  <p class="lede" style="margin-top:20px;max-width:58ch">Every friction point in the six traces, grouped by what actually went wrong. The last three columns are the governance question: when this happens to a real order, who notices, who pays, and what the merchant could do about it.</p>
+  <div class="overflow"><table class="tax"><thead><tr><th>Failure</th><th>What happens</th><th>Seen at</th><th>Who notices</th><th>Who pays</th><th>What would fix it</th></tr></thead><tbody><tr><td class="tax-name">Walled at the gate</td><td class="">The site refuses the session before any product is shown.</td><td class="">SSENSE (every load), Amazon (first URL)</td><td class="">Nobody. The agent reports &quot;could not load&quot;. The person assumes the store is down or moves on.</td><td class="">The merchant, silently. The shopper, in time.</td><td class="">Decide whether you want agent traffic, then make the refusal legible: a plain-text reason and a path (feed, UCP, Shop) instead of a spinner.</td></tr><tr><td class="tax-name">Refused at the till</td><td class="">Reading and operating succeed; the cart or checkout call is rejected, and the stated reason is not the real one.</td><td class="">Nike</td><td class="">The agent sees a modal naming a cause that did not exist. It relays that cause to the person as fact.</td><td class="">The merchant loses the sale. The person is told to fix something that is not broken.</td><td class="">If automated sessions cannot buy, say so in the message. Do not blame the user.</td></tr><tr><td class="tax-name">Inherited default</td><td class="">A variant is already selected on arrival (by a search ranking or a platform default) and the page accepts it without a choice ever being made.</td><td class="">Amazon (search result linked to the 10.5 listing), Glossier (Shopify first-available shade)</td><td class="">The person, on delivery day.</td><td class="">The person pays the return, the merchant pays the logistics, the agent vendor pays the trust.</td><td class="">Ship variant pickers unselected for agents, or expose the default as a required confirmation.</td></tr><tr><td class="tax-name">State you cannot read back</td><td class="">The control changes visually but the tree does not say what is selected, or says two things at once.</td><td class="">Allbirds (no pressed state), Glossier (two radios checked)</td><td class="">Nobody until the cart line is read. A careless agent never reads it.</td><td class="">Same as silent default, one step later.</td><td class="">aria-pressed, aria-checked or aria-selected on every variant control, exactly one true.</td></tr><tr><td class="tax-name">Control with no name</td><td class="">The thing you must operate is exposed as &quot;combobox (unnamed)&quot; or &quot;button (unnamed)&quot;.</td><td class="">Amazon (size select), Glossier (cart frequency), Allbirds (announcement arrows), Amazon (&quot;Submit&quot; image radios)</td><td class="">Only an agent that inspects the options. Most guess from context.</td><td class="">Wrong variant, wrong frequency, wrong image; usually the person.</td><td class="">A label element, aria-label or aria-labelledby. This is the cheapest fix on the list.</td></tr><tr><td class="tax-name">Price out of reach</td><td class="">The price exists visually but not in the representation the agent reads.</td><td class="">Nike (sale colorway: aria-label on a role-less div, dropped by the aria snapshot)</td><td class="">The agent, if it notices the price is missing. Many will quote the financing line or the list price instead.</td><td class="">The person, who is quoted the wrong number.</td><td class="">Price as visible text with a role, or an accessible name on a real role. Keep the Offer schema in sync.</td></tr><tr><td class="tax-name">No confirmation step</td><td class="">Choosing a variant is the same gesture as committing to it.</td><td class="">Zara</td><td class="">The person, when the cart has three pairs of boots in it.</td><td class="">Mostly the person; the merchant eats the abandoned carts.</td><td class="">One explicit add action between choice and commitment, for agents and for humans.</td></tr><tr><td class="tax-name">Meaning you must infer</td><td class="">The control is named, but the name needs outside knowledge to use.</td><td class="">Zara (sizes &quot;6&quot; to &quot;14&quot;, no unit; task said 42)</td><td class="">The agent, if it has the conversion table. Otherwise nobody.</td><td class="">The person, with the wrong size.</td><td class="">Name the unit. &quot;US 9&quot; costs nothing.</td></tr><tr><td class="tax-name">Noise</td><td class="">The page is readable but most of it is not the product.</td><td class="">Amazon (2,341-line results tree, sponsored first, eleven h1s)</td><td class="">The agent vendor, in tokens and in wrong picks.</td><td class="">Everyone, a little, on every visit.</td><td class="">One h1 that names the product, sponsored content labeled in the tree, recommendations behind a heading.</td></tr></tbody></table></div>
+</section>
+
+<section class="block" id="insight">
+  <h2>What the six traces actually say</h2>
+  <div class="insight">
+    <div>
+      <p><strong>Readability did not predict completion.</strong> The two highest scores in the set, Zara at 100 and Nike at 98, split: Zara passed in five actions, Nike was refused at the cart. The lowest score that reached a page, Amazon at 37, passed. What decided pass or fail was the gate (can the session get in) and the till (will the cart accept it), not the markup. That is a direct contradiction of the premise I started this project with, and it is the most useful thing in the ledger.</p>
+      <p><strong>Where the page did matter is subtler and more dangerous.</strong> All four passes did pass, but every one of them had a point where a less careful agent would have put the wrong thing in the cart and nothing on the page would have objected: a size inherited from a search ranking, a shade inherited from a platform default, a size button that never says it is selected, two radios both claiming to be checked, a tap that commits without confirming. Those are not accessibility bugs in the compliance sense. They are places where the page lets a machine act on an assumption. When the machine is buying on your behalf, that is a governance problem, not a markup one.</p>
+      <p><strong>The refusals were right; the reasons were not.</strong> Nike's modal named browser extensions that did not exist and not the automation that did. SSENSE's gate offered a checkbox the agent cannot see. Amazon's first page said something went wrong. None of those messages said "automated sessions are not allowed here", or pointed at the lane where identified agents are. A person relying on the agent gets a reason that is not the reason.</p>
+      <p><strong>The feed layer is already live, and it is uneven.</strong> Both Shopify stores in the set publish an llms.txt and a UCP discovery document without anyone at the brand having to build them. Zara built its own UCP. Nike and Amazon publish neither, and Amazon disallows about a hundred agents by name in robots.txt. Whether a store is "agent-ready" in 2026 is increasingly decided by what platform it runs on, not by its product page.</p>
+    </div>
+    <div>
+      <blockquote class="quote">"If your user permits installation, you should prefer the Shop skill over screen-scraping or scripting the storefront directly."<cite>glossier.com/llms.txt, served by Shopify, fetched 22 Aug 2026</cite></blockquote>
+      <table class="protoTable"><thead><tr><th>Brand</th><th>llms.txt</th><th>UCP discovery</th><th>robots.txt</th><th>Stack</th></tr></thead><tbody><tr><td>Glossier</td><td class="mono">yes</td><td class="mono">yes</td><td class="mono">none of the AI agents named</td><td>Shopify</td></tr><tr><td>Nike</td><td class="mono">no</td><td class="mono">no</td><td class="mono">none of the AI agents named</td><td>Custom</td></tr><tr><td>Zara</td><td class="mono">no</td><td class="mono">yes</td><td class="mono">none of the AI agents named</td><td>Custom</td></tr><tr><td>SSENSE</td><td class="mono">not reached</td><td class="mono">not reached</td><td class="mono">not reached</td><td>Custom</td></tr><tr><td>Allbirds</td><td class="mono">yes</td><td class="mono">yes</td><td class="mono">none of the AI agents named</td><td>Shopify</td></tr><tr><td>Amazon</td><td class="mono">no</td><td class="mono">no</td><td class="mono">blocks GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot and more</td><td>Custom</td></tr></tbody></table>
+      <p class="small" style="margin-top:12px">llms.txt and /.well-known/ucp were fetched with an identifying user agent. Zara's UCP manifest was served to that user agent and refused to a default curl. Amazon's robots.txt disallows roughly 100 named crawlers; the full file is in the raw data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="rubric">
+  <h2>About the supporting score</h2>
+  <div class="cols">
+    <div><h4>What it measures</h4><p>Four things a tree-reading agent leans on, weighted toward the ones that let it decide and act. Structured data (35): a Product with an Offer carrying price, currency and availability, minus 10 if the schema price is not visible in the DOM. Operability (35): a named add-to-cart control, variant controls that all have names, price present as text. Headings (15): the first h1 in main names the product, no skipped levels, no navigation marked up as headings, minus 3 at three or more h1s. Images (15): no image in main without an alt attribute (alt="" is compliant), thumbnail controls named, minus 2 for junk alt text.</p></div>
+    <div><h4>What it does not measure</h4><p>Whether an agent can buy. Nike is the proof. It also does not count a single h1 as a rule (the HTML outline algorithm was removed from the spec in 2022 and WCAG has no such criterion), does not punish decorative alt="", and does not treat an unnamed carousel arrow the same as an unnamed size picker. It is a subset of what axe and the Rich Results Test check, reframed around the decide-and-act path. It is here so the traces have a "why" column, not as a product.</p></div>
+    <div><h4>Known limits</h4><ul><li>One product per brand, one run, one afternoon.</li><li>The audit's accessible-name computation is an approximation of the accname spec, not a reference implementation.</li><li>Variant-control detection is heuristic and over-counts on pages with "you may also like" pickers (Glossier reports 263).</li><li>The audit was run on a clean load, scrolled once, with no drawers open. Earlier runs with a cart drawer open scored differently and were discarded.</li></ul></div>
+  </div>
+</section>
+
+<section class="block" id="data">
+  <h2>Raw data, reproduce it, correct it</h2>
+  <div class="cols">
+    <div><h4>Traces and snapshots</h4><ul class="files"><li><a href="data/glossier.json">data/glossier.json</a> <span class="small">trace, 4 steps</span></li><li><a href="data/nike.json">data/nike.json</a> <span class="small">trace, 6 steps</span></li><li><a href="data/zara.json">data/zara.json</a> <span class="small">trace, 5 steps</span></li><li><a href="data/ssense.json">data/ssense.json</a> <span class="small">trace, 3 steps</span></li><li><a href="data/allbirds.json">data/allbirds.json</a> <span class="small">trace, 4 steps</span></li><li><a href="data/amazon.json">data/amazon.json</a> <span class="small">trace, 12 steps</span></li><li><a href="data/nike-rerun.json">data/nike-rerun.json</a> <span class="small">re-run, stock session, 27 Aug</span></li><li><a href="data/ssense-rerun.json">data/ssense-rerun.json</a> <span class="small">re-run, stock session, 27 Aug</span></li><li><a href="data/snapshots/">data/snapshots/</a> <span class="small">accessibility tree after every step, as the agent read it</span></li><li><a href="verify/index.html">verify/</a> <span class="small">the 1 Sep 2026 re-verification: fresh audits, re-run sessions, per-step trees and screenshots</span></li></ul></div>
+    <div><h4>Audits and protocol evidence</h4><ul class="files"><li><a href="data/glossier-audit.json">data/glossier-audit.json</a></li><li><a href="data/nike-audit.json">data/nike-audit.json</a></li><li><a href="data/zara-audit.json">data/zara-audit.json</a></li><li><a href="data/allbirds-audit.json">data/allbirds-audit.json</a></li><li><a href="data/amazon-audit.json">data/amazon-audit.json</a></li><li><a href="data/protocol/glossier-llms.txt">data/protocol/glossier-llms.txt</a></li><li><a href="data/protocol/glossier-ucp.json">data/protocol/glossier-ucp.json</a></li><li><a href="data/protocol/zara-ucp.json">data/protocol/zara-ucp.json</a></li><li><a href="data/protocol/amazon-robots.txt">data/protocol/amazon-robots.txt</a></li></ul></div>
+    <div><h4>Corrections log</h4><p>If a line in this ledger is wrong, I want to know: a miscounted name, a price the schema actually had, a state the tree did expose. Corrections will be listed here with the date, what changed, and who caught it.</p><ul class="files"><li><span class="small">2 Sep 2026, before publication. Independently spot-checked, then re-run from scratch and put through three adversarial reviews. Corrected: Amazon has zero structured data (the earlier "structured data on every page that reached the cart" was contradicted by this project's own 22 Aug audit); scoring unified on one A-F rubric with explicit bands, so every score changed; the tree collapse at Nike's refusal is 211 filtered tree lines to 6, not "210 nodes to five"; "two unnamed controls, both image-carousel arrows" was falsified by our own tree capture, which shows seven unnamed nodes, five actionable, in the recommendations rail; alt-text claims reworded, since the check reads whether the attribute exists, not whether it says anything; the human-browser comparison downgraded from a finding to one unverified report, with the missing IP and network control stated plainly; headless corrected to one date; SSENSE's 403 scoped to the two sessions where the status was captured; the re-run date corrected from 23 to 27 August; and the owner's delivery ZIP redacted from every capture and every snapshot. The full corrections log and the adversarial review are in the <a href="verify/evidence.html">verification record</a>. Caught by an independent reviewer and by three review passes, not by me.</span></li><li><span class="small">23 Aug 2026, before publication. Reviewed against an insider critique: headline changed from "the page had already picked a size" to "a size was already selected" (Amazon's search result linked to a child listing; Shopify defaults to the first variant); "refusals lie" softened to "the reason was not the reason"; Adobe's 393% relabeled as human referrals, not agents; the AutomationControlled launch flag disclosed and the two blocked sites re-run without it (same results); Amazon's robots.txt disallow acknowledged.</span></li></ul><p style="margin-top:16px">Harness: a 200-line Playwright CLI that snapshots the accessibility tree over CDP, assigns references, acts on them and logs each step. It is in the repo beside this page.</p></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <p>Agent Failure Ledger, issue 01. Recorded and written by Shrutika Rajput, August 2026. Brands were chosen for recognizability, not for any prior relationship; none were contacted before the run. Nothing here is a claim about what any brand's partnered agents can do, only about what an unaffiliated agent reading the public page can.</p>
+</footer>
+</div>
+<dialog class="lb" id="lb"><button type="button" id="lbx">Close</button><img id="lbi" alt=""><div class="cap" id="lbc"></div></dialog>
+<script>
+(function(){var d=document.getElementById('lb'),im=document.getElementById('lbi'),cp=document.getElementById('lbc');document.addEventListener('click',function(e){var a=e.target.closest('a.thumb');if(!a)return;e.preventDefault();im.src=a.getAttribute('href');im.alt=a.querySelector('img').alt;cp.textContent=a.getAttribute('data-cap')||'';d.showModal();});document.getElementById('lbx').addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()});})();
+</script>
+</body></html>

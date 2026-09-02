@@ -1,0 +1,46 @@
+{
+  "site": "ssense-rerun",
+  "url": "https://www.ssense.com/en-us/men?q=rick%20owens%20sneakers",
+  "task": "Re-run on a stock Chromium session (AutomationControlled flag removed, fresh profile). Same task: find a Rick Owens sneaker, size 42, add to bag.",
+  "agent": "Claude Fable 5 (claude-fable-5) operating via Claude Code",
+  "perception": "Chromium accessibility tree over CDP (Accessibility.getFullAXTree), filtered to rendered, non-hidden nodes; actionable nodes get refs. Same representation class Playwright MCP sends to agents.",
+  "actuation": "Playwright click/fill/selectOption on the resolved DOM node",
+  "browser": "Chromium 1223 (Playwright 1.60), headed, persistent profile, 1280x860",
+  "started": "2026-08-27T20:40:51.310Z",
+  "steps": [
+    {
+      "n": 1,
+      "t": "2026-08-27T20:40:54.037Z",
+      "url": "https://www.ssense.com/en-us/men?q=rick%20owens%20sneakers",
+      "action": {
+        "type": "goto",
+        "url": "https://www.ssense.com/en-us/men?q=rick%20owens%20sneakers"
+      },
+      "reasoning": "Open the product page given in the task.",
+      "screenshot": "shots/ssense-rerun-01.png",
+      "snapshotLines": 12,
+      "actionableRefs": 2
+    },
+    {
+      "n": 2,
+      "t": "2026-08-27T20:41:06.397Z",
+      "url": "https://www.ssense.com/en-us/men?q=rick%20owens%20sneakers",
+      "action": {
+        "type": "observe"
+      },
+      "reasoning": "Waiting ~15s to see whether the challenge clears on the clean session.",
+      "screenshot": "shots/ssense-rerun-02.png",
+      "snapshotLines": 12,
+      "actionableRefs": 2
+    }
+  ],
+  "outcome": {
+    "status": "blocked",
+    "failedAt": "step 1 (page load)",
+    "reason": "Re-run on a stock Chromium session with the AutomationControlled flag removed and a fresh profile: same Cloudflare Turnstile interstitial, did not clear in ~30s. The original finding stands without the disguise.",
+    "finalUrl": "https://www.ssense.com/en-us/men?q=rick%20owens%20sneakers",
+    "finalScreenshot": "shots/ssense-rerun-final.png",
+    "finished": "2026-08-27T20:41:20.116Z",
+    "stepCount": 2
+  }
+}

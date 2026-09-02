@@ -1,0 +1,131 @@
+{
+  "site": "allbirds",
+  "label": "headed",
+  "sessionType": "automated / Playwright Chromium, HEADED, persistent profile",
+  "url": "https://www.allbirds.com/products/mens-tree-runners-mist",
+  "verifiedAt": "2026-09-01T23:32:22.849Z",
+  "navigation": {
+    "ok": true,
+    "status": 200,
+    "error": null
+  },
+  "blocked": false,
+  "gate": {
+    "title": "Men's Tree Runners - Grey - Everyday Sneakers | Allbirds",
+    "bodyChars": 3921,
+    "interactive": 289,
+    "challengeHits": [],
+    "bodySample": "Free ground shipping on orders over $100 Due to increased demand, orders may take up to 30 days to ship. Skip to Content NEW ARRIVALS SHOP ALL MEN WOMEN 0 CART (0) Spend $100 more to earn free shipping! Your cart is empty. Start shopping! SHOP WOMENS SHOP MENS SHOP SOCKS SHOP WOMEN'S SALE SHOP MEN'S SALE Home /Mens Men's Tree Runner ALSO AVAILABLE IN: WOMEN'S SIZES $100 + FREE SHIPPING COLOR: Mist",
+    "cfIframe": false
+  },
+  "metrics": {
+    "title": "Men's Tree Runners - Grey - Everyday Sneakers | Allbirds",
+    "url": "https://www.allbirds.com/products/mens-tree-runners-mist",
+    "structured": {
+      "jsonLdBlocks": 2,
+      "productNodes": 30,
+      "microdataProducts": 0,
+      "hasSchema": true,
+      "hasPrice": true,
+      "hasAvailability": true,
+      "completeProduct": true,
+      "offersSample": [
+        {
+          "price": 100,
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "price": 100,
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "price": 100,
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    },
+    "headings": {
+      "h1Count": 3,
+      "visibleH1Count": 2,
+      "totalHeadings": 71,
+      "h1Texts": [
+        "Men's Tree Runner",
+        "Men's Tree Runner",
+        "Better Things in a Better Way"
+      ]
+    },
+    "controls": {
+      "totalButtons": 125,
+      "unnamedButtons": 2,
+      "visibleControls": 81,
+      "unnamedControls": 2,
+      "unnamedSample": [
+        {
+          "tag": "button",
+          "role": null,
+          "cls": "swiper-prev-button z-content absolute top-1/2 left"
+        },
+        {
+          "tag": "button",
+          "role": null,
+          "cls": "swiper-next-button z-content absolute top-1/2 righ"
+        }
+      ]
+    },
+    "images": {
+      "total": 50,
+      "noAltAttribute": 0,
+      "visibleInMain": 18,
+      "mainNoAltAttribute": 0,
+      "pctWithAlt": 100
+    },
+    "selects": [
+      {
+        "name": "Select country",
+        "hasAccessibleName": true,
+        "value": "https://www.allbirds.com",
+        "selectedIndex": 36,
+        "selectedText": "US",
+        "optionCount": 37,
+        "id": "country-selector",
+        "nearSizeWord": false
+      }
+    ]
+  },
+  "prdScore": {
+    "structuredData": 40,
+    "headings": 0,
+    "namedControls": 10,
+    "imageAlt": 20,
+    "total": 70,
+    "grade": "C",
+    "rubric": "structured data 40 (schema+price+availability complete=40, schema only=20, none=0) | headings 20 (1 h1=20, 2=10, 3+=0) | named controls 20 (0 unnamed buttons=20, 1-3=10, 4+=0) | image alt 20 (>=95% have alt=20, some missing=10, many=0). Grade: 90+ A, 80-89 B, 70-79 C, 55-69 D, <55 F."
+  },
+  "treeLines": 275,
+  "artifacts": {
+    "screenshot": "verify/allbirds-headed.png",
+    "tree": "verify/allbirds-headed-tree.txt"
+  },
+  "finalScore": {
+    "structuredData": 40,
+    "headings": 0,
+    "namedControls": 10,
+    "imageAlt": 20,
+    "total": 70,
+    "grade": "C"
+  },
+  "finalRubric": {
+    "name": "Agent-readability (open standards), 100 points",
+    "bands": [
+      "Structured data 40 - complete Product schema (Product/ProductGroup + price + availability) = 40; schema present but missing price or availability = 20; none = 0",
+      "Heading clarity 20 - exactly one h1 = 20; two h1 = 10; three or more, or zero = 0",
+      "Named controls 20 - zero unnamed buttons = 20; one to three = 10; four or more = 0",
+      "Image alt text 20 - 95% or more of img elements carry an alt attribute = 20; 80 to 94% = 10; under 80% = 0"
+    ],
+    "grades": "90+ A, 80-89 B, 70-79 C, 55-69 D, under 55 F",
+    "note": "Measured on the rendered DOM of one product page, one load, automated Chromium. A blocked page is not scored."
+  }
+}

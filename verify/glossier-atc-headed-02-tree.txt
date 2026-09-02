@@ -1,0 +1,1010 @@
+[e1] link "Skip To Main"
+  text "Skip To Main"
+text "Free standard shipping on orders $40+"
+[e2] button "Previous Slide"
+  text "Previous Slide"
+[e3] button "Next Slide"
+  text "Next Slide"
+[e4] button "Pause Slideshow"
+  text "Pause Slideshow"
+[e5] link "GLOSSIER YOU LOOK GOOD."
+  text "GLOSSIER"
+  text "YOU LOOK GOOD."
+[e6] link "SKINCARE"
+  text "SKINCARE"
+[e7] link "MAKEUP"
+  text "MAKEUP"
+[e8] link "BALMS"
+  text "BALMS"
+[e9] link "BODY"
+  text "BODY"
+[e10] link "FRAGRANCE"
+  text "FRAGRANCE"
+[e11] link "GLOSSIER GOODS"
+  text "GLOSSIER GOODS"
+[e12] link "SETS"
+  text "SETS"
+[e13] link "SHOP ALL"
+  text "SHOP ALL"
+[e14] button "Search"
+[e15] button "US"
+  text "US"
+[e16] link "STORES"
+  text "STORES"
+[e17] link "LOG IN"
+  text "LOG IN"
+[e18] button "BAG (0) TOGGLE BAG"
+  text "BAG"
+  text "(0)"
+  text "TOGGLE BAG"
+heading "Boy Brow"
+  text "Boy Brow"
+text "Grooming pomade"
+[e19] link "Jump to product reviews"
+  text "4.4163384 star rating"
+  text "(7112)"
+text "BEST SELLER"
+[e20] radio "Dark Brown variant option" checked=true
+  [e21] radio "Dark Brown variant option" checked=false
+[e22] radio "Brown variant option" checked=false
+  [e23] radio "Brown variant option" checked=true
+[e24] radio "Auburn variant option" checked=false
+  [e25] radio "Auburn variant option" checked=false
+[e26] radio "Blond variant option" checked=false
+  [e27] radio "Blond variant option" checked=false
+[e28] radio "Grey variant option" checked=false
+  [e29] radio "Grey variant option" checked=false
+[e30] radio "Clear variant option" checked=false
+  [e31] radio "Clear variant option" checked=false
+[e32] radio "Black variant option" checked=false
+  [e33] radio "Black variant option" checked=false
+text "Brown"
+text "Purchase Options"
+[e34] radio "One-time purchase" checked=true
+text "One-time purchase"
+[e35] radio "Subscribe and save 10%" checked=false
+text "Subscribe and save 10%"
+[e36] button "Details"
+  text "Details"
+text "How often do you want to re-up your subscription?"
+[e37] combobox "How often do you want to re-up your subscription?"
+  [e38] option "Ship every month"
+  [e39] option "Ship every 2 months"
+  [e40] option "Ship every 3 months"
+  [e41] option "Ship every 4 months"
+  [e42] option "Ship every 5 months"
+[e43] button "Add to bag $22"
+  text "Add to bag"
+  text "$22"
+text "or 4 interest-free payments of"
+text "$5.50"
+text "with"
+[e44] button "Afterpay logo - Opens a dialog"
+[e45] button "Learn More about Afterpay - Opens a dialog"
+text "The original, every-day essential for all brows."
+text "Inspired by the flexible formula of mustache pomade, Boy Brow visibly defines, thickens and shapes for face-framing brows in seconds. A creamy, conditioning formula and a precision brush coats even the smallest and finest hairs for a soft, flexible hold that won’t stiffen or flake. Available in a range of subtly-tinted shades that seamlessly blend in with your natural hairs plus Clear (that won’t leave a trace)."
+text "0.13 oz / 3.8 g"
+text "Thickening"
+text "Conditioning"
+text "Flexible"
+text "Cruelty Free"
+text "Dermatologist-tested, ophthalmologist-tested, suitable for contact lens wearers, good for all skin types"
+heading "SAVE WITH SETS"
+  text "SAVE WITH SETS"
+[e46] button "The Glossier Icons SAVE 38%"
+  heading "The Glossier Icons"
+    text "The Glossier Icons"
+  text "SAVE 38%"
+[e47] button "The No-Makeup Makeup Kit SAVE 16%"
+  heading "The No-Makeup Makeup Kit"
+    text "The No-Makeup Makeup Kit"
+  text "SAVE 16%"
+[e48] button "Boy Brow Duo SAVE 16%"
+  heading "Boy Brow Duo"
+    text "Boy Brow Duo"
+  text "SAVE 16%"
+[e49] button "The Brow Kit SAVE 15%"
+  heading "The Brow Kit"
+    text "The Brow Kit"
+  text "SAVE 15%"
+[e50] button "Next"
+text "5 out of five stars"
+text ""Quick and easy and lasts 8 hours at work.""
+text ""I get so many compliments every time I wear it.""
+text ""Excellent brow gel, looks natural.""
+[e51] button "KEY INGREDIENTS"
+  heading "KEY INGREDIENTS"
+    text "KEY INGREDIENTS"
+[e52] button "HOW TO USE"
+  text "HOW TO USE"
+heading "YOU MAY ALSO LIKE"
+  text "YOU MAY ALSO LIKE"
+[e53] link "Shop all Makeup"
+  text "Shop all Makeup"
+[e54] link "/products/balm-dotcom?variant=48390723731701"
+heading "Balm Dotcom"
+  [e55] link "Balm Dotcom"
+    text "Balm Dotcom"
+text "Nourishing lip balm"
+text "$16"
+[e56] radio "I Love NY variant option" checked=true
+  [e57] radio "I Love NY variant option" checked=true
+[e58] radio "Black Cherry variant option" checked=false
+  [e59] radio "Black Cherry variant option" checked=false
+[e60] radio "Birthday variant option" checked=false
+  [e61] radio "Birthday variant option" checked=false
+[e62] radio "Strawberry variant option" checked=false
+  [e63] radio "Strawberry variant option" checked=false
+[e64] radio "Original variant option" checked=false
+  [e65] radio "Original variant option" checked=false
+[e66] radio "Mint variant option" checked=false
+  [e67] radio "Mint variant option" checked=false
+[e68] radio "Mango variant option" checked=false
+  [e69] radio "Mango variant option" checked=false
+[e70] radio "Rose variant option" checked=false
+  [e71] button "Show more options"
+[e72] radio "Coconut variant option" checked=false
+[e73] radio "Wild Fig variant option" checked=false
+[e74] radio "Lavender variant option" checked=false
+[e75] radio "Espresso variant option" checked=false
+[e76] button "Add to bag"
+  text "Add to bag"
+[e77] link "float cloud paint plush blush"
+text "TOP-RATED"
+heading "Cloud Paint Plush Blush"
+  [e78] link "Cloud Paint Plush Blush"
+    text "Cloud Paint Plush Blush"
+text "Seamless cheek color"
+text "$26"
+[e79] radio "Float variant option" checked=true
+  [e80] radio "Float variant option" checked=false
+[e81] radio "Storm variant option" checked=false
+  [e82] radio "Storm variant option" checked=false
+[e83] radio "Bloom variant option" checked=false
+  [e84] radio "Bloom variant option" checked=false
+[e85] radio "Puff variant option" checked=false
+  [e86] radio "Puff variant option" checked=false
+[e87] radio "Beam variant option" checked=false
+  [e88] radio "Beam variant option" checked=false
+[e89] radio "Soar variant option" checked=false
+  [e90] radio "Soar variant option" checked=false
+[e91] radio "Billow variant option" checked=false
+  [e92] radio "Billow variant option" checked=false
+[e93] radio "Gale variant option" checked=false
+  [e94] button "Show more options"
+[e95] radio "Burst variant option" checked=false
+[e96] radio "Plume variant option" checked=false
+[e97] button "Add to bag"
+  text "Add to bag"
+[e98] link "puff cloud paint"
+text "BEST SELLER"
+heading "Cloud Paint"
+  [e99] link "Cloud Paint"
+    text "Cloud Paint"
+text "Seamless cheek color"
+text "$24"
+text "BLUSH"
+[e100] radio "Puff variant option" checked=true
+  [e101] radio "Puff variant option" checked=false
+[e102] radio "Storm variant option" checked=false
+  [e103] radio "Storm variant option" checked=false
+[e104] radio "Soar variant option" checked=false
+  [e105] radio "Soar variant option" checked=false
+[e106] radio "Beam variant option" checked=false
+  [e107] radio "Beam variant option" checked=false
+[e108] radio "Wisp variant option" checked=false
+  [e109] radio "Wisp variant option" checked=false
+[e110] radio "Dawn variant option" checked=false
+  [e111] radio "Dawn variant option" checked=false
+[e112] radio "Spark variant option" checked=false
+  [e113] radio "Spark variant option" checked=false
+[e114] radio "Dusk variant option" checked=false
+  [e115] button "Show more options"
+[e116] radio "Haze variant option" checked=false
+[e117] radio "Eve variant option" checked=false
+text "BRONZER"
+[e118] radio "Drift variant option" checked=false
+  [e119] radio "Drift variant option" checked=false
+[e120] radio "Coast variant option" checked=false
+  [e121] radio "Coast variant option" checked=false
+[e122] radio "Swept variant option" checked=false
+  [e123] radio "Swept variant option" checked=false
+[e124] radio "Dune variant option" checked=false
+  [e125] radio "Dune variant option" checked=false
+[e126] radio "Sail variant option" checked=false
+  [e127] radio "Sail variant option" checked=false
+[e128] button "Add to bag"
+  text "Add to bag"
+[e129] link "/products/in-a-new-york-minute?variant=48387980493045"
+text "NEW"
+heading "In A New York Minute Set"
+  [e130] link "In A New York Minute Set"
+    text "In A New York Minute Set"
+text "On-the-go makeup essentials"
+text "Sale price"
+text "$70"
+text "Regular price"
+text "$84"
+[e131] button "Choose set"
+  text "Choose set"
+[e132] link "/products/balm-dotcom-quintet?variant=45782337126645"
+text "FREE KEYCHAIN"
+heading "The Balm Dotcom Quintet"
+  [e133] link "The Balm Dotcom Quintet"
+    text "The Balm Dotcom Quintet"
+text "Limited edition"
+text "Sale price"
+text "$64"
+text "Regular price"
+text "$80"
+[e134] button "Choose set"
+  text "Choose set"
+[e135] link "open tubes of lash slick mascara in brown and black against white background"
+text "BEST SELLER"
+heading "Lash Slick"
+  [e136] link "Lash Slick"
+    text "Lash Slick"
+text "Film form mascara"
+text "$20"
+[e137] radio "Brown variant option" checked=true
+  [e138] radio "Brown variant option" checked=false
+[e139] radio "Black variant option" checked=false
+  [e140] radio "Black variant option" checked=false
+[e141] button "Add to bag"
+  text "Add to bag"
+[e142] link "/products/the-glossier-icons?variant=48440263049461"
+text "FREE BEAUTY BAG"
+heading "The Glossier Icons"
+  [e143] link "The Glossier Icons"
+    text "The Glossier Icons"
+text "Meet the classics"
+text "Sale price"
+text "$65"
+text "Regular price"
+text "$105"
+[e144] button "Choose set"
+  text "Choose set"
+[e145] link "futuredew bottle"
+heading "Futuredew"
+  [e146] link "Futuredew"
+    text "Futuredew"
+text "Skincare-makeup hybrid"
+text "$30"
+[e147] button "Add to bag"
+  text "Add to bag"
+[e148] link "lip line"
+text "BEST SELLER"
+heading "Lip Line"
+  [e149] link "Lip Line"
+    text "Lip Line"
+text "Enhancing pencil"
+text "$20"
+[e150] radio "Black Cherry variant option" checked=true
+  [e151] radio "Black Cherry variant option" checked=false
+[e152] radio "Hold variant option" checked=false
+  [e153] radio "Hold variant option" checked=false
+[e154] radio "Grip variant option" checked=false
+  [e155] radio "Grip variant option" checked=false
+[e156] radio "Graze variant option" checked=false
+  [e157] radio "Graze variant option" checked=false
+[e158] radio "Buff variant option" checked=false
+  [e159] radio "Buff variant option" checked=false
+[e160] radio "Bit variant option" checked=false
+  [e161] radio "Bit variant option" checked=false
+[e162] radio "Nip variant option" checked=false
+  [e163] radio "Nip variant option" checked=false
+[e164] radio "Bare variant option" checked=false
+  [e165] button "Show more options"
+[e166] radio "Flush variant option" checked=false
+[e167] button "Add to bag"
+  text "Add to bag"
+[e168] link "lucite ultralip"
+text "BEST SELLER"
+heading "Ultralip"
+  [e169] link "Ultralip"
+    text "Ultralip"
+text "Nourishing shine + color"
+text "$22"
+[e170] radio "Lucite variant option" checked=true
+  [e171] radio "Lucite variant option" checked=false
+[e172] radio "Pony variant option" checked=false
+  [e173] radio "Pony variant option" checked=false
+[e174] radio "Cranberry variant option" checked=false
+  [e175] radio "Cranberry variant option" checked=false
+[e176] radio "Cachet variant option" checked=false
+  [e177] radio "Cachet variant option" checked=false
+[e178] radio "Portrait variant option" checked=false
+  [e179] radio "Portrait variant option" checked=false
+[e180] radio "Ember variant option" checked=false
+  [e181] radio "Ember variant option" checked=false
+[e182] radio "Villa variant option" checked=false
+  [e183] radio "Villa variant option" checked=false
+[e184] radio "Crest variant option" checked=false
+  [e185] button "Show more options"
+[e186] radio "Flute variant option" checked=false
+[e187] button "Add to bag"
+  text "Add to bag"
+[e188] link "black boy brow arch"
+heading "Boy Brow Arch"
+  [e189] link "Boy Brow Arch"
+    text "Boy Brow Arch"
+text "Pomade pencil"
+text "$24"
+[e190] radio "Black variant option" checked=true
+  [e191] radio "Black variant option" checked=false
+[e192] radio "Cool Dark Brown variant option" checked=false
+  [e193] radio "Cool Dark Brown variant option" checked=false
+[e194] radio "Warm Dark Brown variant option" checked=false
+  [e195] radio "Warm Dark Brown variant option" checked=false
+[e196] radio "Cool Brown variant option" checked=false
+  [e197] radio "Cool Brown variant option" checked=false
+[e198] radio "Warm Brown variant option" checked=false
+  [e199] radio "Warm Brown variant option" checked=false
+[e200] radio "Auburn variant option" checked=false
+  [e201] radio "Auburn variant option" checked=false
+[e202] radio "Cool Blond variant option" checked=false
+  [e203] radio "Cool Blond variant option" checked=false
+[e204] radio "Warm Blond variant option" checked=false
+  [e205] button "Show more options"
+[e206] radio "Grey variant option" checked=false
+[e207] button "Add to bag"
+  text "Add to bag"
+[e208] link "/products/lash-slick-duo?variant=43781981864181"
+heading "Lash Slick Duo"
+  [e209] link "Lash Slick Duo"
+    text "Lash Slick Duo"
+text "Film form mascaras"
+text "Sale price"
+text "$36"
+text "Regular price"
+text "$40"
+[e210] button "Choose set"
+  text "Choose set"
+[e211] link "cheek brush"
+heading "Cloud Paint Cheek Brush"
+  [e212] link "Cloud Paint Cheek Brush"
+    text "Cloud Paint Cheek Brush"
+text "Dual-ended brush"
+text "$25"
+[e213] button "Add to bag"
+  text "Add to bag"
+[e214] link "ochre no.1. pencil"
+heading "No. 1 Pencil"
+  [e215] link "No. 1 Pencil"
+    text "No. 1 Pencil"
+text "Perfect glide eyeliner"
+text "$20"
+[e216] radio "Ochre variant option" checked=true
+  [e217] radio "Ochre variant option" checked=false
+[e218] radio "Kiln variant option" checked=false
+  [e219] radio "Kiln variant option" checked=false
+[e220] radio "Frame variant option" checked=false
+  [e221] radio "Frame variant option" checked=false
+[e222] radio "Ink variant option" checked=false
+  [e223] radio "Ink variant option" checked=false
+[e224] radio "Muse variant option" checked=false
+  [e225] radio "Muse variant option" checked=false
+[e226] radio "Lapis variant option" checked=false
+  [e227] radio "Lapis variant option" checked=false
+[e228] radio "Patina variant option" checked=false
+  [e229] radio "Patina variant option" checked=false
+[e230] radio "Fresco variant option" checked=false
+  [e231] button "Show more options"
+[e232] radio "Canvas variant option" checked=false
+[e233] radio "Rococo variant option" checked=false
+[e234] button "Add to bag"
+  text "Add to bag"
+[e235] link "g1 skin tint"
+heading "Perfecting Skin Tint"
+  [e236] link "Perfecting Skin Tint"
+    text "Perfecting Skin Tint"
+text "Sheer skin enhancer"
+text "$30"
+[e237] radio "G1 variant option" checked=true
+  [e238] radio "G1 variant option" checked=false
+[e239] radio "G2 variant option" checked=false
+  [e240] radio "G2 variant option" checked=false
+[e241] radio "G3 variant option" checked=false
+  [e242] radio "G3 variant option" checked=false
+[e243] radio "G4 variant option" checked=false
+  [e244] radio "G4 variant option" checked=false
+[e245] radio "G5 variant option" checked=false
+  [e246] radio "G5 variant option" checked=false
+[e247] radio "G6 variant option" checked=false
+  [e248] radio "G6 variant option" checked=false
+[e249] radio "G7 variant option" checked=false
+  [e250] radio "G7 variant option" checked=false
+[e251] radio "G8 variant option" checked=false
+  [e252] button "Show more options"
+[e253] radio "G9 variant option" checked=false
+[e254] radio "G10 variant option" checked=false
+[e255] radio "G11 variant option" checked=false
+[e256] radio "G12 variant option" checked=false
+[e257] button "Add to bag"
+  text "Add to bag"
+[e258] link "very deep 4 concealer"
+heading "Stretch Balm Concealer"
+  [e259] link "Stretch Balm Concealer"
+    text "Stretch Balm Concealer"
+text "medium coverage + dewy finish"
+text "$22"
+[e260] radio "Very Deep 4 variant option" checked=true
+  [e261] radio "Very Deep 4 variant option" checked=false
+[e262] radio "Very Deep 3 variant option" checked=false
+  [e263] radio "Very Deep 3 variant option" checked=false
+[e264] radio "Very Deep 2 variant option" checked=false
+  [e265] radio "Very Deep 2 variant option" checked=false
+[e266] radio "Very Deep 1 variant option" checked=false
+  [e267] radio "Very Deep 1 variant option" checked=false
+[e268] radio "Deep 5 variant option" checked=false
+  [e269] radio "Deep 5 variant option" checked=false
+[e270] radio "Deep 4 variant option" checked=false
+  [e271] radio "Deep 4 variant option" checked=false
+[e272] radio "Deep 3 variant option" checked=false
+  [e273] radio "Deep 3 variant option" checked=false
+[e274] radio "Deep 2 variant option" checked=false
+  [e275] button "Show more options"
+[e276] radio "Deep 1 variant option" checked=false
+[e277] radio "Medium Deep 4 variant option" checked=false
+[e278] radio "Medium Deep 3 variant option" checked=false
+[e279] radio "Medium Deep 2 variant option" checked=false
+[e280] radio "Medium Deep 1 variant option" checked=false
+[e281] radio "Medium Tan 5 variant option" checked=false
+[e282] radio "Medium Tan 4 variant option" checked=false
+[e283] radio "Medium Tan 3 variant option" checked=false
+[e284] radio "Medium Tan 2 variant option" checked=false
+[e285] radio "Medium Tan 1 variant option" checked=false
+[e286] radio "Medium 5 variant option" checked=false
+[e287] radio "Medium 4 variant option" checked=false
+[e288] radio "Medium 3 variant option" checked=false
+[e289] radio "Medium 2 variant option" checked=false
+[e290] radio "Medium 1 variant option" checked=false
+[e291] radio "Light 5 variant option" checked=false
+[e292] radio "Light 4 variant option" checked=false
+[e293] radio "Light 3 variant option" checked=false
+[e294] radio "Light 2 variant option" checked=false
+[e295] radio "Light 1 variant option" checked=false
+[e296] radio "Very Light 4 variant option" checked=false
+[e297] radio "Very Light 3 variant option" checked=false
+[e298] radio "Very Light 2 variant option" checked=false
+[e299] radio "Very Light 1 variant option" checked=false
+[e300] button "Add to bag"
+  text "Add to bag"
+[e301] link "very deep 4 foundation"
+heading "Stretch Fluid Foundation"
+  [e302] link "Stretch Fluid Foundation"
+    text "Stretch Fluid Foundation"
+text "light-to-medium coverage + natural finish"
+text "$34"
+[e303] radio "Very Deep 4 variant option" checked=true
+  [e304] radio "Very Deep 4 variant option" checked=false
+[e305] radio "Very Deep 3 variant option" checked=false
+  [e306] radio "Very Deep 3 variant option" checked=false
+[e307] radio "Very Deep 2 variant option" checked=false
+  [e308] radio "Very Deep 2 variant option" checked=false
+[e309] radio "Very Deep 1 variant option" checked=false
+  [e310] radio "Very Deep 1 variant option" checked=false
+[e311] radio "Deep 5 variant option" checked=false
+  [e312] radio "Deep 5 variant option" checked=false
+[e313] radio "Deep 4 variant option" checked=false
+  [e314] radio "Deep 4 variant option" checked=false
+[e315] radio "Deep 3 variant option" checked=false
+  [e316] radio "Deep 3 variant option" checked=false
+[e317] radio "Deep 2 variant option" checked=false
+  [e318] button "Show more options"
+[e319] radio "Deep 1 variant option" checked=false
+[e320] radio "Medium Deep 4 variant option" checked=false
+[e321] radio "Medium Deep 3 variant option" checked=false
+[e322] radio "Medium Deep 2 variant option" checked=false
+[e323] radio "Medium Deep 1 variant option" checked=false
+[e324] radio "Medium Tan 5 variant option" checked=false
+[e325] radio "Medium Tan 4 variant option" checked=false
+[e326] radio "Medium Tan 3 variant option" checked=false
+[e327] radio "Medium Tan 2 variant option" checked=false
+[e328] radio "Medium Tan 1 variant option" checked=false
+[e329] radio "Medium 5 variant option" checked=false
+[e330] radio "Medium 4 variant option" checked=false
+[e331] radio "Medium 3 variant option" checked=false
+[e332] radio "Medium 2 variant option" checked=false
+[e333] radio "Medium 1 variant option" checked=false
+[e334] radio "Light 5 variant option" checked=false
+[e335] radio "Light 4 variant option" checked=false
+[e336] radio "Light 3 variant option" checked=false
+[e337] radio "Light 2 variant option" checked=false
+[e338] radio "Light 1 variant option" checked=false
+[e339] radio "Very Light 4 variant option" checked=false
+[e340] radio "Very Light 3 variant option" checked=false
+[e341] radio "Very Light 2 variant option" checked=false
+[e342] radio "Very Light 1 variant option" checked=false
+[e343] button "Add to bag"
+  text "Add to bag"
+[e344] link "lip gloss pink"
+heading "Lip Gloss"
+  [e345] link "Lip Gloss"
+    text "Lip Gloss"
+text "Glassy plush shine"
+text "$18"
+[e346] radio "Pink variant option" checked=true
+  [e347] radio "Pink variant option" checked=false
+[e348] radio "Brown variant option" checked=false
+  [e349] radio "Brown variant option" checked=false
+[e350] radio "Bronze variant option" checked=false
+  [e351] radio "Bronze variant option" checked=false
+[e352] radio "Clear variant option" checked=false
+  [e353] radio "Clear variant option" checked=false
+[e354] radio "Holographic variant option" checked=false
+  [e355] radio "Holographic variant option" checked=false
+[e356] radio "Red variant option" checked=false
+  [e357] radio "Red variant option" checked=false
+[e358] button "Add to bag"
+  text "Add to bag"
+[e359] link "lip glaze in melty"
+heading "Lip Glaze"
+  [e360] link "Lip Glaze"
+    text "Lip Glaze"
+text "Cooling, creamy lip oil"
+text "$22"
+[e361] radio "Melty variant option" checked=true
+  [e362] radio "Melty variant option" checked=true
+[e363] radio "Creamy variant option" checked=false
+  [e364] radio "Creamy variant option" checked=false
+[e365] radio "Tangy variant option" checked=false
+  [e366] radio "Tangy variant option" checked=false
+[e367] radio "Chilly variant option" checked=false
+  [e368] radio "Chilly variant option" checked=false
+[e369] radio "Frosty variant option" checked=false
+  [e370] radio "Frosty variant option" checked=false
+[e371] radio "Icy variant option" checked=false
+  [e372] radio "Icy variant option" checked=false
+[e373] button "Add to bag"
+  text "Add to bag"
+[e374] link "image of open tube of generation g lipstick in cake"
+heading "Generation G"
+  [e375] link "Generation G"
+    text "Generation G"
+text "Sheer matte, fragrance-free lipstick"
+text "$20"
+[e376] radio "Cake variant option" checked=true
+  [e377] radio "Cake variant option" checked=false
+[e378] radio "Like variant option" checked=false
+  [e379] radio "Like variant option" checked=false
+[e380] radio "Zip variant option" checked=false
+  [e381] radio "Zip variant option" checked=false
+[e382] radio "Leo variant option" checked=false
+  [e383] radio "Leo variant option" checked=false
+[e384] radio "Jam variant option" checked=false
+  [e385] radio "Jam variant option" checked=false
+[e386] radio "Crush variant option" checked=false
+  [e387] radio "Crush variant option" checked=false
+[e388] radio "Punch variant option" checked=false
+  [e389] radio "Punch variant option" checked=false
+[e390] button "Add to bag"
+  text "Add to bag"
+[e391] link "prism skylight"
+text "TOP-RATED"
+heading "Skylight"
+  [e392] link "Skylight"
+    text "Skylight"
+text "Liquid highlighter"
+text "$24"
+[e393] radio "Prism variant option" checked=true
+  [e394] radio "Prism variant option" checked=true
+[e395] radio "Starry variant option" checked=false
+  [e396] radio "Starry variant option" checked=false
+[e397] radio "Sunlit variant option" checked=false
+  [e398] radio "Sunlit variant option" checked=false
+[e399] radio "Glimmer variant option" checked=false
+  [e400] radio "Glimmer variant option" checked=false
+[e401] radio "Gaze variant option" checked=false
+  [e402] radio "Gaze variant option" checked=false
+[e403] button "Add to bag"
+  text "Add to bag"
+[e404] link "futuredew solid"
+text "TOP-RATED"
+heading "Futuredew Solid"
+  [e405] link "Futuredew Solid"
+    text "Futuredew Solid"
+text "Oil-serum illuminator"
+text "$26"
+[e406] button "Add to bag"
+  text "Add to bag"
+[e407] link "The Dewy Look Cloud Paint and Futuredew"
+heading "The Cheek Kit"
+  [e408] link "The Cheek Kit"
+    text "The Cheek Kit"
+text "Cloud Paint + Futuredew"
+text "Sale price"
+text "$43"
+text "Regular price"
+text "$54"
+[e409] button "Choose set"
+  text "Choose set"
+[e410] link "Lidstar in Lily"
+heading "Lidstar"
+  [e411] link "Lidstar"
+    text "Lidstar"
+text "Glistening eye glow"
+text "$20"
+[e412] radio "Lily variant option" checked=true
+  [e413] radio "Lily variant option" checked=true
+[e414] radio "Branch variant option" checked=false
+  [e415] radio "Branch variant option" checked=false
+[e416] radio "Herb variant option" checked=false
+  [e417] radio "Herb variant option" checked=false
+[e418] radio "Bun variant option" checked=false
+  [e419] radio "Bun variant option" checked=false
+[e420] radio "Slip variant option" checked=false
+  [e421] radio "Slip variant option" checked=false
+[e422] button "Add to bag"
+  text "Add to bag"
+[e423] link "stretch face brush"
+heading "Stretch Face Brush"
+  [e424] link "Stretch Face Brush"
+    text "Stretch Face Brush"
+text "blend + diffuse"
+text "$28"
+[e425] button "Add to bag"
+  text "Add to bag"
+[e426] link "sharpener"
+heading "Sharpener"
+  [e427] link "Sharpener"
+    text "Sharpener"
+text "German-Engineered Blade"
+text "$9"
+[e428] button "Add to bag"
+  text "Add to bag"
+[e429] link "cloud paint duo"
+heading "Cloud Paint Duo"
+  [e430] link "Cloud Paint Duo"
+    text "Cloud Paint Duo"
+text "Seamless cheek color"
+text "Sale price"
+text "$38"
+text "Regular price"
+text "$48"
+[e431] button "Choose set"
+  text "Choose set"
+[e432] link "/products/balm-dotcom-trio?variant=46731770429685"
+text "FREE KEYCHAIN"
+heading "Balm Dotcom Trio"
+  [e433] link "Balm Dotcom Trio"
+    text "Balm Dotcom Trio"
+text "Original formula"
+text "Sale price"
+text "$42"
+text "Regular price"
+text "$48"
+[e434] button "Choose set"
+  text "Choose set"
+[e435] link "ultralip and lip line set"
+heading "The Lip Kit"
+  [e436] link "The Lip Kit"
+    text "The Lip Kit"
+text "Enhancing pencil + nourishing shine and color"
+text "Sale price"
+text "$34"
+text "Regular price"
+text "$42"
+[e437] button "Choose set"
+  text "Choose set"
+[e438] link "glossier brow duo"
+heading "The Brow Kit"
+  [e439] link "The Brow Kit"
+    text "The Brow Kit"
+text "Limited edition"
+text "Sale price"
+text "$39"
+text "Regular price"
+text "$46"
+[e440] button "Choose set"
+  text "Choose set"
+[e441] link "bdc"
+heading "Balm + Line Duo"
+  [e442] link "Balm + Line Duo"
+    text "Balm + Line Duo"
+text "Balm Dotcom + Lip Line"
+text "Sale price"
+text "$32"
+text "Regular price"
+text "$36"
+[e443] button "Choose set"
+  text "Choose set"
+[e444] link "ultralip duo"
+heading "Ultralip Duo"
+  [e445] link "Ultralip Duo"
+    text "Ultralip Duo"
+text "Choose two Ultralips"
+text "Sale price"
+text "$39"
+text "Regular price"
+text "$44"
+[e446] button "Choose set"
+  text "Choose set"
+[e447] link "Perfecting Skin Tint + Stretch Balm Concealer"
+heading "The Face Kit"
+  [e448] link "The Face Kit"
+    text "The Face Kit"
+text "Perfecting Skin Tint + Stretch Balm Concealer"
+text "Sale price"
+text "$47"
+text "Regular price"
+text "$52"
+[e449] button "Choose set"
+  text "Choose set"
+[e450] link "gift card"
+heading "Digital Gift Card"
+  [e451] link "Digital Gift Card"
+    text "Digital Gift Card"
+text "let them pick!"
+text "$15"
+[e452] radio "$15 variant option" checked=true
+  text "$15"
+  [e453] radio "$15 variant option" checked=true
+[e454] radio "$20 variant option" checked=false
+  text "$20"
+  [e455] radio "$20 variant option" checked=false
+[e456] radio "$35 variant option" checked=false
+  text "$35"
+  [e457] radio "$35 variant option" checked=false
+[e458] radio "$50 variant option" checked=false
+  text "$50"
+  [e459] radio "$50 variant option" checked=false
+[e460] radio "$75 variant option" checked=false
+  text "$75"
+  [e461] radio "$75 variant option" checked=false
+[e462] radio "$100 variant option" checked=false
+  text "$100"
+  [e463] radio "$100 variant option" checked=false
+[e464] radio "$150 variant option" checked=false
+  text "$150"
+  [e465] radio "$150 variant option" checked=false
+[e466] radio "$200 variant option" checked=false
+  text "$200"
+  [e467] radio "$200 variant option" checked=false
+[e468] button "Add to bag"
+  text "Add to bag"
+[e469] link "/products/boy-brow-duo?variant=48273454137589"
+text "NEW"
+heading "Boy Brow Duo"
+  [e470] link "Boy Brow Duo"
+    text "Boy Brow Duo"
+text "Grooming pomades"
+text "Sale price"
+text "$37"
+text "Regular price"
+text "$44"
+[e471] button "Choose set"
+  text "Choose set"
+[e472] link "/products/the-no-makeup-makeup-kit?variant=48273571774709"
+text "NEW"
+heading "The No-Makeup Makeup Kit"
+  [e473] link "The No-Makeup Makeup Kit"
+    text "The No-Makeup Makeup Kit"
+text "Boy Brow + Lash Slick + Stretch Balm Concealer"
+text "Sale price"
+text "$54"
+text "Regular price"
+text "$64"
+[e474] button "Choose set"
+  text "Choose set"
+[e475] button "Previous" disabled
+[e476] button "Next"
+heading "GET THE LOOK"
+  text "GET THE LOOK"
+[e477] button "Unmute video"
+[e478] button "Play video"
+heading "REVIEWS"
+  text "REVIEWS"
+[e479] button "Write a review"
+  text "Write a review"
+text "7112"
+text "Total reviews"
+text "4.4"
+text "Average rating"
+[e480] textbox "Search for a question or a keyword"
+text "Search for a question or a keyword"
+[e481] button "Search"
+  text "Search"
+text "Sort by"
+[e482] combobox "Sort by"
+  [e483] option "Newest first"
+  [e484] option "Highest rating"
+  [e485] option "Lowest rating"
+  [e486] option "Most helpful"
+status (unnamed)
+  text "4 reviews"
+text "09.01.26"
+text "Alison"
+[e487] button "0 upvote"
+  text "upvote"
+[e488] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+text "Verified Buyer"
+text "Skin Type"
+text "Dry"
+text "Skin Shade"
+text "Light"
+text "Age Range"
+text "17-24"
+text "5 star rating"
+text "glossier boy brow"
+text "great product"
+text "Bottom line"
+text "Yes - I would recommend this to a friend"
+text "Reviewed on"
+text "Boy Brow"
+[e489] button "0 upvote"
+  text "upvote"
+[e490] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+text "08.30.26"
+text "CONNIE R."
+[e491] button "0 upvote"
+  text "upvote"
+[e492] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+text "Verified Buyer"
+text "Skin Type"
+text "Combination"
+text "Skin Shade"
+text "Medium"
+text "Age Range"
+text "41-50"
+text "5 star rating"
+text "Go to"
+text "This product is perfect, not too much and not too little"
+text "Bottom line"
+text "Yes - I would recommend this to a friend"
+[e493] button "0 upvote"
+  text "upvote"
+[e494] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+text "08.26.26"
+text "Codi H."
+[e495] button "0 upvote"
+  text "upvote"
+[e496] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+text "Verified Buyer"
+text "Skin Type"
+text "Dry"
+text "Age Range"
+text "31-40"
+text "5 star rating"
+text "Holy grail"
+text "Look no further, this is it"
+text "Bottom line"
+text "Yes - I would recommend this to a friend"
+[e497] button "0 upvote"
+  text "upvote"
+[e498] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+text "08.24.26"
+text "Chiara P."
+[e499] button "0 upvote"
+  text "upvote"
+[e500] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+text "Verified Buyer"
+text "Skin Type"
+text "Normal"
+text "Skin Shade"
+text "Medium"
+text "Age Range"
+text "17-24"
+text "4 star rating"
+text "Nice product"
+text "It does exactly what its supposed to do"
+text "Bottom line"
+text "Yes - I would recommend this to a friend"
+text "Reviewed on"
+text "Boy Brow"
+[e501] button "0 upvote"
+  text "upvote"
+[e502] button "0 downvote"
+  text "downvote"
+status (unnamed)
+  text "Upvotes: 0, Downvotes: 0"
+[e503] button "Load more"
+  text "Load more"
+text "At Glossier, we make products inspired by real life, embracing the ethos of Skin First. Makeup Second™. We believe beauty is about having fun, celebrating freedom, and being present. No matter where you are in your beauty journey, you look good."
+[e504] textbox "Email Address"
+text "Email Address"
+[e505] button "Submit"
+  text "Submit"
+text "You can unsubscribe anytime. For more details, review our"
+[e506] link "Privacy Policy"
+  text "Privacy Policy"
+alert (unnamed)
+heading "HOW CAN WE HELP?"
+  text "HOW CAN WE HELP?"
+[e507] link "Contact"
+  text "Contact"
+[e508] link "Returns & exchanges"
+  text "Returns & exchanges"
+[e509] link "Help & FAQ"
+  text "Help & FAQ"
+[e510] link "Student Discount"
+  text "Student Discount"
+[e511] link "International"
+  text "International"
+[e512] link "Responsible disclosure"
+  text "Responsible disclosure"
+[e513] link "Authorized retailers"
+  text "Authorized retailers"
+heading "ABOUT GLOSSIER"
+  text "ABOUT GLOSSIER"
+[e514] link "About Us"
+  text "About Us"
+[e515] link "Careers"
+  text "Careers"
+[e516] link "Into The Gloss"
+  text "Into The Gloss"
+[e517] link "Glossier Events"
+  text "Glossier Events"
+[e518] link "Glossier for Good"
+  text "Glossier for Good"
+[e519] link "G Membership"
+  text "G Membership"
+heading "STORES"
+  text "STORES"
+[e520] link "Find your store Opens in a new tab"
+  text "Find your store"
+  text "Opens in a new tab"
+heading "SOCIAL"
+  text "SOCIAL"
+[e521] link "Instagram Opens in a new tab"
+  text "Instagram"
+  text "Opens in a new tab"
+[e522] link "Pinterest Opens in a new tab"
+  text "Pinterest"
+  text "Opens in a new tab"
+[e523] link "Facebook Opens in a new tab"
+  text "Facebook"
+  text "Opens in a new tab"
+[e524] link "Youtube Opens in a new tab"
+  text "Youtube"
+  text "Opens in a new tab"
+[e525] link "TikTok Opens in a new tab"
+  text "TikTok"
+  text "Opens in a new tab"
+text "© 2026 Glossier. All rights reserved."
+[e526] link "Privacy Policy"
+  text "Privacy Policy"
+[e527] link "US State Privacy Notice"
+  text "US State Privacy Notice"
+[e528] link "Terms of Use"
+  text "Terms of Use"
+[e529] link "Accessibility"
+  text "Accessibility"
+[e530] link "Supply Chain Transparency"
+  text "Supply Chain Transparency"
+[e531] button "Your Privacy Choices"
+  text "Your Privacy Choices"
+[e532] link "https://glossier.com"
+[e533] link "https://glossier.com"
+alert (unnamed)
+  text "Translation missing:en.general.one_trust.screenreader_title"
+  dialog "Your Privacy"
+    heading "Your Privacy"
+      text "Your Privacy"
+    text "We use cookies and similar tracking technologies, including those provided by third parties, to view and retain your interactions on the site, help us improve our site, services, and marketing campaigns, and to serve you ads. For more information, view our"
+    [e534] link "Privacy Policy."
+      text "Privacy Policy."
+    [e535] button "Close"
+[e536] textbox (unnamed)
+[e537] textbox (unnamed)

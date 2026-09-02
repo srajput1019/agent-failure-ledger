@@ -1,0 +1,50 @@
+{
+  "site": "nike",
+  "label": "headless",
+  "sessionType": "automated / Playwright Chromium, HEADLESS, fresh profile",
+  "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+  "ranAt": "2026-09-01T23:37:19.817Z",
+  "sizeSelected": true,
+  "addToCartClicked": true,
+  "refusal": {
+    "hits": [
+      "/couldn'?t complete your request/i",
+      "/disable any browser extensions/i"
+    ],
+    "excerpt": "We Couldn't Complete Your Request"
+  },
+  "finalUrl": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+  "finalDialog": null,
+  "steps": [
+    {
+      "n": 1,
+      "what": "product page loaded",
+      "t": "2026-09-01T23:37:10.076Z",
+      "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+      "screenshot": "verify/nike-atc-headless-01.png",
+      "tree": "verify/nike-atc-headless-01-tree.txt",
+      "dialogText": null,
+      "treeLines": 211
+    },
+    {
+      "n": 2,
+      "what": "select size (M 9 / W 10\\.5) -> clicked",
+      "t": "2026-09-01T23:37:12.710Z",
+      "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+      "screenshot": "verify/nike-atc-headless-02.png",
+      "tree": "verify/nike-atc-headless-02-tree.txt",
+      "dialogText": null,
+      "treeLines": 211
+    },
+    {
+      "n": 3,
+      "what": "click add-to-cart (Add to Bag) -> clicked",
+      "t": "2026-09-01T23:37:19.816Z",
+      "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+      "screenshot": "verify/nike-atc-headless-03.png",
+      "tree": "verify/nike-atc-headless-03-tree.txt",
+      "dialogText": null,
+      "treeLines": 6
+    }
+  ]
+}

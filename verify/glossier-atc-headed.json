@@ -1,0 +1,47 @@
+{
+  "site": "glossier",
+  "label": "headed",
+  "sessionType": "automated / Playwright Chromium, HEADED, persistent profile",
+  "url": "https://www.glossier.com/products/boy-brow",
+  "ranAt": "2026-09-01T23:39:00.704Z",
+  "sizeSelected": true,
+  "addToCartClicked": true,
+  "refusal": {
+    "hits": [],
+    "excerpt": null
+  },
+  "finalUrl": "https://www.glossier.com/products/boy-brow?variant=43878814712053",
+  "finalDialog": "Search",
+  "steps": [
+    {
+      "n": 1,
+      "what": "product page loaded",
+      "t": "2026-09-01T23:38:50.453Z",
+      "url": "https://www.glossier.com/products/boy-brow",
+      "screenshot": "verify/glossier-atc-headed-01.png",
+      "tree": "verify/glossier-atc-headed-01-tree.txt",
+      "dialogText": "Search",
+      "treeLines": 1010
+    },
+    {
+      "n": 2,
+      "what": "select size (^Brown variant option$) -> clicked",
+      "t": "2026-09-01T23:38:53.388Z",
+      "url": "https://www.glossier.com/products/boy-brow?variant=43878814712053",
+      "screenshot": "verify/glossier-atc-headed-02.png",
+      "tree": "verify/glossier-atc-headed-02-tree.txt",
+      "dialogText": "Search",
+      "treeLines": 1010
+    },
+    {
+      "n": 3,
+      "what": "click add-to-cart (Add to bag) -> clicked",
+      "t": "2026-09-01T23:39:00.702Z",
+      "url": "https://www.glossier.com/products/boy-brow?variant=43878814712053",
+      "screenshot": "verify/glossier-atc-headed-03.png",
+      "tree": "verify/glossier-atc-headed-03-tree.txt",
+      "dialogText": "Search",
+      "treeLines": 1073
+    }
+  ]
+}

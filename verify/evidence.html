@@ -1,0 +1,130 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evidence and corrections log</title><style>
+:root{--paper:#F6F3EC;--ink:#161412;--ink-70:rgba(22,20,18,.7);--ink-45:rgba(22,20,18,.45);
+--ink-12:rgba(22,20,18,.12);--accent:#8B2D3A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+font:400 17px/1.62 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:64px 24px 120px}
+a{color:var(--accent)}
+h1{font:600 40px/1.15 Georgia,"Times New Roman",serif;letter-spacing:-.01em;margin:0 0 8px}
+h2{font:600 27px/1.25 Georgia,serif;margin:52px 0 12px;padding-top:18px;border-top:1px solid var(--ink-12)}
+h3{font:600 20px/1.3 Georgia,serif;margin:32px 0 8px}
+p{margin:0 0 15px}
+ul,ol{margin:0 0 15px 20px;padding:0}
+li{margin:0 0 7px}
+code{font:500 14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:rgba(22,20,18,.06);
+padding:2px 5px;border-radius:3px}
+pre{background:#fff;border:1px solid var(--ink-12);padding:16px 18px;overflow-x:auto;margin:0 0 18px}
+pre code{background:none;padding:0;font-size:13px;line-height:1.55}
+table{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:15px;display:block;overflow-x:auto}
+th{text-align:left;font:500 12px/1.4 ui-monospace,Menlo,monospace;text-transform:uppercase;
+letter-spacing:.05em;color:var(--ink-70);border-bottom:2px solid var(--ink);padding:0 12px 8px 0}
+td{border-bottom:1px solid var(--ink-12);padding:9px 12px 9px 0;vertical-align:top}
+hr{border:0;border-top:1px solid var(--ink-12);margin:36px 0}
+.kicker{font:500 12px/1.4 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em;
+color:var(--ink-70);margin:0 0 20px}
+.nav{margin:0 0 44px;font-size:15px}
+.nav a{margin-right:18px}
+.files{font:500 13px/1.7 ui-monospace,Menlo,monospace;columns:2;column-gap:32px}
+.files a{display:block;text-decoration:none;color:var(--ink-70)}
+.files a:hover{color:var(--accent)}
+.note{background:#fff;border-left:3px solid var(--accent);padding:14px 18px;margin:0 0 22px;font-size:15px}
+@media(max-width:640px){.wrap{padding:40px 18px 80px}h1{font-size:31px}.files{columns:1}}
+</style></head><body><div class="wrap"><p class="kicker">Agent Failure Ledger, issue 01</p><div class="nav"><a href="../index.html">The ledger</a><a href="evidence.html">Evidence and corrections</a><a href="review.html">Adversarial review</a><a href="index.html">Raw files</a></div><h1>Agent Failure Ledger, issue 01 - verification pass</h1>
+<p><strong>Run date:</strong> 2026-09-01 <strong>Method:</strong> every product page re-loaded and re-measured from scratch; the disputed add-to-cart sessions re-run; screenshot + filtered accessibility tree captured at every step. <strong>Session type used below:</strong> <em>automated</em> - Playwright Chromium 1280x860, headed with a persistent profile unless a row says headless. This matters, and it is the single biggest correction in this pass.</p>
+<p><strong>Rules kept, stated precisely (an earlier draft of this file overstated them):</strong> Add to cart only, never purchase. No CAPTCHA solving. No proxies. No user-agent spoofing.</p>
+<p>Three things that an earlier version of this paragraph wrongly denied, all of which matter:</p>
+<ol><li><strong>This verification pass ran on a fully stock automated session.</strong> <code>harness/verify.mjs</code> and</li></ol>
+<p>   <code>harness/atc.mjs</code> launch Playwright Chromium with no automation-hiding flags; there is no    <code>AutomationControlled</code>, <code>blink-features</code> or webdriver suppression anywhere in <code>harness/</code>.    That is stricter than the original 22 Aug runs, which <code>site/ledger.html</code> correctly discloses    were launched with Chromium&#x27;s AutomationControlled feature disabled, a partial disguise. The    Nike modal and the SSENSE 403 both reproduced anyway, which strengthens those findings.</p>
+<ol><li><strong>The run did not always stop at a block.</strong> On Amazon the page served a soft &quot;Continue shopping&quot;</li></ol>
+<p>   interstitial; <code>verify.mjs</code> clicks it and re-navigates to the target URL. That is pressing the    page&#x27;s own visible button, not solving a challenge, but it is a per-store assist that SSENSE    never received, and the asymmetry has to be disclosed rather than described as &quot;the run stopped.&quot;</p>
+<ol><li><strong>Amazon&#x27;s robots.txt disallows <code>ClaudeBot</code> and <code>Claude-User</code> by name</strong> (<code>traces/amazon-audit.json</code></li></ol>
+<p>   -&gt; <code>protocol.robots.bots</code>). The session was an unidentified browser, not a declared crawler, but    the tension is real and <code>site/ledger.html</code> already discloses it knowingly. Any published claim    about Amazon completing the task has to carry it.</p>
+<p><strong>Not measured, and load-bearing:</strong> no IP, ASN, network type, or VPN state was recorded for any run. Both anti-bot results are heavily IP-reputation driven, so this is the largest missing control in the study. See <code>REVIEW-FINDINGS.md</code>.</p>
+<hr>
+<h2>1. The session-type problem (the root cause of the disagreement)</h2>
+<p>The independent check and the original runs are <strong>both correct</strong>. They differ because they used different session types, and two of the six stores behave differently depending on that.</p>
+<table><thead><tr><th>Store</th><th>Normal human browser (independent check)</th><th>Automated session (this harness)</th></tr></thead><tbody><tr><td>Nike</td><td>Add to Bag works, no modal</td><td>Refused. &quot;We Couldn&#x27;t Complete Your Request&quot;</td></tr><tr><td>SSENSE</td><td>Product page loads and is readable</td><td>HTTP 403, Cloudflare &quot;Performing security verification&quot;</td></tr></tbody></table>
+<p>Neither result is a general fact about the brand. Both are facts about <em>a session type on a date</em>. Everything below is framed that way, which is the framing rule you set.</p>
+<hr>
+<h2>2. Fresh audit, all six pages</h2>
+<p>Measured 2026-09-01, automated headed session, one load each.</p>
+<table><thead><tr><th>Store</th><th>h1</th><th>unnamed buttons</th><th>unnamed interactive controls</th><th>img missing alt</th><th>complete Product schema</th><th>Score</th></tr></thead><tbody><tr><td>Glossier</td><td>1</td><td>0 / 231</td><td>2 / 465</td><td>1 / 206 (100%)</td><td>yes</td><td><strong>A / 100</strong></td></tr><tr><td>Nike</td><td>1</td><td>2 / 49</td><td>2 / 385</td><td>0 / 110 (100%)</td><td>yes</td><td><strong>A / 90</strong></td></tr><tr><td>Zara</td><td>1</td><td>0 / 164</td><td>0 / 209</td><td>1 / 96 (99%)</td><td>yes</td><td><strong>A / 100</strong></td></tr><tr><td>Allbirds</td><td>3</td><td>2 / 125</td><td>2 / 81</td><td>0 / 50 (100%)</td><td>yes</td><td><strong>C / 70</strong></td></tr><tr><td>Amazon</td><td>10</td><td>48 / 227</td><td>20 / 444</td><td>53 / 248 (79%)</td><td><strong>no - zero JSON-LD</strong></td><td><strong>F / 0</strong></td></tr><tr><td>SSENSE</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td><strong>not scored (HTTP 403)</strong></td></tr></tbody></table>
+<p>Raw records: <code>verify/&lt;store&gt;-headed-audit.json</code>, screenshots <code>verify/&lt;store&gt;-headed.png</code>, accessibility trees <code>verify/&lt;store&gt;-headed-tree.txt</code>.</p>
+<p>&quot;unnamed buttons&quot; is the number the score uses (<code>button, [role=button]</code> with no accessible name). &quot;unnamed interactive controls&quot; is the wider count across links, inputs, selects and ARIA widgets. Both are given because they differ a lot on Amazon and the difference is itself the story.</p>
+<hr>
+<h2>3. One scoring system</h2>
+<p>Two rubrics were in play. The carousel used the harness rubric (35/35/15/15) which produced 95 / 98 / 100 / 95 / 37. Your PRD used a different one (40/20/20/20, graded A-F).</p>
+<p><strong>Resolved in favour of the PRD rubric</strong>, because it is the one your own brief defines, the one the checker product would ship, and the one the independent check used. One band was ambiguous - the brief said &quot;some missing = 10 | many missing = 0&quot; without defining &quot;many&quot; - so it is now explicit. With that fixed, my measurements reproduce the independent check exactly: Allbirds C/70, Amazon F/0.</p>
+<pre><code>Agent-readability (open standards) - 100 points
+
+Structured data   40   complete Product schema (Product/ProductGroup + price + availability) = 40
+                       schema present but missing price or availability = 20
+                       none = 0
+Heading clarity   20   exactly one h1 = 20 | two = 10 | three or more, or zero = 0
+Named controls    20   zero unnamed buttons = 20 | one to three = 10 | four or more = 0
+Image alt text    20   &gt;=95% of img carry an alt attribute = 20 | 80-94% = 10 | under 80% = 0
+
+Grade   90+ A · 80-89 B · 70-79 C · 55-69 D · under 55 F
+Blocked pages are not scored.</code></pre>
+<p>Stored at <code>verify/_scores.json</code>. <strong>Every score in the carousel changes.</strong></p>
+<hr>
+<h2>4. Claim-by-claim corrections log</h2>
+<h3>CONFIRMED - keep, with dating</h3>
+<p><strong>C1. Nike refused at Add to Bag with a modal blaming browser extensions.</strong> Reproduced 2026-09-01 on both a headed and a headless automated session. Size M 9 / W 10.5 selected, Add to Bag clicked, modal returned. Not reproducible on a normal human session (independent check).</p>
+<ul><li><code>verify/nike-atc-headed-03.png</code>, <code>verify/nike-atc-headless-03.png</code></li><li><code>verify/nike-atc-headed.json</code> - <code>refusal.hits</code> matched &quot;couldn&#x27;t complete your request&quot; and</li></ul>
+<p>  &quot;disable any browser extensions&quot;</p>
+<ul><li>Earlier captures: <code>shots/nike-05.png</code> (2026-08-22), <code>shots/nike-rerun-03.png</code> (2026-08-27)</li></ul>
+<p><strong>C2. At the moment of refusal the accessibility tree collapses to five nodes.</strong> This is new and it is the strongest evidence in the deck. The whole page disappears from the tree and the agent&#x27;s entire world becomes:</p>
+<pre><code>[e1] button &quot;Close&quot;
+heading &quot;We Couldn&#x27;t Complete Your Request&quot;
+  text &quot;We Couldn&#x27;t Complete Your Request&quot;
+text &quot;Close this tab, disable any browser extensions (such as coupon or promo code tools), and reopen nike.com.&quot;
+[e2] link &quot;View Bag&quot;</code></pre>
+<p>210 lines before, 5 after. Byte-identical headed and headless.</p>
+<ul><li><code>verify/nike-atc-headed-01-tree.txt</code> vs <code>verify/nike-atc-headed-03-tree.txt</code></li></ul>
+<p><strong>C3. SSENSE never let the agent in, and the gate is not in the tree.</strong> 2026-09-01, headed and headless: HTTP 403, Cloudflare managed challenge, Ray IDs a348136bb899eef5 and a3481a9aea68c451. The tree contains the notice and two links - Cloudflare and Privacy. There is no &quot;verify you are human&quot; control in the tree at all, so an accessibility-tree agent cannot see the thing that would let it through. Even <code>/robots.txt</code> returns the challenge page.</p>
+<ul><li><code>verify/ssense-headed.png</code>, <code>verify/ssense-headed-tree.txt</code>, <code>verify/ssense-headless-tree.txt</code></li><li>Not reproducible on a normal human session (independent check). <strong>Must be framed as automated-session.</strong></li></ul>
+<p><strong>C4. Amazon&#x27;s size select has no accessible name and the listing preselects a variant.</strong> Confirmed fresh. Tree: <code>text &quot;Size:&quot;</code> then <code>[e165] combobox (unnamed) expanded=false</code>. The DOM select <code>#native_dropdown_selected_size_name</code> has <code>selectedIndex: 40</code>, <code>selectedText: &quot;10.5&quot;</code> on load, while the task asked for 9.</p>
+<ul><li><code>verify/amazon-headed-tree.txt:261-262</code>, <code>verify/amazon-headed-audit.json</code> → <code>metrics.selects[2]</code></li><li>The tree line quoted on slide 3 is verbatim authentic: <code>traces/amazon-snap-05.txt:278</code></li></ul>
+<p><strong>C5. Glossier opens on a default shade, and after choosing another, two radios both report checked.</strong> Confirmed fresh. Before: <code>[e20] radio &quot;Dark Brown variant option&quot; checked=true</code>. After clicking Brown: <code>[e20] radio &quot;Dark Brown variant option&quot; checked=true</code> <strong>and</strong> <code>[e23] radio &quot;Brown variant option&quot; checked=true</code></p>
+<ul><li>two members of one radio group both checked.</li><li><code>verify/glossier-atc-headed-01-tree.txt:47</code> vs <code>verify/glossier-atc-headed-02-tree.txt:47,50</code></li></ul>
+<p><strong>C6. Allbirds never says which size is selected.</strong> Confirmed fresh. <code>[e30] button &quot;Select size 9&quot;</code> is byte-identical before and after being clicked - no <code>checked</code>, <code>pressed</code> or <code>selected</code> state ever appears - even though the URL changes to <code>?size=9&amp;variant=33191200784464</code>, proving the click registered. The agent has no way to confirm it.</p>
+<ul><li><code>verify/allbirds-atc-headed-01-tree.txt:60</code> vs <code>verify/allbirds-atc-headed-02-tree.txt:60</code></li></ul>
+<p><strong>C7. Zara&#x27;s add-to-cart is the size picker; tapping a bare number is the commit.</strong> Confirmed fresh. Clicking &quot;Add CHUNKY CHELSEA BOOTS&quot; turns the button into <code>button &quot;Select a size CHUNKY CHELSEA BOOTS&quot;</code> and exposes <code>button &quot;6&quot;</code> … <code>button &quot;14&quot;</code>. Nothing in those names says that tapping one commits.</p>
+<ul><li><code>verify/zara-atc-headed-03-tree.txt:23,28-40</code></li></ul>
+<p><strong>C8. The Glossier llms.txt quote on the closing slide.</strong> Live and unchanged 2026-09-01, HTTP 200, <code>powered-by: Shopify</code>. Text confirmed at line 20 of <code>verify/glossier-llms.txt</code>.</p>
+<hr>
+<h3>WRONG - must change</h3>
+<p><strong>W1. &quot;Structured data: present on every page that reached the cart.&quot; - FALSE.</strong> Amazon reached the cart and has <strong>zero</strong> structured data: 0 JSON-LD blocks, 0 Product nodes, 0 microdata. The project&#x27;s own <code>traces/amazon-audit.json</code> recorded this on 2026-08-22 (<code>&quot;productNodes&quot;: 0</code>, <code>&quot;structuredData&quot;: 0</code>) so the slide contradicted its own evidence. Confirmed again 2026-09-01. The independent check is right. → Rewrite. The honest version is stronger: the page with <em>no</em> structured data is the one that sold the shoe, and the page with complete structured data is the one that refused.</p>
+<p><strong>W2. Every score in the carousel.</strong> 95 / 98 / 100 / 95 / 37 → <strong>A100 / A90 / A100 / C70 / F0</strong>, SSENSE not scored. &quot;A 98 was refused. A 37 sold the shoe.&quot; → &quot;An A was refused. An F sold the shoe.&quot;</p>
+<p><strong>W3. &quot;Eleven h1s&quot; on Amazon. - NOT A STABLE NUMBER.</strong> Measured 11 (2026-08-22, automated), 10 (2026-09-01, automated, stable across four consecutive reloads in one session), 14 (independent check, normal session). It varies by session and over time, not by reload. Swapping 11 for 14 would just be wrong on a different day. → Drop the exact count. Say one h1 on the refused page, ten on Amazon&#x27;s the day it was measured, and note that the count moves. <code>harness/_h1vol.mjs</code> holds the reload test.</p>
+<p><strong>W4. &quot;Control names: every control named on the refused page.&quot; - OVERSTATED.</strong> Nike has 2 unnamed buttons (the image carousel&#x27;s previous/next). It scores 10/20 on that check, not 20/20. The point still stands - no unnamed control had anything to do with the refusal - but the sentence as written is false. → Rewrite to &quot;two unnamed controls, both image-carousel arrows, neither involved in the refusal.&quot;</p>
+<p><strong>W5. Zara &quot;Pass&quot; is a 2026-08-22 result and did not reproduce.</strong> On 2026-09-01 Zara refused the add on an automated session: &quot;WARNING - Your request could not be completed at this time. Please try again later.&quot; Bag stayed at 0.</p>
+<ul><li><code>verify/zara-atc-headed-04.png</code>, <code>verify/zara-atc-headed.json</code></li></ul>
+<p>→ This is the clearest possible argument for your framing rule. Either date the Zara row or mark it mixed. It cannot be published as a flat &quot;Pass.&quot;</p>
+<hr>
+<h3>UNSUPPORTED - remove unless you re-shoot it</h3>
+<p><strong>U1. &quot;One agent, one item per store, every step logged. Add to cart, not purchase.&quot;</strong> Still true of the original run, but the deck now spans three dates (22 Aug, 27 Aug, 1 Sep) and several re-runs. The &quot;one afternoon&quot; line on slide 2 and slide 8 is no longer accurate. → Change to the date range, or scope the line to the original run explicitly.</p>
+<p><strong>U2. Slide 6 before/after modal redesign.</strong> This is your design work, not a measured claim, and needs no evidence - but the &quot;before&quot; panel should be labelled as a redraw of the 2026-09-01 capture rather than presented as a screenshot.</p>
+<hr>
+<h2>5. What did not change</h2>
+<p>The thesis survives intact, and is now better supported:</p>
+<ul><li>The page that scored <strong>A/90</strong> was refused. The page that scored <strong>F/0</strong> completed the task.</li><li>Not one of the four checks (structured data, headings, control names, alt text) touched the thing</li></ul>
+<p>  that actually blocked or steered the agent in any of the six runs.</p>
+<ul><li>What decided the outcome was the session type, and what the page had already selected before the</li></ul>
+<p>  agent could choose.</p>
+<h2>6. Files</h2>
+<pre><code>verify/_scores.json              final scores + the one rubric
+verify/_summary.json             every raw metric, all six
+verify/&lt;store&gt;-headed-audit.json fresh audit record
+verify/&lt;store&gt;-headed.png        page screenshot
+verify/&lt;store&gt;-headed-tree.txt   accessibility tree
+verify/&lt;store&gt;-atc-*.json        add-to-cart session record
+verify/&lt;store&gt;-atc-*-NN.png      per-step screenshot
+verify/&lt;store&gt;-atc-*-NN-tree.txt per-step accessibility tree
+harness/verify.mjs               the audit (both rubrics, block detection)
+harness/atc.mjs                  the add-to-cart re-run
+harness/_rescore.mjs             the single rubric, applied
+harness/_h1vol.mjs               the h1 stability test</code></pre></div></body></html>

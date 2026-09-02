@@ -1,0 +1,174 @@
+{
+  "site": "allbirds",
+  "auditedAt": "2026-08-22T20:15:15.640Z",
+  "title": "Men's Tree Runners - Grey - Everyday Sneakers | Allbirds",
+  "url": "https://www.allbirds.com/products/mens-tree-runners-mist",
+  "structured": {
+    "jsonLdBlocks": 2,
+    "productNodes": 30,
+    "productName": "Men's Tree Runner",
+    "productType": "ProductGroup",
+    "offers": [
+      {
+        "price": 100,
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": 100,
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": 100,
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": 100,
+        "currency": "USD",
+        "availability": "https://schema.org/OutOfStock"
+      },
+      {
+        "price": 100,
+        "currency": "USD",
+        "availability": "https://schema.org/OutOfStock"
+      },
+      {
+        "price": 100,
+        "currency": "USD",
+        "availability": "https://schema.org/OutOfStock"
+      }
+    ],
+    "microdataProducts": 0,
+    "hasVariants": true,
+    "schemaPrice": 100,
+    "priceMatch": true,
+    "domPricesSample": [
+      "$100",
+      "$1001",
+      "$14",
+      "$16",
+      "$18",
+      "$5.00"
+    ]
+  },
+  "headings": {
+    "h1Count": 3,
+    "firstH1": "Men's Tree Runner",
+    "h1InMain": true,
+    "firstH1NamesProduct": true,
+    "total": 72,
+    "skippedLevels": 1,
+    "navOrHeaderHeadings": 0,
+    "h1Texts": [
+      "Men's Tree Runner",
+      "Men's Tree Runner",
+      "Better Things in a Better Way"
+    ],
+    "visibleH1Count": 2
+  },
+  "controls": {
+    "visible": 113,
+    "unnamed": 2,
+    "unnamedInMain": 0,
+    "unnamedSample": [
+      {
+        "tag": "button",
+        "role": null,
+        "cls": "swiper-prev-button z-content absolute top-1/2 left-0 size-6 ",
+        "inMain": false
+      },
+      {
+        "tag": "button",
+        "role": null,
+        "cls": "swiper-next-button z-content absolute top-1/2 right-0 size-6",
+        "inMain": false
+      }
+    ],
+    "addToCart": [
+      {
+        "tag": "button",
+        "name": "Add+",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Add+",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Add+",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Add+",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Select A Size",
+        "disabled": true
+      }
+    ],
+    "variant": {
+      "count": 5,
+      "unnamed": 0,
+      "kinds": [
+        "select"
+      ]
+    }
+  },
+  "images": {
+    "visibleInMain": 18,
+    "noAltAttribute": 0,
+    "emptyAltDecorative": 8,
+    "junkAlt": 0,
+    "thumbControls": 16,
+    "thumbControlsUnnamed": 0
+  },
+  "platform": {
+    "shopify": true
+  },
+  "protocol": {
+    "robots": {
+      "status": 200,
+      "bots": {
+        "GPTBot": "unlisted",
+        "ChatGPT-User": "unlisted",
+        "OAI-SearchBot": "unlisted",
+        "ClaudeBot": "unlisted",
+        "Claude-User": "unlisted",
+        "PerplexityBot": "unlisted",
+        "Perplexity-User": "unlisted",
+        "Google-Extended": "unlisted",
+        "Amazonbot": "unlisted",
+        "Bytespider": "unlisted",
+        "CCBot": "unlisted"
+      }
+    },
+    "llmsTxt": {
+      "status": 200,
+      "ok": true,
+      "contentType": "text/markdown; charset=utf-8",
+      "sample": "# Agent Instructions — Allbirds This document describes how AI agents can interact with Allbirds's online store at https://www.allbirds.com. ## For Personal Sho"
+    },
+    "ucpWellKnown": {
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json; charset=utf-8",
+      "sample": "{\"ucp\":{\"version\":\"2026-04-08\",\"supported_versions\":{\"2026-04-08\":\"https:\\/\\/weareallbirds.myshopify.com\\/.well-known\\/ucp\\/2026-04-08\",\"2026-01-23\":\"https:\\/\\/"
+    },
+    "shopify": true
+  },
+  "score": {
+    "structuredData": 35,
+    "operability": 35,
+    "headings": 10,
+    "images": 15,
+    "total": 95
+  },
+  "rubric": "structuredData 35 (Product+Offer price/currency/availability, -10 if schema price not in DOM) | operability 35 (named add-to-cart 15, variant controls named 12, price as text 8) | headings 15 (first h1 names product 8, no skipped levels 4, no nav/header headings 3, -3 if 3+ h1) | images 15 (no img in main without alt attr 9, thumbnail controls named 6, -2 junk alt). alt=\"\" counts as compliant."
+}

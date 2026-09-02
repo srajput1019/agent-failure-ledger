@@ -1,0 +1,107 @@
+{
+  "site": "zara",
+  "label": "headed",
+  "sessionType": "automated / Playwright Chromium, HEADED, persistent profile",
+  "url": "https://www.zara.com/us/en/chunky-chelsea-boots-p12050820.html?v1=576910949",
+  "verifiedAt": "2026-09-01T23:32:12.748Z",
+  "navigation": {
+    "ok": true,
+    "status": 200,
+    "error": null
+  },
+  "blocked": false,
+  "gate": {
+    "title": "CHUNKY CHELSEA BOOTS - Black | ZARA United States",
+    "bodyChars": 1769,
+    "interactive": 346,
+    "challengeHits": [],
+    "bodySample": "SKIP TO MAIN CONTENT SEARCH BAG 0 LOG IN HELP CHUNKY CHELSEA BOOTS $ 89.90 BLACK2050/820/800 Add to cart ADD Description Chelsea boots. Smooth upper. Elastic side panels and back pull tab for easy slipping on. Round toe. Chunky sole with a treaded finish. PRODUCT MEASUREMENTS COMPOSITION & CARE CHECK IN-STORE AVAILABILITY SHIPPING, EXCHANGES AND RETURNS UPPER 75% polyurethane 18% polyester 7% elas",
+    "cfIframe": false
+  },
+  "metrics": {
+    "title": "CHUNKY CHELSEA BOOTS - Black | ZARA United States",
+    "url": "https://www.zara.com/us/en/chunky-chelsea-boots-p12050820.html?v1=576910949",
+    "structured": {
+      "jsonLdBlocks": 1,
+      "productNodes": 10,
+      "microdataProducts": 0,
+      "hasSchema": true,
+      "hasPrice": true,
+      "hasAvailability": true,
+      "completeProduct": true,
+      "offersSample": [
+        {
+          "price": "89.9",
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "price": "89.9",
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "price": "89.9",
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    },
+    "headings": {
+      "h1Count": 1,
+      "visibleH1Count": 1,
+      "totalHeadings": 23,
+      "h1Texts": [
+        "CHUNKY CHELSEA BOOTS"
+      ]
+    },
+    "controls": {
+      "totalButtons": 164,
+      "unnamedButtons": 0,
+      "visibleControls": 209,
+      "unnamedControls": 0,
+      "unnamedSample": []
+    },
+    "images": {
+      "total": 96,
+      "noAltAttribute": 1,
+      "visibleInMain": 83,
+      "mainNoAltAttribute": 0,
+      "pctWithAlt": 99
+    },
+    "selects": []
+  },
+  "prdScore": {
+    "structuredData": 40,
+    "headings": 20,
+    "namedControls": 20,
+    "imageAlt": 20,
+    "total": 100,
+    "grade": "A",
+    "rubric": "structured data 40 (schema+price+availability complete=40, schema only=20, none=0) | headings 20 (1 h1=20, 2=10, 3+=0) | named controls 20 (0 unnamed buttons=20, 1-3=10, 4+=0) | image alt 20 (>=95% have alt=20, some missing=10, many=0). Grade: 90+ A, 80-89 B, 70-79 C, 55-69 D, <55 F."
+  },
+  "treeLines": 371,
+  "artifacts": {
+    "screenshot": "verify/zara-headed.png",
+    "tree": "verify/zara-headed-tree.txt"
+  },
+  "finalScore": {
+    "structuredData": 40,
+    "headings": 20,
+    "namedControls": 20,
+    "imageAlt": 20,
+    "total": 100,
+    "grade": "A"
+  },
+  "finalRubric": {
+    "name": "Agent-readability (open standards), 100 points",
+    "bands": [
+      "Structured data 40 - complete Product schema (Product/ProductGroup + price + availability) = 40; schema present but missing price or availability = 20; none = 0",
+      "Heading clarity 20 - exactly one h1 = 20; two h1 = 10; three or more, or zero = 0",
+      "Named controls 20 - zero unnamed buttons = 20; one to three = 10; four or more = 0",
+      "Image alt text 20 - 95% or more of img elements carry an alt attribute = 20; 80 to 94% = 10; under 80% = 0"
+    ],
+    "grades": "90+ A, 80-89 B, 70-79 C, 55-69 D, under 55 F",
+    "note": "Measured on the rendered DOM of one product page, one load, automated Chromium. A blocked page is not scored."
+  }
+}

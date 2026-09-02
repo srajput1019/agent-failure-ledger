@@ -1,0 +1,148 @@
+{
+  "site": "glossier",
+  "auditedAt": "2026-08-22T20:13:25.745Z",
+  "title": "Boy Brow | Tinted Brow Gel – Glossier",
+  "url": "https://www.glossier.com/products/boy-brow",
+  "structured": {
+    "jsonLdBlocks": 1,
+    "productNodes": 1,
+    "productName": "Boy Brow",
+    "productType": "Product",
+    "offers": [
+      {
+        "price": "22",
+        "currency": "USD",
+        "availability": "InStock"
+      }
+    ],
+    "microdataProducts": 36,
+    "hasVariants": false,
+    "schemaPrice": "22",
+    "priceMatch": true,
+    "domPricesSample": [
+      "$40",
+      "$60",
+      "$110",
+      "$670",
+      "$1,32",
+      "$120"
+    ]
+  },
+  "headings": {
+    "h1Count": 1,
+    "firstH1": "Boy Brow",
+    "h1InMain": true,
+    "firstH1NamesProduct": true,
+    "total": 76,
+    "skippedLevels": 1,
+    "navOrHeaderHeadings": 5,
+    "h1Texts": [
+      "Boy Brow"
+    ]
+  },
+  "controls": {
+    "visible": 474,
+    "unnamed": 2,
+    "unnamedInMain": 0,
+    "unnamedSample": [
+      {
+        "tag": "input",
+        "role": null,
+        "cls": "",
+        "inMain": false
+      },
+      {
+        "tag": "input",
+        "role": null,
+        "cls": "",
+        "inMain": false
+      }
+    ],
+    "addToCart": [
+      {
+        "tag": "button",
+        "name": "Add to bag $22",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Add to bag",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Add to bag",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Add to bag",
+        "disabled": false
+      },
+      {
+        "tag": "button",
+        "name": "Add to bag",
+        "disabled": false
+      }
+    ],
+    "variant": {
+      "count": 263,
+      "unnamed": 0,
+      "kinds": [
+        "li[role=radio]",
+        "input[radio]",
+        "select"
+      ]
+    }
+  },
+  "images": {
+    "visibleInMain": 48,
+    "noAltAttribute": 0,
+    "emptyAltDecorative": 17,
+    "junkAlt": 0,
+    "thumbControls": 39,
+    "thumbControlsUnnamed": 0
+  },
+  "platform": {
+    "shopify": true
+  },
+  "protocol": {
+    "robots": {
+      "status": 200,
+      "bots": {
+        "GPTBot": "unlisted",
+        "ChatGPT-User": "unlisted",
+        "OAI-SearchBot": "unlisted",
+        "ClaudeBot": "unlisted",
+        "Claude-User": "unlisted",
+        "PerplexityBot": "unlisted",
+        "Perplexity-User": "unlisted",
+        "Google-Extended": "unlisted",
+        "Amazonbot": "unlisted",
+        "Bytespider": "unlisted",
+        "CCBot": "unlisted"
+      }
+    },
+    "llmsTxt": {
+      "status": 200,
+      "ok": true,
+      "contentType": "text/markdown; charset=utf-8",
+      "sample": "# Agent Instructions — Glossier This document describes how AI agents can interact with Glossier's online store at https://www.glossier.com. ## For Personal Sho"
+    },
+    "ucpWellKnown": {
+      "status": 200,
+      "ok": true,
+      "contentType": "application/json; charset=utf-8",
+      "sample": "{\"ucp\":{\"version\":\"2026-04-08\",\"supported_versions\":{\"2026-04-08\":\"https:\\/\\/glossier-admin.myshopify.com\\/.well-known\\/ucp\\/2026-04-08\",\"2026-01-23\":\"https:\\/\\"
+    },
+    "shopify": true
+  },
+  "score": {
+    "structuredData": 35,
+    "operability": 35,
+    "headings": 10,
+    "images": 15,
+    "total": 95
+  },
+  "rubric": "structuredData 35 (Product+Offer price/currency/availability, -10 if schema price not in DOM) | operability 35 (named add-to-cart 15, variant controls named 12, price as text 8) | headings 15 (first h1 names product 8, no skipped levels 4, no nav/header headings 3, -3 if 3+ h1) | images 15 (no img in main without alt attr 9, thumbnail controls named 6, -2 junk alt). alt=\"\" counts as compliant."
+}

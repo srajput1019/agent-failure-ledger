@@ -1,0 +1,37 @@
+{
+  "site": "ssense",
+  "label": "headless",
+  "sessionType": "automated / Playwright Chromium, HEADLESS, fresh profile",
+  "url": "https://www.ssense.com/en-us/men?q=rick%20owens%20sneakers",
+  "verifiedAt": "2026-09-01T23:37:45.681Z",
+  "navigation": {
+    "ok": true,
+    "status": 403,
+    "error": null
+  },
+  "interstitial": {
+    "seen": false,
+    "clicked": false,
+    "label": null
+  },
+  "blocked": true,
+  "gate": {
+    "title": "Just a moment...",
+    "bodyChars": 262,
+    "interactive": 3,
+    "challengeHits": [
+      "just a moment",
+      "performing security verification",
+      "security verification"
+    ],
+    "bodySample": "www.ssense.com Performing security verification This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot. Ray ID: a3481a9aea68c451 Performance and Security by Cloudflare Privacy",
+    "cfIframe": false
+  },
+  "metrics": null,
+  "prdScore": null,
+  "treeLines": 12,
+  "artifacts": {
+    "screenshot": "verify/ssense-headless.png",
+    "tree": "verify/ssense-headless-tree.txt"
+  }
+}

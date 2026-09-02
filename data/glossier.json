@@ -1,0 +1,78 @@
+{
+  "site": "glossier",
+  "url": "https://www.glossier.com/products/boy-brow",
+  "task": "Find the price of Boy Brow, choose the shade Brown, and add it to the bag.",
+  "agent": "Claude Fable 5 (claude-fable-5) operating via Claude Code",
+  "perception": "Chromium accessibility tree over CDP (Accessibility.getFullAXTree), filtered to rendered, non-hidden nodes; actionable nodes get refs. Same representation class Playwright MCP sends to agents.",
+  "actuation": "Playwright click/fill/selectOption on the resolved DOM node",
+  "browser": "Chromium 1223 (Playwright 1.60), headed, persistent profile, 1280x860",
+  "started": "2026-08-22T19:58:15.349Z",
+  "steps": [
+    {
+      "n": 1,
+      "t": "2026-08-22T19:58:20.345Z",
+      "url": "https://www.glossier.com/products/boy-brow",
+      "action": {
+        "type": "goto",
+        "url": "https://www.glossier.com/products/boy-brow"
+      },
+      "reasoning": "Open the product page given in the task.",
+      "screenshot": "shots/glossier-01.png",
+      "snapshotLines": 1021,
+      "actionableRefs": 553
+    },
+    {
+      "n": 2,
+      "t": "2026-08-22T19:58:34.109Z",
+      "url": "https://www.glossier.com/products/boy-brow?variant=43878814712053",
+      "action": {
+        "type": "click",
+        "ref": "e24",
+        "role": "radio",
+        "name": "Brown variant option"
+      },
+      "reasoning": "Task asks for shade Brown. The shade picker is a radio group; 'Dark Brown variant option' is checked by default, so I must explicitly select 'Brown variant option' (e24). Note the nested duplicate radios (e24 wraps e25): each shade appears twice in the tree.",
+      "screenshot": "shots/glossier-02.png",
+      "snapshotLines": 1016,
+      "actionableRefs": 552,
+      "result": "ok"
+    },
+    {
+      "n": 3,
+      "t": "2026-08-22T19:58:44.453Z",
+      "url": "https://www.glossier.com/products/boy-brow?variant=43878814712053",
+      "action": {
+        "type": "click",
+        "ref": "e45",
+        "role": "button",
+        "name": "Add to bag $22"
+      },
+      "reasoning": "Visible label now reads 'Brown' and the inner Brown radio (e25) is checked, but the outer 'Dark Brown variant option' (e22) STILL reports checked=true. Two radios in one group both claim checked. I trust the label text 'Brown' and proceed. Price is in the button name: 'Add to bag $22'. Clicking it.",
+      "screenshot": "shots/glossier-03.png",
+      "snapshotLines": 1082,
+      "actionableRefs": 576,
+      "result": "ok"
+    },
+    {
+      "n": 4,
+      "t": "2026-08-22T19:58:51.794Z",
+      "url": "https://www.glossier.com/products/boy-brow?variant=43878814712053",
+      "action": {
+        "type": "observe"
+      },
+      "reasoning": "Bag count went 0 -> 1 and the cart drawer opened. Verifying the line item shade and price before declaring success.",
+      "screenshot": "shots/glossier-04.png",
+      "snapshotLines": 1078,
+      "actionableRefs": 574
+    }
+  ],
+  "outcome": {
+    "status": "pass",
+    "failedAt": null,
+    "reason": "Cart shows Boy Brow, shade Brown, $22, qty 1. Task complete in 3 actions. Friction noted: duplicate nested radios per shade with contradictory checked state after selection; an unnamed purchase-frequency combobox in the cart drawer.",
+    "finalUrl": "https://www.glossier.com/products/boy-brow?variant=43878814712053",
+    "finalScreenshot": "shots/glossier-final.png",
+    "finished": "2026-08-22T19:58:59.593Z",
+    "stepCount": 4
+  }
+}

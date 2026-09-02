@@ -1,0 +1,137 @@
+{
+  "site": "zara",
+  "auditedAt": "2026-08-22T20:15:23.361Z",
+  "title": "CHUNKY CHELSEA BOOTS - Black | ZARA United States",
+  "url": "https://www.zara.com/us/en/chunky-chelsea-boots-p12050820.html?v1=576910949",
+  "structured": {
+    "jsonLdBlocks": 1,
+    "productNodes": 10,
+    "productName": "CHUNKY CHELSEA BOOTS",
+    "productType": "ProductGroup",
+    "offers": [
+      {
+        "price": "89.9",
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": "89.9",
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": "89.9",
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": "89.9",
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": "89.9",
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "price": "89.9",
+        "currency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    ],
+    "microdataProducts": 0,
+    "hasVariants": true,
+    "schemaPrice": "89.9",
+    "priceMatch": true,
+    "domPricesSample": [
+      "$ 89.90",
+      "$ 45.90",
+      "$ 29.90",
+      "$ 39.90",
+      "$ 99.90",
+      "$ 79.90"
+    ]
+  },
+  "headings": {
+    "h1Count": 1,
+    "firstH1": "CHUNKY CHELSEA BOOTS",
+    "h1InMain": true,
+    "firstH1NamesProduct": true,
+    "total": 23,
+    "skippedLevels": 0,
+    "navOrHeaderHeadings": 0,
+    "h1Texts": [
+      "CHUNKY CHELSEA BOOTS"
+    ],
+    "visibleH1Count": 1
+  },
+  "controls": {
+    "visible": 209,
+    "unnamed": 0,
+    "unnamedInMain": 0,
+    "unnamedSample": [],
+    "addToCart": [
+      {
+        "tag": "button",
+        "name": "Add CHUNKY CHELSEA BOOTS",
+        "disabled": false
+      }
+    ],
+    "variant": {
+      "count": 0,
+      "unnamed": 0,
+      "kinds": []
+    }
+  },
+  "images": {
+    "visibleInMain": 83,
+    "noAltAttribute": 0,
+    "emptyAltDecorative": 0,
+    "junkAlt": 0,
+    "thumbControls": 82,
+    "thumbControlsUnnamed": 0
+  },
+  "platform": {
+    "shopify": false
+  },
+  "protocol": {
+    "robots": {
+      "status": 200,
+      "bots": {
+        "GPTBot": "unlisted",
+        "ChatGPT-User": "unlisted",
+        "OAI-SearchBot": "unlisted",
+        "ClaudeBot": "unlisted",
+        "Claude-User": "unlisted",
+        "PerplexityBot": "unlisted",
+        "Perplexity-User": "unlisted",
+        "Google-Extended": "unlisted",
+        "Amazonbot": "unlisted",
+        "Bytespider": "unlisted",
+        "CCBot": "unlisted"
+      }
+    },
+    "llmsTxt": {
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sample": ""
+    },
+    "ucpWellKnown": {
+      "status": 200,
+      "ok": true,
+      "contentType": "application/octet-stream",
+      "sample": "{ \"ucp\": { \"version\": \"2026-04-08\", \"services\": { \"dev.ucp.shopping\": [ { \"version\": \"2026-04-08\", \"spec\": \"https://ucp.dev/specification/overview\", \"transport\""
+    },
+    "shopify": false
+  },
+  "score": {
+    "structuredData": 35,
+    "operability": 35,
+    "headings": 15,
+    "images": 15,
+    "total": 100
+  },
+  "rubric": "structuredData 35 (Product+Offer price/currency/availability, -10 if schema price not in DOM) | operability 35 (named add-to-cart 15, variant controls named 12, price as text 8) | headings 15 (first h1 names product 8, no skipped levels 4, no nav/header headings 3, -3 if 3+ h1) | images 15 (no img in main without alt attr 9, thumbnail controls named 6, -2 junk alt). alt=\"\" counts as compliant."
+}

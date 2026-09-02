@@ -1,0 +1,82 @@
+{
+  "site": "allbirds",
+  "url": "https://www.allbirds.com/products/mens-tree-runners",
+  "task": "Find the price of the Men's Tree Runner, choose size 9, and add it to the cart.",
+  "agent": "Claude Fable 5 (claude-fable-5) operating via Claude Code",
+  "perception": "Chromium accessibility tree over CDP (Accessibility.getFullAXTree), filtered to rendered, non-hidden nodes; actionable nodes get refs. Same representation class Playwright MCP sends to agents.",
+  "actuation": "Playwright click/fill/selectOption on the resolved DOM node",
+  "browser": "Chromium 1223 (Playwright 1.60), headed, persistent profile, 1280x860",
+  "started": "2026-08-22T20:04:53.542Z",
+  "steps": [
+    {
+      "n": 1,
+      "t": "2026-08-22T20:04:57.936Z",
+      "url": "https://www.allbirds.com/collections/mens",
+      "action": {
+        "type": "goto",
+        "url": "https://www.allbirds.com/products/mens-tree-runners"
+      },
+      "reasoning": "Open the product page given in the task.",
+      "screenshot": "shots/allbirds-01.png",
+      "snapshotLines": 278,
+      "actionableRefs": 141
+    },
+    {
+      "n": 2,
+      "t": "2026-08-22T20:05:12.443Z",
+      "url": "https://www.allbirds.com/products/mens-tree-runners-mist",
+      "action": {
+        "type": "click",
+        "ref": "e35",
+        "role": "link",
+        "name": "MEN'S TREE RUNNER Mist $100"
+      },
+      "reasoning": "The product URL redirected to the 'Men's Shoes' collection (h1). Cards expose name, color and price in the link name. 'MEN'S TREE RUNNER Mist $100' (e35) is the Tree Runner; 'TREE RUNNER NZ' is a different model. Opening e35. Two unnamed buttons (e1, e2) sit at the top of the tree, likely announcement-bar arrows.",
+      "screenshot": "shots/allbirds-02.png",
+      "snapshotLines": 275,
+      "actionableRefs": 118,
+      "result": "ok"
+    },
+    {
+      "n": 3,
+      "t": "2026-08-22T20:05:25.661Z",
+      "url": "https://www.allbirds.com/products/mens-tree-runners-mist?size=9&variant=33191200784464",
+      "action": {
+        "type": "click",
+        "ref": "e30",
+        "role": "button",
+        "name": "Select size 9"
+      },
+      "reasoning": "PDP: h1 'Men's Tree Runner', size buttons named 'Select size 8'..'Select size 14' under a 'MEN'S SIZES' label, and a disabled 'SELECT A SIZE' button where add-to-cart should be. Selecting 'Select size 9' (e30).",
+      "screenshot": "shots/allbirds-03.png",
+      "snapshotLines": 277,
+      "actionableRefs": 118,
+      "result": "ok"
+    },
+    {
+      "n": 4,
+      "t": "2026-08-22T20:05:38.855Z",
+      "url": "https://www.allbirds.com/products/mens-tree-runners-mist?size=9&variant=33191200784464",
+      "action": {
+        "type": "click",
+        "ref": "e37",
+        "role": "button",
+        "name": "ADD TO CART - $100"
+      },
+      "reasoning": "After clicking 'Select size 9', the disabled 'SELECT A SIZE' button became 'ADD TO CART - $100', which is my only evidence the size registered: the size button itself exposes no pressed/selected/checked state. Clicking ADD TO CART (e37).",
+      "screenshot": "shots/allbirds-04.png",
+      "snapshotLines": 359,
+      "actionableRefs": 173,
+      "result": "ok"
+    }
+  ],
+  "outcome": {
+    "status": "pass",
+    "failedAt": null,
+    "reason": "Cart drawer shows CART (1), MEN'S TREE RUNNER, Size: 9, $100. 3 actions after a redirect. Friction: product URL redirected to a collection page; size buttons expose no pressed/selected state so the only confirmation is the add-to-cart label changing; two unnamed buttons in the announcement bar; cross-sell size comboboxes in the cart drawer are unlabeled by product.",
+    "finalUrl": "https://www.allbirds.com/products/mens-tree-runners-mist?size=9&variant=33191200784464",
+    "finalScreenshot": "shots/allbirds-final.png",
+    "finished": "2026-08-22T20:05:51.929Z",
+    "stepCount": 4
+  }
+}

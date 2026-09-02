@@ -1,0 +1,229 @@
+{
+  "site": "glossier",
+  "label": "headed",
+  "sessionType": "automated / Playwright Chromium, HEADED, persistent profile",
+  "url": "https://www.glossier.com/products/boy-brow",
+  "verifiedAt": "2026-09-01T23:31:40.166Z",
+  "navigation": {
+    "ok": true,
+    "status": 200,
+    "error": null
+  },
+  "blocked": false,
+  "gate": {
+    "title": "Boy Brow | Tinted Brow Gel – Glossier",
+    "bodyChars": 7494,
+    "interactive": 912,
+    "challengeHits": [],
+    "bodySample": "Skip To Main Get a free Applebaby Keychain when you buy the Balm Dotcom Quintet or Balm Dotcom Trio! Free standard shipping on orders $40+ Previous Slide Next Slide Pause Slideshow GLOSSIER YOU LOOK GOOD. SKINCARE MAKEUP BALMS BODY FRAGRANCE GLOSSIER GOODS SETS SHOP ALL US STORES LOG IN BAG (0) TOGGLE BAG Search Boy Brow Grooming pomade 4.4163384 star rating (7112) BEST SELLER Dark Brown Purchase ",
+    "cfIframe": false
+  },
+  "metrics": {
+    "title": "Boy Brow | Tinted Brow Gel – Glossier",
+    "url": "https://www.glossier.com/products/boy-brow",
+    "structured": {
+      "jsonLdBlocks": 1,
+      "productNodes": 1,
+      "microdataProducts": 36,
+      "hasSchema": true,
+      "hasPrice": true,
+      "hasAvailability": true,
+      "completeProduct": true,
+      "offersSample": [
+        {
+          "price": "22",
+          "currency": "USD",
+          "availability": "InStock"
+        }
+      ]
+    },
+    "headings": {
+      "h1Count": 1,
+      "visibleH1Count": 1,
+      "totalHeadings": 75,
+      "h1Texts": [
+        "Boy Brow"
+      ]
+    },
+    "controls": {
+      "totalButtons": 231,
+      "unnamedButtons": 0,
+      "visibleControls": 465,
+      "unnamedControls": 2,
+      "unnamedSample": [
+        {
+          "tag": "input",
+          "role": null,
+          "cls": ""
+        },
+        {
+          "tag": "input",
+          "role": null,
+          "cls": ""
+        }
+      ]
+    },
+    "images": {
+      "total": 206,
+      "noAltAttribute": 1,
+      "visibleInMain": 48,
+      "mainNoAltAttribute": 0,
+      "pctWithAlt": 100
+    },
+    "selects": [
+      {
+        "name": "Dark Brown Brown Auburn Blond Grey Clear Black",
+        "hasAccessibleName": true,
+        "value": "43886803190005",
+        "selectedIndex": 0,
+        "selectedText": "Dark Brown",
+        "optionCount": 7,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "How often do you want to re-up your subscription?",
+        "hasAccessibleName": true,
+        "value": "10207461621",
+        "selectedIndex": 2,
+        "selectedText": "Ship every 3 months",
+        "optionCount": 5,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "How often do you want to re-up your subscription?",
+        "hasAccessibleName": true,
+        "value": "10207461621",
+        "selectedIndex": 2,
+        "selectedText": "Ship every 3 months",
+        "optionCount": 5,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "How often do you want to re-up your subscription?",
+        "hasAccessibleName": true,
+        "value": "10207461621",
+        "selectedIndex": 2,
+        "selectedText": "Ship every 3 months",
+        "optionCount": 5,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "How often do you want to re-up your subscription?",
+        "hasAccessibleName": true,
+        "value": "10207461621",
+        "selectedIndex": 2,
+        "selectedText": "Ship every 3 months",
+        "optionCount": 5,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "How often do you want to re-up your subscription?",
+        "hasAccessibleName": true,
+        "value": "10207461621",
+        "selectedIndex": 2,
+        "selectedText": "Ship every 3 months",
+        "optionCount": 5,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "How often do you want to re-up your subscription?",
+        "hasAccessibleName": true,
+        "value": "10207461621",
+        "selectedIndex": 2,
+        "selectedText": "Ship every 3 months",
+        "optionCount": 5,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "How often do you want to re-up your subscription?",
+        "hasAccessibleName": true,
+        "value": "10207461621",
+        "selectedIndex": 2,
+        "selectedText": "Ship every 3 months",
+        "optionCount": 5,
+        "id": null,
+        "nearSizeWord": false
+      },
+      {
+        "name": "CombinationDryNormalOily",
+        "hasAccessibleName": true,
+        "value": "",
+        "selectedIndex": 0,
+        "selectedText": null,
+        "optionCount": 5,
+        "id": "writeReviewSkinType",
+        "nearSizeWord": false
+      },
+      {
+        "name": "LightMediumDeepRich",
+        "hasAccessibleName": true,
+        "value": "",
+        "selectedIndex": 0,
+        "selectedText": null,
+        "optionCount": 5,
+        "id": "writeReviewSkinShade",
+        "nearSizeWord": false
+      },
+      {
+        "name": "Newest firstHighest ratingLowest ratingMost helpful",
+        "hasAccessibleName": true,
+        "value": "Newest first",
+        "selectedIndex": 0,
+        "selectedText": "Newest first",
+        "optionCount": 4,
+        "id": "pvReviewsSort",
+        "nearSizeWord": false
+      },
+      {
+        "name": "Albania / ALL Andorra / EUR Angola / AOA Anguilla / XCD Antigua & Barbuda / XCD Armenia / AMD Aruba / AWG Australia / AUD Austria / EUR Azerbaijan / AZN Bahamas / BSD Bahrain / USD Bangladesh / BDT Barbados / BBD Belgium / EUR Belize / BZD Benin / XOF Bermuda / USD Bhutan / USD Bolivia / BOB Bosnia & Herzegovina / BAM Botswana / BWP Brazil / BRL British Virgin Islands / USD Brunei / BND Bulgaria / EUR Burkina Faso / XOF Burundi / BIF Cambodia / KHR Cameroon / XAF Canada (fr) / CAD Canada (en) / CAD Cape Verde / CVE Cayman Islands / KYD Chad / XAF China / CNY Colombia / COP Comoros / KMF Congo - Brazzaville / XAF Cook Islands / NZD Costa Rica / CRC Côte d’Ivoire / XOF Croatia / EUR Curaçao / USD Cyprus / EUR Czechia / CZK Denmark / DKK Djibouti / DJF Dominica / XCD Dominican Republic / DOP Ecuador / USD Egypt / EGP El Salvador / USD Equatorial Guinea / XAF Estonia / EUR Eswatini / SZL Falkland Islands / FKP Faroe Islands / DKK Fiji / FJD Finland / EUR France / EUR French Guiana / EUR French Polynesia / XPF Gabon / USD Gambia / GMD Georgia / GEL Germany / EUR Ghana / USD Gibraltar / GBP Greece / EUR Greenland / DKK Grenada / XCD Guadeloupe / EUR Guatemala / GTQ Guernsey / GBP Guinea / GNF Guinea-Bissau / XOF Guyana / GYD Haiti / HTG Honduras / HNL Hong Kong SAR / HKD Hungary / HUF Iceland / ISK India / INR Ireland / EUR Isle of Man / GBP Israel / ILS Italy / EUR Jamaica / JMD Japan / JPY Jersey / GBP Jordan / USD Kazakhstan / KZT Kenya / KES Kiribati / USD Kuwait / USD Kyrgyzstan / KGS Laos / LAK Latvia / EUR Lesotho / LSL Liberia / LRD Liechtenstein / CHF Lithuania / EUR Luxembourg / EUR Macao SAR / MOP Madagascar / USD Malawi / MWK Maldives / MVR Malta / EUR Martinique / EUR Mauritania / USD Mauritius / MUR Mayotte / EUR Mexico / MXN Moldova / MDL Monaco / EUR Mongolia / MNT Montenegro / EUR Montserrat / XCD Morocco / MAD Mozambique / MZN Namibia / NAD Nauru / AUD Nepal / NPR Netherlands / EUR New Caledonia / XPF New Zealand / NZD Nigeria / NGN Niue / NZD North Macedonia / MKD Norway / NOK Oman / USD Pakistan / PKR Panama / USD Papua New Guinea / PGK Paraguay / PYG Philippines / PHP Poland / PLN Portugal / EUR Qatar / QAR Réunion / EUR Romania / RON Rwanda / RWF Samoa / WST San Marino / EUR São Tomé & Príncipe / STD Saudi Arabia / SAR Senegal / XOF Serbia / RSD Seychelles / SCR Sierra Leone / SLL Singapore / SGD Sint Maarten / USD Slovakia / EUR Slovenia / EUR Solomon Islands / SBD South Africa / ZAR South Korea / KRW Spain / EUR Sri Lanka / LKR St. Barthélemy / EUR St. Helena / SHP St. Kitts & Nevis / XCD St. Lucia / XCD St. Martin / EUR St. Vincent & Grenadines / XCD Suriname / SRD Sweden / SEK Switzerland / CHF Taiwan / TWD Tanzania / TZS Thailand / THB Timor-Leste / USD Togo / XOF Tonga / TOP Trinidad & Tobago / TTD Tunisia / USD Turkmenistan / USD Turks & Caicos Islands / USD Tuvalu / AUD Uganda / UGX United Arab Emirates / AED United Kingdom / GBP United States / USD Uzbekistan / UZS Vanuatu / VUV Vatican City / EUR Wallis & Futuna / XPF Zambia / ZMW",
+        "hasAccessibleName": true,
+        "value": "US",
+        "selectedIndex": 183,
+        "selectedText": "United States / USD",
+        "optionCount": 189,
+        "id": null,
+        "nearSizeWord": false
+      }
+    ]
+  },
+  "prdScore": {
+    "structuredData": 40,
+    "headings": 20,
+    "namedControls": 20,
+    "imageAlt": 20,
+    "total": 100,
+    "grade": "A",
+    "rubric": "structured data 40 (schema+price+availability complete=40, schema only=20, none=0) | headings 20 (1 h1=20, 2=10, 3+=0) | named controls 20 (0 unnamed buttons=20, 1-3=10, 4+=0) | image alt 20 (>=95% have alt=20, some missing=10, many=0). Grade: 90+ A, 80-89 B, 70-79 C, 55-69 D, <55 F."
+  },
+  "treeLines": 1032,
+  "artifacts": {
+    "screenshot": "verify/glossier-headed.png",
+    "tree": "verify/glossier-headed-tree.txt"
+  },
+  "finalScore": {
+    "structuredData": 40,
+    "headings": 20,
+    "namedControls": 20,
+    "imageAlt": 20,
+    "total": 100,
+    "grade": "A"
+  },
+  "finalRubric": {
+    "name": "Agent-readability (open standards), 100 points",
+    "bands": [
+      "Structured data 40 - complete Product schema (Product/ProductGroup + price + availability) = 40; schema present but missing price or availability = 20; none = 0",
+      "Heading clarity 20 - exactly one h1 = 20; two h1 = 10; three or more, or zero = 0",
+      "Named controls 20 - zero unnamed buttons = 20; one to three = 10; four or more = 0",
+      "Image alt text 20 - 95% or more of img elements carry an alt attribute = 20; 80 to 94% = 10; under 80% = 0"
+    ],
+    "grades": "90+ A, 80-89 B, 70-79 C, 55-69 D, under 55 F",
+    "note": "Measured on the rendered DOM of one product page, one load, automated Chromium. A blocked page is not scored."
+  }
+}

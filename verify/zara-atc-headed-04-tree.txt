@@ -1,0 +1,6 @@
+alertdialog "WARNING"
+  heading "WARNING"
+    text "WARNING"
+  text "Your request could not be completed at this time. Please try again later."
+  [e1] button "CLOSE"
+    text "CLOSE"

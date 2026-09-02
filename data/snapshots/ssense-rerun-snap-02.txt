@@ -1,0 +1,12 @@
+heading "www.ssense.com" h1
+  text "www.ssense.com"
+heading "Performing security verification" h2
+  text "Performing security verification"
+text "This website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot."
+text "Ray ID:"
+text "a31de4c95c756e08"
+text "Performance and Security by"
+[e1] link "Cloudflare, opens in a new tab"
+  text "Cloudflare"
+[e2] link "Privacy, opens in a new tab"
+  text "Privacy"

@@ -1,0 +1,206 @@
+{
+  "site": "amazon",
+  "auditedAt": "2026-08-22T20:15:32.078Z",
+  "title": "Amazon.com | Under Armour Men's Charged Assert 10, (004) Black/Black/Black, 10.5, US | Road Running Shoes | Road Running",
+  "url": "https://www.amazon.com/dp/B09XBV1X8S?th=1&psc=1",
+  "structured": {
+    "jsonLdBlocks": 0,
+    "productNodes": 0,
+    "offers": [],
+    "microdataProducts": 0,
+    "hasVariants": false,
+    "priceMatch": null,
+    "domPricesSample": [
+      "$10",
+      "$63.08",
+      "$75.00",
+      "$52.99",
+      "$58.49",
+      "$59.95"
+    ]
+  },
+  "headings": {
+    "h1Count": 11,
+    "firstH1": "Product summary presents key product information Keyboard shortcut shift + alt + opt + D",
+    "h1InMain": true,
+    "firstH1NamesProduct": null,
+    "total": 100,
+    "skippedLevels": 9,
+    "navOrHeaderHeadings": 4,
+    "h1Texts": [
+      "Subtotal",
+      "Product summary presents key product information Keyboard sh",
+      "Under Armour Men's Charged Assert 10 Shoes",
+      "Product details",
+      "Product specifications",
+      "Style",
+      "Features & Specs",
+      "Item details",
+      "Materials & Care",
+      "Measurements",
+      "Product Summary: Under Armour Men's Charged Assert 10 Shoes "
+    ],
+    "visibleH1Count": 4
+  },
+  "controls": {
+    "visible": 444,
+    "unnamed": 20,
+    "unnamedInMain": 20,
+    "unnamedSample": [
+      {
+        "tag": "div",
+        "role": "button",
+        "cls": "ssf-background ssf-bg-count",
+        "inMain": true
+      },
+      {
+        "tag": "input",
+        "role": "radio",
+        "cls": "a-button-input",
+        "inMain": true
+      },
+      {
+        "tag": "input",
+        "role": "radio",
+        "cls": "a-button-input",
+        "inMain": true
+      },
+      {
+        "tag": "input",
+        "role": "radio",
+        "cls": "a-button-input",
+        "inMain": true
+      },
+      {
+        "tag": "input",
+        "role": "radio",
+        "cls": "a-button-input",
+        "inMain": true
+      },
+      {
+        "tag": "input",
+        "role": "radio",
+        "cls": "a-button-input",
+        "inMain": true
+      },
+      {
+        "tag": "input",
+        "role": "radio",
+        "cls": "a-button-input",
+        "inMain": true
+      },
+      {
+        "tag": "input",
+        "role": "radio",
+        "cls": "a-button-input",
+        "inMain": true
+      },
+      {
+        "tag": "a",
+        "role": null,
+        "cls": "a-align-center a-link-normal aok-inline-block",
+        "inMain": true
+      },
+      {
+        "tag": "a",
+        "role": null,
+        "cls": "sl-carousel-cards-product-image-container sl-image-focus",
+        "inMain": true
+      },
+      {
+        "tag": "a",
+        "role": null,
+        "cls": "sl-carousel-cards-product-image-container sl-image-focus",
+        "inMain": true
+      },
+      {
+        "tag": "a",
+        "role": null,
+        "cls": "sl-carousel-cards-product-image-container sl-image-focus",
+        "inMain": true
+      }
+    ],
+    "addToCart": [
+      {
+        "tag": "button",
+        "name": "Add to cart, shift, option, K",
+        "disabled": false
+      },
+      {
+        "tag": "input",
+        "name": "Add to cart",
+        "disabled": false
+      },
+      {
+        "tag": "input",
+        "name": "Buy Now",
+        "disabled": false
+      },
+      {
+        "tag": "a",
+        "name": "Add to List",
+        "disabled": false
+      }
+    ],
+    "variant": {
+      "count": 28,
+      "unnamed": 7,
+      "kinds": [
+        "select",
+        "input[role=radio]",
+        "a",
+        "select[role=combobox]"
+      ]
+    }
+  },
+  "images": {
+    "visibleInMain": 42,
+    "noAltAttribute": 3,
+    "emptyAltDecorative": 5,
+    "junkAlt": 0,
+    "thumbControls": 31,
+    "thumbControlsUnnamed": 5
+  },
+  "platform": {
+    "shopify": false
+  },
+  "protocol": {
+    "robots": {
+      "status": 200,
+      "bots": {
+        "GPTBot": "blocked",
+        "ChatGPT-User": "blocked",
+        "OAI-SearchBot": "blocked",
+        "ClaudeBot": "blocked",
+        "Claude-User": "blocked",
+        "PerplexityBot": "blocked",
+        "Perplexity-User": "blocked",
+        "Google-Extended": "blocked",
+        "Amazonbot": "unlisted",
+        "Bytespider": "blocked",
+        "CCBot": "blocked"
+      }
+    },
+    "llmsTxt": {
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html;charset=UTF-8",
+      "sample": ""
+    },
+    "ucpWellKnown": {
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html;charset=UTF-8",
+      "sample": ""
+    },
+    "shopify": false
+  },
+  "score": {
+    "structuredData": 0,
+    "operability": 23,
+    "headings": 7,
+    "images": 7,
+    "total": 37
+  },
+  "rubric": "structuredData 35 (Product+Offer price/currency/availability, -10 if schema price not in DOM) | operability 35 (named add-to-cart 15, variant controls named 12, price as text 8) | headings 15 (first h1 names product 8, no skipped levels 4, no nav/header headings 3, -3 if 3+ h1) | images 15 (no img in main without alt attr 9, thumbnail controls named 6, -2 junk alt). alt=\"\" counts as compliant."
+}

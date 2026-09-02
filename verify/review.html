@@ -1,0 +1,106 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Adversarial review</title><style>
+:root{--paper:#F6F3EC;--ink:#161412;--ink-70:rgba(22,20,18,.7);--ink-45:rgba(22,20,18,.45);
+--ink-12:rgba(22,20,18,.12);--accent:#8B2D3A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+font:400 17px/1.62 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:64px 24px 120px}
+a{color:var(--accent)}
+h1{font:600 40px/1.15 Georgia,"Times New Roman",serif;letter-spacing:-.01em;margin:0 0 8px}
+h2{font:600 27px/1.25 Georgia,serif;margin:52px 0 12px;padding-top:18px;border-top:1px solid var(--ink-12)}
+h3{font:600 20px/1.3 Georgia,serif;margin:32px 0 8px}
+p{margin:0 0 15px}
+ul,ol{margin:0 0 15px 20px;padding:0}
+li{margin:0 0 7px}
+code{font:500 14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;background:rgba(22,20,18,.06);
+padding:2px 5px;border-radius:3px}
+pre{background:#fff;border:1px solid var(--ink-12);padding:16px 18px;overflow-x:auto;margin:0 0 18px}
+pre code{background:none;padding:0;font-size:13px;line-height:1.55}
+table{border-collapse:collapse;width:100%;margin:0 0 20px;font-size:15px;display:block;overflow-x:auto}
+th{text-align:left;font:500 12px/1.4 ui-monospace,Menlo,monospace;text-transform:uppercase;
+letter-spacing:.05em;color:var(--ink-70);border-bottom:2px solid var(--ink);padding:0 12px 8px 0}
+td{border-bottom:1px solid var(--ink-12);padding:9px 12px 9px 0;vertical-align:top}
+hr{border:0;border-top:1px solid var(--ink-12);margin:36px 0}
+.kicker{font:500 12px/1.4 ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.08em;
+color:var(--ink-70);margin:0 0 20px}
+.nav{margin:0 0 44px;font-size:15px}
+.nav a{margin-right:18px}
+.files{font:500 13px/1.7 ui-monospace,Menlo,monospace;columns:2;column-gap:32px}
+.files a{display:block;text-decoration:none;color:var(--ink-70)}
+.files a:hover{color:var(--accent)}
+.note{background:#fff;border-left:3px solid var(--accent);padding:14px 18px;margin:0 0 22px;font-size:15px}
+@media(max-width:640px){.wrap{padding:40px 18px 80px}h1{font-size:31px}.files{columns:1}}
+</style></head><body><div class="wrap"><p class="kicker">Agent Failure Ledger, issue 01</p><div class="nav"><a href="../index.html">The ledger</a><a href="evidence.html">Evidence and corrections</a><a href="review.html">Adversarial review</a><a href="index.html">Raw files</a></div><h1>Adversarial review of the corrected carousel, 2026-09-01</h1>
+<p>Three independent reviewers were run against the corrected deck: a hostile fact-checker, a legal/reputational reviewer, and a research-methods critic. Every finding below was then <strong>re-verified against the raw files by hand</strong> before being accepted. Where a reviewer was wrong, that is recorded too.</p>
+<p><strong>Verdict: do not publish yet.</strong> The underlying observations are sound and well evidenced. The scoring layer and one causal sentence are not.</p>
+<hr>
+<h2>A. Confirmed errors in the published copy</h2>
+<p>Each verified directly. These are wrong as written and cannot ship.</p>
+<p><strong>A1. &quot;the accessibility tree collapsed from 210 nodes to five.&quot;</strong> Both numbers wrong, and &quot;nodes&quot; is the wrong word.</p>
+<ul><li><code>verify/nike-atc-headed.json</code> records <code>treeLines: 211</code> -&gt; <code>treeLines: 6</code>.</li><li>The files are 211 and 6 lines. <code>wc -l</code> reports 210 and 5 only because neither file ends in a</li></ul>
+<p>  newline. I took the numbers from <code>wc -l</code>. That is my error.</p>
+<ul><li>These are lines of the harness&#x27;s <em>filtered</em> rendering (10 interactive + 6 display roles), not</li></ul>
+<p>  accessibility-tree nodes. The real <code>getFullAXTree</code> node count is much larger in both states.</p>
+<ul><li>The copy then enumerates four things while saying five.</li><li>Correct: &quot;from 211 filtered tree lines to 6.&quot; The observation is real and reproduced byte</li></ul>
+<p>  identically headed and headless.</p>
+<p><strong>A2. &quot;Two unnamed controls on the refused page, both image-carousel arrows.&quot;</strong> False. <code>verify/nike-headed-tree.txt</code> contains 7 unnamed nodes, 5 of them actionable: <code>[e90] button (unnamed) disabled</code>, <code>[e91] button (unnamed)</code>, <code>[e92]</code>, <code>[e93]</code>, <code>[e94] link (unnamed)</code>. They sit under <code>heading &quot;You Might Also Like&quot; h3</code> - they are the <strong>recommendations</strong> rail, not the product image carousel. The &quot;2&quot; is a DOM-only count. See section C, this is the big one.</p>
+<p><strong>A3. &quot;Every image on the refused page carries alt text.&quot;</strong> The code measures attribute <em>presence</em>; <code>harness/audit.mjs</code> says so outright: <code>alt=&quot;&quot; counts as compliant</code>. <code>traces/nike-audit.json</code> records <code>emptyAltDecorative: 6</code>. Six Nike images carry an empty alt. &quot;Carries alt text&quot; is false for those.</p>
+<p><strong>A4. &quot;Same modal headed and headless, on three separate dates.&quot;</strong> Headless ran on <strong>one</strong> date. 22 Aug and 27 Aug were both headed (<code>browser</code> field in both traces). Only 1 Sep was headless. Correct: &quot;three dates headed, plus a headless run on the third.&quot;</p>
+<p><strong>A5. &quot;A fifth of Amazon&#x27;s do not.&quot;</strong> 53/248 = 21.4%, so &quot;a fifth&quot; rounds the wrong way. More importantly the denominator includes ad rails, recommendation carousels and offscreen lazy images. Within <code>&lt;main&gt;</code>, visible: <strong>3 of 41, about 93% carry alt.</strong> The harness computed that fair number (<code>mainNoAltAttribute: 3</code>, <code>visibleInMain: 41</code>) and the slide published the unflattering one. Worse, the denominator is a function of the harness: <code>verify.mjs</code> scrolls exactly 2700px, so the image count - and therefore Amazon&#x27;s score band - depends on a loop count.</p>
+<p><strong>A6. &quot;One turns Add to Bag into the size picker.&quot;</strong> That sentence is about Zara. &quot;Add to Bag&quot; is <strong>Nike&#x27;s</strong> button label. Zara&#x27;s is <code>Add CHUNKY CHELSEA BOOTS</code>.</p>
+<p><strong>A7. &quot;SSENSE returned 403 to every automated session.&quot;</strong> 403 is recorded for two sessions, both 1 Sep. The 22 and 27 Aug runs record a Turnstile interstitial with no HTTP status captured. &quot;Every&quot; covers four sessions; two have the number.</p>
+<p><strong>A8. Slide 3 &quot;re-confirmed 1 Sep.&quot;</strong> The quoted tree line is verbatim from 22 Aug (<code>traces/amazon-snap-05.txt:278</code>, including <code>value=&quot;10.5&quot;</code>). On 1 Sep the tree reads <code>[e165] combobox (unnamed) expanded=false</code> with <strong>no <code>value=&quot;10.5&quot;</code></strong>. What re-confirmed on 1 Sep was the DOM state (<code>selectedIndex: 40, selectedText: &quot;10.5&quot;</code>), not the tree line.</p>
+<p><strong>A9. <code>_summary.json</code> contradicted <code>_scores.json</code>.</strong> Amazon was <code>F/10</code> in one and <code>F/0</code> in the other, because <code>verify.mjs</code> still carries the superseded alt band. <strong>Fixed</strong> - <code>_summary.json</code> regenerated from <code>finalScore</code>, with <code>_rescore.mjs</code> named as canonical.</p>
+<p><strong>A10. <code>EVIDENCE.md</code> stated integrity rules that the traces contradict.</strong> <strong>Fixed</strong> - see the corrected &quot;Rules kept&quot; block. The original 22 Aug runs used an automation disguise (disclosed correctly on <code>site/ledger.html</code>, denied by <code>README.md</code> and my first draft), the Amazon run clicked through a soft interstitial, and Amazon&#x27;s robots.txt disallows ClaudeBot by name.</p>
+<p><strong>A11. <code>site/ledger.html</code> dated the re-runs &quot;23 August&quot;; the traces say 27 August.</strong> <strong>Fixed</strong> at source in <code>site/build.mjs</code>, ledger rebuilt.</p>
+<hr>
+<h2>B. The claim with no evidence at all</h2>
+<p><strong>The human comparison.</strong> The post says it six times, and slide 1 carries it: &gt; &quot;A person clicking the same button in a normal browser does not. That is the finding: the refusal &gt; is about the session, not the shopper.&quot;</p>
+<p>There is no artifact. <code>grep -rl &quot;independent check&quot;</code> returns exactly one file: <code>EVIDENCE.md</code>. No screenshot, no date, no browser, no operator, no location, no log. Every file in <code>verify/</code> is <code>-headed</code> or <code>-headless</code>, and <code>verify.mjs</code> has only those two branches.</p>
+<p>And headed vs headless were <strong>byte identical</strong> - I diffed them. So the one session variable actually manipulated was ruled out as the discriminator, and the effect is attributed to a variable never manipulated.</p>
+<p><strong>Uncontrolled confounds, none recorded anywhere:</strong> IP reputation and ASN, request volume accumulated by the study itself across three dates from one machine, automation fingerprint (<code>navigator.webdriver</code>, CDP attachment), cookie and profile age (the verify pass shares one profile across six stores while <code>atc.mjs</code> uses a fresh profile per store), logged-in state, geography, time of day.</p>
+<p>This is the single sentence carrying the thesis and it is one arm of automated data against one arm of hearsay. It either needs a captured human session on the same machine and network - about twenty minutes of work - or it has to be downgraded from a finding to a hypothesis with the confounds attached.</p>
+<hr>
+<h2>C. The finding that changes the headline</h2>
+<p><strong>The study says it measures the accessibility tree. The scores measure the DOM. They disagree.</strong></p>
+<p><code>traces/*.json</code> states perception is &quot;Chromium accessibility tree over CDP&quot;. But every scored number comes from <code>page.evaluate()</code> over the DOM using a hand-rolled name approximation. Measured both ways:</p>
+<table><thead><tr><th>store</th><th>DOM <code>unnamedButtons</code> (scored)</th><th>AX tree unnamed, actionable (what the agent reads)</th></tr></thead><tbody><tr><td>Glossier</td><td>0</td><td>2</td></tr><tr><td>Nike</td><td><strong>2</strong></td><td><strong>5</strong></td></tr><tr><td>Zara</td><td>0</td><td>0</td></tr><tr><td>Allbirds</td><td>2</td><td>2</td></tr><tr><td>Amazon</td><td>48</td><td>22</td></tr></tbody></table>
+<p>Re-scoring Nike on its own stated instrument moves named controls from 10/20 to 0/20:</p>
+<table><thead><tr><th>store</th><th>DOM-scored (published)</th><th>AX-tree-scored</th></tr></thead><tbody><tr><td>Glossier</td><td>A / 100</td><td>A / 90</td></tr><tr><td>Nike</td><td><strong>A / 90</strong></td><td><strong>B / 80</strong></td></tr><tr><td>Zara</td><td>A / 100</td><td>A / 100</td></tr><tr><td>Allbirds</td><td>C / 70</td><td>C / 70</td></tr><tr><td>Amazon</td><td>F / 0</td><td>F / 0</td></tr></tbody></table>
+<p><strong>&quot;An A was refused&quot; becomes &quot;a B was refused.&quot;</strong> The gap that carries the thesis (80 vs 0) survives, but the specific headline does not.</p>
+<p><em>Note: the methodology reviewer claimed Nike drops to C/70. That arithmetic is wrong - 40 + 20 + 0 + 20 = 80, which is a B. Verified.</em></p>
+<p><strong>A second, related problem.</strong> The rubric&#x27;s named-controls band is scoped to <code>button, [role=button]</code>. Amazon&#x27;s size selector - the centrepiece of slide 3 - is a <code>&lt;select&gt;</code>, so it contributes zero to the score. The harness computes the correct wider number right beside it (<code>unnamedControls</code>) and discards it. So slide 4&#x27;s &quot;not one of them touched what blocked or steered the agent&quot; is partly an artifact of a selector choice: had the band used the wider count, the named-controls check <strong>would</strong> have flagged Amazon&#x27;s unnamed size combobox, which is exactly the thing slide 3 says steered the agent.</p>
+<p>Two of the six grades also sit exactly on a band boundary (Nike on 90, Allbirds on 70), and Amazon&#x27;s F/0 versus F/10 turns on four images out of 248 - a threshold set at 80% after the data was seen.</p>
+<hr>
+<h2>D. Two things never re-verified</h2>
+<p><strong>D1. Amazon&#x27;s add-to-cart was never re-run.</strong> There is no <code>amazon-atc-*</code> in <code>verify/</code>. The sentence &quot;the page that scored an F completed the task&quot; rests entirely on the 22 Aug run - the same vintage as Zara&#x27;s pass, which this very verification pass proved does <strong>not</strong> reproduce. Amazon is also the store already documented as bot-blocking this harness on its search page. This is the run the conclusion depends on and it is the one that was not repeated.</p>
+<p><strong>D2. Extension state is never captured.</strong> &quot;My AI had no browser extensions&quot; is true by construction (no <code>--load-extension</code> anywhere, no Extensions directory) but nothing records it. For the headline of the post, capture <code>chrome://extensions</code> or a <code>navigator</code> probe.</p>
+<hr>
+<h2>E. Legal and framing risk</h2>
+<ul><li><strong>&quot;The store blamed them anyway&quot;</strong> imputes intent to a corporate actor, and it is the headline.</li></ul>
+<p>  The literal version is stronger and unimpeachable: &quot;The refusal told it to disable them.&quot;</p>
+<ul><li><strong>Nike and SSENSE tiles carry undated anti-bot verdicts</strong>, breaking the framing rule. Tiles are the</li></ul>
+<p>  most screenshot-able, most context-free asset in the deck. Add dates and &quot;every automated session   <strong>I ran</strong>.&quot;</p>
+<ul><li><strong>The alt-text line names a company and a failing grade on an ADA-litigated metric</strong>, generalised</li></ul>
+<p>  from one page load. Scope it to the page and the date.</p>
+<ul><li><strong>Grades are per-page but labelled per-brand.</strong> One product page each. The slide-2 kicker should</li></ul>
+<p>  read &quot;six product pages, one per store.&quot;</p>
+<ul><li><strong>Slide 8 quotes Glossier telling agents not to script the storefront</strong>, which is what the project</li></ul>
+<p>  did. Glossier and Zara both publish a UCP endpoint the agent never used. Own it in a clause; it is   the best line in the deck and it survives being owned.</p>
+<ul><li><strong>No network, IP or VPN disclosure</strong> anywhere. First thing a technical reader asks.</li><li><strong>Crop the assets.</strong> <code>site/shots/amazon-05.jpg</code> leaks a delivery ZIP; the Nike capture is a full</li></ul>
+<p>  PDP where only the modal and size grid are needed.</p>
+<hr>
+<h2>F. What survives all three reviews untouched</h2>
+<p>These were attacked and held. They are the real findings:</p>
+<ul><li>Nike&#x27;s refusal reproduced on every automated session across three dates, headed and headless,</li></ul>
+<p>  byte identical.</p>
+<ul><li>The tree collapse at the moment of refusal (with corrected numbers).</li><li>Allbirds&#x27; size button byte identical before and after a click that demonstrably registered.</li><li>Zara&#x27;s add-to-cart becoming the size picker, with bare-number buttons.</li><li>Amazon&#x27;s size combobox unnamed in the tree, listing preselected to 10.5.</li><li>Glossier opening on a default shade.</li><li>Amazon carrying zero JSON-LD on both dates.</li><li>All six published scores matching <code>_scores.json</code> exactly.</li><li>Slide 3&#x27;s quoted tree line and slide 8&#x27;s llms.txt quote, both verbatim.</li></ul>
+<hr>
+<h2>G. Decisions that are yours, not mine</h2>
+<ol><li><strong>Scoring instrument.</strong> Keep DOM scoring (fast, but your own published tree file contradicts</li></ol>
+<p>   slide 4), switch to AX-tree scoring (honest, Nike becomes B/80, headline weakens), or publish the    gap itself as the finding: <em>&quot;the checker said 2 unnamed controls; the tree the agent reads said 7.&quot;</em>    I recommend the third. It is a genuinely novel result, it is the study&#x27;s own instrument catching    its own scoring layer, and it is stronger than the line it replaces.</p>
+<ol><li><strong>The human session.</strong> Run one yourself on the same machine and network, screenshot it, and the</li></ol>
+<p>   causal sentence becomes defensible. Otherwise it has to be downgraded.</p>
+<ol><li><strong>Amazon add-to-cart.</strong> Re-run it, or stop claiming the F completed the task.</li><li><strong>Weaker Amazon preselect claim.</strong> The search query was <code>under armour charged assert 10 men</code>. The</li></ol>
+<p>   &quot;10&quot; is the model name, but a skeptic will say the ranking matched on the numeral. Either re-run    with a numeral-free query or preempt it in the copy.</p></div></body></html>

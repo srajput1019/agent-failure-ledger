@@ -1,0 +1,6 @@
+[e1] link "Amazon.com"
+[e2] textbox "Search"
+[e3] button "Go"
+  text "Go"
+[e4] link "Sorry! Something went wrong on our end. Please go back and try again or go to Amazon's home page."
+[e5] link "Dogs of Amazon"

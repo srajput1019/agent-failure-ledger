@@ -1,0 +1,118 @@
+{
+  "site": "nike",
+  "label": "headed",
+  "sessionType": "automated / Playwright Chromium, HEADED, persistent profile",
+  "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+  "verifiedAt": "2026-09-01T23:32:02.309Z",
+  "navigation": {
+    "ok": true,
+    "status": 200,
+    "error": null
+  },
+  "blocked": false,
+  "gate": {
+    "title": "Air Jordan 1 Low Men's Shoes. Nike.com",
+    "bodyChars": 2597,
+    "interactive": 537,
+    "challengeHits": [],
+    "bodySample": "Skip to main content Accessibility at Nike Find a Store Help Join Us Sign In Men Women Kids Jordan NikeSKIMS Sport Back to School Shop New Arrivals Send a Gift Card Members: Free Shipping on Orders $50+ image 1 of 9 Highly Rated Air Jordan 1 Low Men's Shoes $120 Select Fit Baby/Toddler Little Kids Big Kids Adults Select Size Size Guide M 7 / W 8.5 M 7.5 / W 9 M 8 / W 9.5 M 8.5 / W 10 M 9 / W 10.5 ",
+    "cfIframe": false
+  },
+  "metrics": {
+    "title": "Air Jordan 1 Low Men's Shoes. Nike.com",
+    "url": "https://www.nike.com/t/air-jordan-1-low-mens-shoes-w9HO9jOz/553558-136",
+    "structured": {
+      "jsonLdBlocks": 1,
+      "productNodes": 11,
+      "microdataProducts": 0,
+      "hasSchema": true,
+      "hasPrice": true,
+      "hasAvailability": true,
+      "completeProduct": true,
+      "offersSample": [
+        {
+          "price": 120,
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "price": 120,
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "price": 120,
+          "currency": "USD",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    },
+    "headings": {
+      "h1Count": 1,
+      "visibleH1Count": 1,
+      "totalHeadings": 133,
+      "h1Texts": [
+        "Air Jordan 1 Low"
+      ]
+    },
+    "controls": {
+      "totalButtons": 49,
+      "unnamedButtons": 2,
+      "visibleControls": 385,
+      "unnamedControls": 2,
+      "unnamedSample": [
+        {
+          "tag": "button",
+          "role": null,
+          "cls": "carousel-btn prev-btn"
+        },
+        {
+          "tag": "button",
+          "role": null,
+          "cls": "carousel-btn next-btn"
+        }
+      ]
+    },
+    "images": {
+      "total": 110,
+      "noAltAttribute": 0,
+      "visibleInMain": 73,
+      "mainNoAltAttribute": 0,
+      "pctWithAlt": 100
+    },
+    "selects": []
+  },
+  "prdScore": {
+    "structuredData": 40,
+    "headings": 20,
+    "namedControls": 10,
+    "imageAlt": 20,
+    "total": 90,
+    "grade": "A",
+    "rubric": "structured data 40 (schema+price+availability complete=40, schema only=20, none=0) | headings 20 (1 h1=20, 2=10, 3+=0) | named controls 20 (0 unnamed buttons=20, 1-3=10, 4+=0) | image alt 20 (>=95% have alt=20, some missing=10, many=0). Grade: 90+ A, 80-89 B, 70-79 C, 55-69 D, <55 F."
+  },
+  "treeLines": 252,
+  "artifacts": {
+    "screenshot": "verify/nike-headed.png",
+    "tree": "verify/nike-headed-tree.txt"
+  },
+  "finalScore": {
+    "structuredData": 40,
+    "headings": 20,
+    "namedControls": 10,
+    "imageAlt": 20,
+    "total": 90,
+    "grade": "A"
+  },
+  "finalRubric": {
+    "name": "Agent-readability (open standards), 100 points",
+    "bands": [
+      "Structured data 40 - complete Product schema (Product/ProductGroup + price + availability) = 40; schema present but missing price or availability = 20; none = 0",
+      "Heading clarity 20 - exactly one h1 = 20; two h1 = 10; three or more, or zero = 0",
+      "Named controls 20 - zero unnamed buttons = 20; one to three = 10; four or more = 0",
+      "Image alt text 20 - 95% or more of img elements carry an alt attribute = 20; 80 to 94% = 10; under 80% = 0"
+    ],
+    "grades": "90+ A, 80-89 B, 70-79 C, 55-69 D, under 55 F",
+    "note": "Measured on the rendered DOM of one product page, one load, automated Chromium. A blocked page is not scored."
+  }
+}
