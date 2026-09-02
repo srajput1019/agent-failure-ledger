@@ -105,11 +105,11 @@ attached.
 
 ---
 
-## C. The finding that changes the headline
+## C. The finding that was supposed to change the headline, and was withdrawn
 
 **The study says it measures the accessibility tree. The scores measure the DOM. They disagree.**
 
-`traces/*.json` states perception is "Chromium accessibility tree over CDP". But every scored number
+`data/*.json` states perception is "Chromium accessibility tree over CDP". But every scored number
 comes from `page.evaluate()` over the DOM using a hand-rolled name approximation. Measured both ways:
 
 | store | DOM `unnamedButtons` (scored) | AX tree unnamed, actionable (what the agent reads) |
@@ -130,7 +130,7 @@ Re-scoring Nike on its own stated instrument moves named controls from 10/20 to 
 | Allbirds | C / 70 | C / 70 |
 | Amazon | F / 0 | F / 0 |
 
-> **WITHDRAWN 2 September 2026.** The B/80 recompute below is wrong and is retained only so the
+> **WITHDRAWN 2 September 2026.** The B/80 recompute in this section is wrong and is retained only so the
 > mistake is on the record. The five extra unnamed nodes are Nike's "You Might Also Like" rail,
 > which exists in `verify/nike-headed-tree.txt` only because `harness/verify.mjs` scrolls the page
 > and lazy-loads it. `harness/atc.mjs` does not scroll, so the tree of the session that was actually
@@ -141,8 +141,8 @@ Re-scoring Nike on its own stated instrument moves named controls from 10/20 to 
 > the DOM, and has removed the tree-versus-DOM claim entirely rather than ship a figure produced by
 > the harness's own scroll loop.
 
-**"An A was refused" becomes "a B was refused."** The gap that carries the thesis (80 vs 0) survives,
-but the specific headline does not.
+~~**"An A was refused" becomes "a B was refused."** The gap that carries the thesis (80 vs 0) survives,
+but the specific headline does not.~~ **Retracted, see the note above: on the refusal session's own tree Nike scores A/100, so the headline stands and the deck keeps A/90.**
 
 *Note: the methodology reviewer claimed Nike drops to C/70. That arithmetic is wrong -
 40 + 20 + 0 + 20 = 80, which is a B. Verified.*
