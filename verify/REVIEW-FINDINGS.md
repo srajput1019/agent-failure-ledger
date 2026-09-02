@@ -1,5 +1,11 @@
 # Adversarial review of the corrected carousel, 2026-09-01
 
+> **Status, 2 September 2026.** This is the review that produced the corrections, kept public on purpose.
+> Its "do not publish yet" verdict refers to the draft as it stood when the review ran. Most items are now
+> fixed and the fixes are listed in the ledger's corrections log. The open ones are in section G.
+> Published file paths: traces are served under `data/`, screenshots as `.jpg`.
+
+
 Three independent reviewers were run against the corrected deck: a hostile fact-checker, a
 legal/reputational reviewer, and a research-methods critic. Every finding below was then
 **re-verified against the raw files by hand** before being accepted. Where a reviewer was wrong,
@@ -32,7 +38,7 @@ They sit under `heading "You Might Also Like" h3` - they are the **recommendatio
 product image carousel. The "2" is a DOM-only count. See section C, this is the big one.
 
 **A3. "Every image on the refused page carries alt text."** The code measures attribute *presence*;
-`harness/audit.mjs` says so outright: `alt="" counts as compliant`. `traces/nike-audit.json` records
+`harness/audit.mjs` says so outright: `alt="" counts as compliant`. `data/nike-audit.json` records
 `emptyAltDecorative: 6`. Six Nike images carry an empty alt. "Carries alt text" is false for those.
 
 **A4. "Same modal headed and headless, on three separate dates."** Headless ran on **one** date.
@@ -171,8 +177,7 @@ the post, capture `chrome://extensions` or a `navigator` probe.
   did. Glossier and Zara both publish a UCP endpoint the agent never used. Own it in a clause; it is
   the best line in the deck and it survives being owned.
 - **No network, IP or VPN disclosure** anywhere. First thing a technical reader asks.
-- **Crop the assets.** `site/shots/amazon-05.jpg` leaks a delivery ZIP; the Nike capture is a full
-  PDP where only the modal and size grid are needed.
+- **Crop the assets.** the delivery ZIP was leaking from the Amazon captures and the Nike capture was a full PDP. **Both RESOLVED 2 Sep:** every Amazon capture is redacted (verified pixel by pixel) and the Nike capture is cropped to the modal and size grid.
 
 ---
 

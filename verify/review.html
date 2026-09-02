@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Adversarial review</title><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Adversarial review</title><meta property="og:title" content="Adversarial review"><meta property="og:description" content="What happened when one AI agent tried to buy one item at six stores. Every trace, snapshot and correction."><meta property="og:type" content="article"><meta property="og:url" content="https://srajput1019.github.io/agent-failure-ledger/"><meta property="og:image" content="https://srajput1019.github.io/agent-failure-ledger/shots/nike-05.jpg"><meta name="twitter:card" content="summary_large_image"><style>
 :root{--paper:#F6F3EC;--ink:#161412;--ink-70:rgba(22,20,18,.7);--ink-45:rgba(22,20,18,.45);
 --ink-12:rgba(22,20,18,.12);--accent:#8B2D3A}
 *{box-sizing:border-box}
@@ -29,9 +29,12 @@ color:var(--ink-70);margin:0 0 20px}
 .files{font:500 13px/1.7 ui-monospace,Menlo,monospace;columns:2;column-gap:32px}
 .files a{display:block;text-decoration:none;color:var(--ink-70)}
 .files a:hover{color:var(--accent)}
+blockquote{margin:0 0 20px;padding:14px 20px;background:#fff;border-left:3px solid var(--accent);font-size:15.5px}
+blockquote p:last-child{margin-bottom:0}
 .note{background:#fff;border-left:3px solid var(--accent);padding:14px 18px;margin:0 0 22px;font-size:15px}
 @media(max-width:640px){.wrap{padding:40px 18px 80px}h1{font-size:31px}.files{columns:1}}
 </style></head><body><div class="wrap"><p class="kicker">Agent Failure Ledger, issue 01</p><div class="nav"><a href="../index.html">The ledger</a><a href="evidence.html">Evidence and corrections</a><a href="review.html">Adversarial review</a><a href="index.html">Raw files</a></div><h1>Adversarial review of the corrected carousel, 2026-09-01</h1>
+<blockquote><p><strong>Status, 2 September 2026.</strong> This is the review that produced the corrections, kept public on purpose. Its &quot;do not publish yet&quot; verdict refers to the draft as it stood when the review ran. Most items are now fixed and the fixes are listed in the ledger&#x27;s corrections log. The open ones are in section G. Published file paths: traces are served under <code>data/</code>, screenshots as <code>.jpg</code>.</p></blockquote>
 <p>Three independent reviewers were run against the corrected deck: a hostile fact-checker, a legal/reputational reviewer, and a research-methods critic. Every finding below was then <strong>re-verified against the raw files by hand</strong> before being accepted. Where a reviewer was wrong, that is recorded too.</p>
 <p><strong>Verdict: do not publish yet.</strong> The underlying observations are sound and well evidenced. The scoring layer and one causal sentence are not.</p>
 <hr>
@@ -45,7 +48,7 @@ color:var(--ink-70);margin:0 0 20px}
 <ul><li>The copy then enumerates four things while saying five.</li><li>Correct: &quot;from 211 filtered tree lines to 6.&quot; The observation is real and reproduced byte</li></ul>
 <p>  identically headed and headless.</p>
 <p><strong>A2. &quot;Two unnamed controls on the refused page, both image-carousel arrows.&quot;</strong> False. <code>verify/nike-headed-tree.txt</code> contains 7 unnamed nodes, 5 of them actionable: <code>[e90] button (unnamed) disabled</code>, <code>[e91] button (unnamed)</code>, <code>[e92]</code>, <code>[e93]</code>, <code>[e94] link (unnamed)</code>. They sit under <code>heading &quot;You Might Also Like&quot; h3</code> - they are the <strong>recommendations</strong> rail, not the product image carousel. The &quot;2&quot; is a DOM-only count. See section C, this is the big one.</p>
-<p><strong>A3. &quot;Every image on the refused page carries alt text.&quot;</strong> The code measures attribute <em>presence</em>; <code>harness/audit.mjs</code> says so outright: <code>alt=&quot;&quot; counts as compliant</code>. <code>traces/nike-audit.json</code> records <code>emptyAltDecorative: 6</code>. Six Nike images carry an empty alt. &quot;Carries alt text&quot; is false for those.</p>
+<p><strong>A3. &quot;Every image on the refused page carries alt text.&quot;</strong> The code measures attribute <em>presence</em>; <code>harness/audit.mjs</code> says so outright: <code>alt=&quot;&quot; counts as compliant</code>. <code>data/nike-audit.json</code> records <code>emptyAltDecorative: 6</code>. Six Nike images carry an empty alt. &quot;Carries alt text&quot; is false for those.</p>
 <p><strong>A4. &quot;Same modal headed and headless, on three separate dates.&quot;</strong> Headless ran on <strong>one</strong> date. 22 Aug and 27 Aug were both headed (<code>browser</code> field in both traces). Only 1 Sep was headless. Correct: &quot;three dates headed, plus a headless run on the third.&quot;</p>
 <p><strong>A5. &quot;A fifth of Amazon&#x27;s do not.&quot;</strong> 53/248 = 21.4%, so &quot;a fifth&quot; rounds the wrong way. More importantly the denominator includes ad rails, recommendation carousels and offscreen lazy images. Within <code>&lt;main&gt;</code>, visible: <strong>3 of 41, about 93% carry alt.</strong> The harness computed that fair number (<code>mainNoAltAttribute: 3</code>, <code>visibleInMain: 41</code>) and the slide published the unflattering one. Worse, the denominator is a function of the harness: <code>verify.mjs</code> scrolls exactly 2700px, so the image count - and therefore Amazon&#x27;s score band - depends on a loop count.</p>
 <p><strong>A6. &quot;One turns Add to Bag into the size picker.&quot;</strong> That sentence is about Zara. &quot;Add to Bag&quot; is <strong>Nike&#x27;s</strong> button label. Zara&#x27;s is <code>Add CHUNKY CHELSEA BOOTS</code>.</p>
@@ -56,7 +59,8 @@ color:var(--ink-70);margin:0 0 20px}
 <p><strong>A11. <code>site/ledger.html</code> dated the re-runs &quot;23 August&quot;; the traces say 27 August.</strong> <strong>Fixed</strong> at source in <code>site/build.mjs</code>, ledger rebuilt.</p>
 <hr>
 <h2>B. The claim with no evidence at all</h2>
-<p><strong>The human comparison.</strong> The post says it six times, and slide 1 carries it: &gt; &quot;A person clicking the same button in a normal browser does not. That is the finding: the refusal &gt; is about the session, not the shopper.&quot;</p>
+<p><strong>The human comparison.</strong> The post says it six times, and slide 1 carries it:</p>
+<blockquote><p>&quot;A person clicking the same button in a normal browser does not. That is the finding: the refusal is about the session, not the shopper.&quot;</p></blockquote>
 <p>There is no artifact. <code>grep -rl &quot;independent check&quot;</code> returns exactly one file: <code>EVIDENCE.md</code>. No screenshot, no date, no browser, no operator, no location, no log. Every file in <code>verify/</code> is <code>-headed</code> or <code>-headless</code>, and <code>verify.mjs</code> has only those two branches.</p>
 <p>And headed vs headless were <strong>byte identical</strong> - I diffed them. So the one session variable actually manipulated was ruled out as the discriminator, and the effect is attributed to a variable never manipulated.</p>
 <p><strong>Uncontrolled confounds, none recorded anywhere:</strong> IP reputation and ASN, request volume accumulated by the study itself across three dates from one machine, automation fingerprint (<code>navigator.webdriver</code>, CDP attachment), cookie and profile age (the verify pass shares one profile across six stores while <code>atc.mjs</code> uses a fresh profile per store), logged-in state, geography, time of day.</p>
@@ -88,8 +92,7 @@ color:var(--ink-70);margin:0 0 20px}
 <p>  read &quot;six product pages, one per store.&quot;</p>
 <ul><li><strong>Slide 8 quotes Glossier telling agents not to script the storefront</strong>, which is what the project</li></ul>
 <p>  did. Glossier and Zara both publish a UCP endpoint the agent never used. Own it in a clause; it is   the best line in the deck and it survives being owned.</p>
-<ul><li><strong>No network, IP or VPN disclosure</strong> anywhere. First thing a technical reader asks.</li><li><strong>Crop the assets.</strong> <code>site/shots/amazon-05.jpg</code> leaks a delivery ZIP; the Nike capture is a full</li></ul>
-<p>  PDP where only the modal and size grid are needed.</p>
+<ul><li><strong>No network, IP or VPN disclosure</strong> anywhere. First thing a technical reader asks.</li><li><strong>Crop the assets.</strong> the delivery ZIP was leaking from the Amazon captures and the Nike capture was a full PDP. <strong>Both RESOLVED 2 Sep:</strong> every Amazon capture is redacted (verified pixel by pixel) and the Nike capture is cropped to the modal and size grid.</li></ul>
 <hr>
 <h2>F. What survives all three reviews untouched</h2>
 <p>These were attacked and held. They are the real findings:</p>

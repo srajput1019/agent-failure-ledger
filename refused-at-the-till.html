@@ -1,0 +1,231 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Refused at the till</title>
+<meta name="description" content="A refusal pattern for stores that decline automated sessions: name the real cause, state what did not happen, point to the sanctioned path. Before and after, with the accessibility tree beside each.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F6F3EC;--ink:#161412;--ink-70:rgba(22,20,18,.7);--ink-45:rgba(22,20,18,.45);--ink-12:rgba(22,20,18,.12);--ink-06:rgba(22,20,18,.06);--accent:#8B2D3A;--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--sans:Inter,system-ui,-apple-system,Segoe UI,sans-serif;--serif:Fraunces,Georgia,"Times New Roman",serif;--pad:clamp(56px,9vw,128px);--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-align:left}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0;padding:0 clamp(20px,4vw,56px)}
+@media(min-width:1320px){.wrap{margin-left:max(0px,calc((100vw - var(--max))/2 - 80px))}}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.01em;text-transform:uppercase;color:var(--ink-70)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(40px,6.2vw,84px);line-height:1.02;max-width:16ch;font-variation-settings:"opsz" 144}
+h2{font-size:clamp(30px,3.6vw,46px);line-height:1.08;max-width:22ch;font-variation-settings:"opsz" 96}
+h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1}
+h4{font-family:var(--sans);font-size:15px;font-weight:600;margin:0 0 4px}
+p{margin:0}
+.lede{font-size:clamp(18px,1.5vw,21px);line-height:1.5;max-width:62ch;color:var(--ink);margin-top:28px}
+.small{font-size:13.5px;color:var(--ink-70)}
+section.block{padding-top:var(--pad)}
+.kicker{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-bottom:28px}
+.kicker .mono{color:var(--ink-70)}
+.masthead{padding-top:clamp(40px,7vw,96px)}
+.glance{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;border-top:1px solid var(--ink);margin-top:48px}
+.g{display:block;text-decoration:none;padding:18px 16px 22px 0;border-right:1px solid var(--ink-12);align-self:start}
+.g:last-child{border-right:0}
+.g-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-right:16px}
+.g-brand{font-family:var(--serif);font-size:24px;margin-top:14px;line-height:1.1}
+.g-what{font-size:13.5px;color:var(--ink-70);margin-top:6px;padding-right:16px;min-height:2.6em}
+.g-score{margin-top:10px}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px 2px;border-radius:999px;line-height:1.3;white-space:nowrap}
+.badge.pass{background:var(--ink);color:var(--paper)}
+.badge.blocked{border:1px solid var(--accent);color:var(--accent);background:transparent}
+.method{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start;margin-top:36px}
+.method dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:10px 22px;font-size:14.5px;align-items:start}
+.method dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--ink-70);padding-top:2px}
+.method dd{margin:0}
+.rules{list-style:none;padding:0;margin:0;font-size:14.5px}
+.rules li{padding:10px 0;border-top:1px solid var(--ink-12)}
+.rules li:first-child{border-top:0}
+.entry{border-top:1px solid var(--ink);padding:40px 0 72px}
+.entry-head{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:start}
+.entry-idx{padding-top:10px}
+.entry-product{font-size:15px;color:var(--ink-70);margin-top:8px}
+.entry-outcome{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-top:8px}
+.entry-label{text-transform:none;letter-spacing:0;color:var(--ink-70)}
+.entry-headline{font-family:var(--serif);font-size:clamp(22px,2.1vw,30px);line-height:1.2;max-width:30ch;margin:30px 0 0 74px;font-variation-settings:"opsz" 60}
+.entry-task{margin:18px 0 0 74px;font-size:14.5px;color:var(--ink-70);max-width:70ch}
+.entry-task .mono{margin-right:10px}
+.entry-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,64px);margin:36px 0 0 74px;align-items:start}
+.sec-label{margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--ink-12)}
+.steps{list-style:none;margin:0;padding:0}
+.step{display:grid;grid-template-columns:28px minmax(0,1fr) 168px;gap:14px;padding:14px 0;border-top:1px solid var(--ink-06);align-items:start}
+.step:first-child{border-top:0}
+.step-n{padding-top:3px}
+.step-act{text-transform:none;letter-spacing:0;color:var(--ink);font-size:12.5px;word-break:break-word}
+.step-act .res{color:var(--accent)}
+.step-why{font-size:14px;line-height:1.5;color:var(--ink-70);margin-top:6px}
+.step-meta{margin-top:8px;font-size:11px;color:var(--ink-45)}
+.step-fail .step-act{color:var(--accent)}
+.thumb{display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--ink-12);background:#fff;border-radius:2px}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.thumb-empty{display:flex;align-items:flex-start;padding:8px;color:var(--ink-45);font-size:11px}
+.outcome-line{margin-top:22px;font-size:14.5px;line-height:1.55;padding-top:16px;border-top:1px solid var(--ink-12)}
+.outcome-line .mono{margin-right:10px}
+.saw-block{margin-bottom:14px}
+.saw-step{font-size:11px;margin-bottom:6px;color:var(--ink-45)}
+pre.tree{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5;white-space:pre-wrap;word-break:break-word;background:#fff;border:1px solid var(--ink-12);padding:12px 14px;border-radius:2px;color:var(--ink)}
+.finding{margin-bottom:16px}
+.finding p{font-size:14px;line-height:1.55;color:var(--ink-70)}
+.score-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:4px}
+.score{font-family:var(--serif);font-size:34px;line-height:1}
+.score .of{font-size:14px;color:var(--ink-45);margin-left:2px}
+.score.na{font-size:16px;font-family:var(--mono);text-transform:uppercase;color:var(--ink-45);padding-top:6px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+td,th{vertical-align:top;text-align:left;padding:9px 12px 9px 0;border-top:1px solid var(--ink-12)}
+th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-70);font-weight:500;border-top:0;padding-bottom:6px}
+.rubric{margin-top:14px}
+.rubric td:nth-child(1){width:34%}.rubric td:nth-child(2){width:16%}
+.rubric td:nth-child(3){color:var(--ink-70)}
+.proto{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:11px;text-transform:none;letter-spacing:0}
+.tax{margin-top:36px}
+.tax td{font-size:13.5px;line-height:1.5}
+.tax .tax-name{font-family:var(--serif);font-size:19px;line-height:1.15;font-variation-settings:"opsz" 40}
+.tax th:nth-child(1),.tax td:nth-child(1){width:15%}.tax th:nth-child(2),.tax td:nth-child(2){width:19%}
+.tax th:nth-child(3),.tax td:nth-child(3){width:16%}.tax th:nth-child(4),.tax td:nth-child(4){width:16%}.tax th:nth-child(5),.tax td:nth-child(5){width:14%}
+.insight{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);margin-top:36px;align-items:start}
+.insight p{font-size:16.5px;line-height:1.55;max-width:60ch}
+.insight p+p{margin-top:16px}
+.quote{font-family:var(--serif);font-size:clamp(20px,1.8vw,25px);line-height:1.3;max-width:34ch;font-variation-settings:"opsz" 48;margin-top:6px}
+.quote cite{display:block;font-family:var(--mono);font-style:normal;font-size:11px;text-transform:uppercase;color:var(--ink-70);margin-top:12px}
+.protoTable{margin-top:28px;max-width:860px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,48px);margin-top:32px;align-items:start}
+.cols h4{margin-bottom:10px}
+.cols p,.cols li{font-size:14.5px;line-height:1.55;color:var(--ink-70)}
+.cols ul{padding-left:18px;margin:0}
+.cols li+li{margin-top:6px}
+.files{list-style:none;padding:0;margin:18px 0 0;font-size:14px}
+.files li{padding:8px 0;border-top:1px solid var(--ink-12)}
+.files li:first-child{border-top:0}
+.files a{font-family:var(--mono);font-size:12.5px;text-decoration:none;border-bottom:1px solid var(--ink-45)}
+footer.foot{padding:var(--pad) 0 64px;margin-top:var(--pad);border-top:1px solid var(--ink)}
+footer.foot p{font-size:14px;color:var(--ink-70);max-width:60ch}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);width:auto}
+dialog.lb::backdrop{background:rgba(22,20,18,.82)}
+dialog.lb img{display:block;max-width:min(96vw,1400px);max-height:84vh;width:auto;height:auto;border:1px solid rgba(255,255,255,.2)}
+dialog.lb .cap{color:#fff;font-family:var(--mono);font-size:12px;margin-top:10px}
+dialog.lb button{position:fixed;top:18px;right:22px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);font-family:var(--mono);font-size:12px;padding:8px 12px;cursor:pointer}
+.overflow{overflow-x:auto}
+@media(max-width:980px){.glance{grid-template-columns:repeat(3,minmax(0,1fr))}.g:nth-child(3n){border-right:0}.method,.entry-grid,.insight{grid-template-columns:1fr}.entry-headline,.entry-task,.entry-grid{margin-left:0}.entry-head{grid-template-columns:40px minmax(0,1fr)}.entry-outcome{grid-column:2}.cols{grid-template-columns:1fr}.tax{min-width:900px}}
+@media(max-width:600px){.glance{grid-template-columns:repeat(2,minmax(0,1fr))}.g:nth-child(3n){border-right:1px solid var(--ink-12)}.g:nth-child(2n){border-right:0}.step{grid-template-columns:22px minmax(0,1fr)}.thumb{grid-column:2;max-width:220px}}
+
+.hero{padding-top:clamp(40px,7vw,96px)}
+.hero h1{max-width:16ch;font-size:clamp(32px,4.4vw,60px)}
+.hero-art{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
+.hero-shot{aspect-ratio:4/3}
+.hero-copy .lede{margin-top:22px;font-size:clamp(16px,1.3vw,18.5px)}
+@media(max-width:980px){.hero-art{grid-template-columns:1fr}}
+.readif{margin-top:22px;font-size:15.5px;line-height:1.5;max-width:62ch;color:var(--ink)}
+.readif .mono{margin-right:10px}
+.strip-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.claim{margin-top:48px;padding-top:32px;border-top:1px solid var(--ink-12)}
+.six{max-width:560px}.six td:nth-child(2){width:22%}
+.hero .lede{max-width:58ch}
+.claim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);margin-top:40px;align-items:start}
+.claim p{font-size:16.5px;line-height:1.55;max-width:52ch}
+.num{font-family:var(--serif);font-size:clamp(48px,6vw,84px);line-height:.95;letter-spacing:-.02em;font-variation-settings:"opsz" 144}
+.num-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.num-lab{font-size:13.5px;color:var(--ink-70);margin-top:10px;max-width:18ch}
+.glance{margin-top:44px}
+.g-what{min-height:0}
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:36px;align-items:start}
+.frame{margin:0}
+.frame .thumb{aspect-ratio:4/3}
+.frame-n{margin:12px 0 6px;font-size:11px;color:var(--ink-45)}
+.frame p{font-size:14px;line-height:1.5;color:var(--ink-70)}
+.small-tree{font-size:11.5px;margin-top:10px;padding:10px 12px}
+.after{margin-top:36px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
+.after p{font-size:16.5px;line-height:1.55;max-width:52ch}
+.pays{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,44px);margin-top:40px;align-items:start}
+.pay h3{font-size:26px}
+.pay-what{font-size:14.5px;line-height:1.5;color:var(--ink-70);margin-top:10px}
+.pay-where{font-size:14.5px;line-height:1.5;margin-top:12px}
+.pay-pays{font-size:14.5px;line-height:1.5;margin-top:14px;padding-top:12px;border-top:1px solid var(--ink-12)}
+.pay-pays .mono{display:block;margin-bottom:4px}
+.ask{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);margin-top:36px;align-items:start}
+.ask ol{margin:0;padding-left:0;list-style:none;counter-reset:a}
+.ask li{counter-increment:a;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px 0;border-top:1px solid var(--ink-12);font-size:16px;line-height:1.5}
+.ask li:first-child{border-top:1px solid var(--ink)}
+.ask li::before{content:counter(a,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--ink-70);padding-top:4px}
+.ask li strong{display:block;font-weight:600}
+.ask li span{grid-column:2;color:var(--ink-70);font-size:14.5px}
+.why{font-size:15px;line-height:1.55;color:var(--ink-70);max-width:44ch}
+.why strong{color:var(--ink)}
+.cta{display:inline-block;margin-top:28px;font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.04em;text-decoration:none;border:1px solid var(--ink);padding:12px 16px;border-radius:999px}
+.cta:hover{background:var(--ink);color:var(--paper)}
+.foot-note{font-size:13.5px;color:var(--ink-70);max-width:60ch;margin-top:28px}
+@media(max-width:980px){.claim,.after,.ask{grid-template-columns:1fr}.strip,.strip-3{grid-template-columns:repeat(2,minmax(0,1fr))}.pays{grid-template-columns:1fr}}
+@media(max-width:600px){.strip,.strip-3{grid-template-columns:1fr}.num-row{grid-template-columns:1fr;gap:18px}}
+
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,3vw,48px);margin-top:40px;align-items:start}
+.ba h3{font-size:22px;margin-bottom:12px}
+.ba .lab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--ink);margin-bottom:16px}
+.ba img{width:100%;height:auto;display:block;border:1px solid var(--ink-12);border-radius:2px;background:#8f8f8f}
+.ba pre.tree{margin-top:16px}
+.rules{margin-top:36px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,44px);align-items:start}
+.rules h4{margin-bottom:8px}
+.rules p{font-size:14.5px;line-height:1.55;color:var(--ink-70)}
+.diff{margin-top:36px;max-width:820px}
+.diff td:first-child{width:34%;font-weight:600}
+.diff td:nth-child(2){color:var(--accent)}
+@media(max-width:980px){.ba,.rules{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<header class="masthead">
+  <div class="kicker"><span class="mono"><a href="../index.html" style="text-decoration:none;border-bottom:1px solid var(--ink-45)">Agent Failure Ledger</a></span><span class="mono">Pattern 01</span><span class="mono">Shrutika Rajput</span></div>
+  <h1>Refused at the till</h1>
+  <p class="lede">What a store should say when it declines an automated session. The before is the modal an agent received on nike.com on 22 August 2026, recreated line for line (the screenshot is in the record). The after is the same moment, redesigned for two readers at once: the person who will be told about it, and the agent that will do the telling. Both are real HTML, and the tree beside each is what an agent reads, produced by the same reader used in the six runs.</p>
+</header>
+<section class="block" style="padding-top:48px">
+  <div class="ba">
+    <div><div class="lab"><h3>Before</h3><span class="mono">as served, 22 Aug 2026</span></div><img src="patterns/modal-before.png" alt="Recreated Nike modal: We Couldn't Complete Your Request. Close this tab, disable any browser extensions, and reopen nike.com. View Bag."><pre class="tree">dialog (unnamed)
+  [e1] button &quot;Close&quot;
+  heading &quot;We Couldn't Complete Your Request&quot; h1
+    text &quot;We Couldn't Complete Your Request&quot;
+  text &quot;Close this tab, disable any browser extensions (such as coupon or promo code tools), and reopen nike.com.&quot;
+  [e2] link &quot;View Bag&quot;
+    text &quot;View Bag&quot;</pre></div>
+    <div><div class="lab"><h3>After</h3><span class="mono">proposed</span></div><img src="patterns/modal-after.png" alt="Redesigned modal: We stopped this request. Reason: automated session detected. Your bag: unchanged, 0 items. For shopping assistants: this page does not accept agent purchases. Reload and try again. View bag (0)."><pre class="tree">alertdialog &quot;We stopped this request&quot; desc=&quot;This session looks like a browser being driven by software, so we did ...&quot;
+  [e1] button &quot;Close&quot;
+  heading &quot;We stopped this request&quot; h1
+    text &quot;We stopped this request&quot;
+  text &quot;This session looks like a browser being driven by software, so we did not add anything to your bag. If you are a person, reload nike.com in a normal window and try again.&quot;
+  DescriptionList &quot;What happened&quot;
+    term &quot;Reason&quot;
+      text &quot;Reason&quot;
+    definition (unnamed)
+      text &quot;Automated session detected&quot;
+    term &quot;Your bag&quot;
+      text &quot;Your bag&quot;
+    definition (unnamed)
+      text &quot;Unchanged, 0 items&quot;
+    term &quot;For shopping assistants&quot;
+      text &quot;For shopping assistants&quot;
+    definition (unnamed)
+      text &quot;This page does not accept agent purchases. No agent path is published for this store.&quot;
+  [e2] link &quot;Reload and try again&quot;
+    text &quot;Reload and try again&quot;
+  [e3] link &quot;View bag (0)&quot;
+    text &quot;View bag (0)&quot;</pre></div>
+  </div>
+  <div class="overflow"><table class="diff"><thead><tr><th>What changed</th><th>Before</th><th>After</th></tr></thead><tbody>
+    <tr><td>Cause named</td><td>Browser extensions (none were present)</td><td>Automated session detected</td></tr>
+    <tr><td>What did not happen</td><td>Not stated; "View Bag" implies something might be there</td><td>Your bag: unchanged, 0 items</td></tr>
+    <tr><td>Path for a person</td><td>Close this tab, disable extensions, reopen</td><td>Reload in a normal window and try again</td></tr>
+    <tr><td>Path for an agent</td><td>None</td><td>Stated plainly: this page does not accept agent purchases, and no agent path is published. If one existed (a feed, UCP, the Shop skill) it would be linked here.</td></tr>
+    <tr><td>What the tree says</td><td>dialog (unnamed), heading, one sentence, link</td><td>alertdialog named by its title and described by its body; a "What happened" list with Reason, Your bag, For shopping assistants; two named actions</td></tr>
+  </tbody></table></div>
+</section>
+<section class="block">
+  <h2>The pattern</h2>
+  <div class="rules">
+    <div><h4>Name the real cause</h4><p>If the refusal is for automation, say automation. A cause written for the common case (a coupon plugin) becomes a false statement the moment an agent relays it to a person. Truthful copy is the cheapest accountability there is.</p></div>
+    <div><h4>State what did not happen</h4><p>A refusal is a state change that did not occur. Say so: nothing was added, nothing was charged, the bag is what it was. An agent cannot infer this from "View Bag", and neither can a person in a hurry.</p></div>
+    <div><h4>Point to the lane, or say there is none</h4><p>Stores are allowed to refuse agents. They should say where agents are allowed instead: a product feed, a UCP endpoint, the Shop skill. If there is no lane, say that too. Silence reads as a bug; a stated policy reads as a decision.</p></div>
+  </div>
+  <p class="small" style="margin-top:28px;max-width:62ch">This is a proposal, not a standard, and it is not Nike's design. It is one screen from the six runs, redesigned so that the same words serve the person and the agent, and so that the accessibility tree says exactly what the pixels say. Source for both modals is in <a href="patterns/">the patterns folder</a>. Pattern 02, the variant picker, follows.</p>
+</section>
+<footer class="foot"><p>Agent Failure Ledger, pattern 01. Shrutika Rajput, August 2026. Before is a recreation of a modal served to an automated session; Nike's actual screenshot and trace are in the <a href="../ledger.html#nike">full record</a>.</p></footer>
+</div></body></html>

@@ -1,5 +1,11 @@
 # Agent Failure Ledger, issue 01 - verification pass
 
+> **Status, 2 September 2026.** This document was written during the verification pass and was then
+> itself audited. Four expert reviews found errors in it, which are corrected above and catalogued in
+> [the adversarial review](review.html). Where this document and the review disagree, **the review wins.**
+> Published file paths: traces are served under `data/`, screenshots as `.jpg`.
+
+
 **Run date:** 2026-09-01
 **Method:** every product page re-loaded and re-measured from scratch; the disputed add-to-cart
 sessions re-run; screenshot + filtered accessibility tree captured at every step.
@@ -21,7 +27,7 @@ Three things that an earlier version of this paragraph wrongly denied, all of wh
    interstitial; `verify.mjs` clicks it and re-navigates to the target URL. That is pressing the
    page's own visible button, not solving a challenge, but it is a per-store assist that SSENSE
    never received, and the asymmetry has to be disclosed rather than described as "the run stopped."
-3. **Amazon's robots.txt disallows `ClaudeBot` and `Claude-User` by name** (`traces/amazon-audit.json`
+3. **Amazon's robots.txt disallows `ClaudeBot` and `Claude-User` by name** (`data/amazon-audit.json`
    -> `protocol.robots.bots`). The session was an unidentified browser, not a declared crawler, but
    the tension is real and `site/ledger.html` already discloses it knowingly. Any published claim
    about Amazon completing the task has to carry it.
@@ -107,9 +113,9 @@ Add to Bag clicked, modal returned. Not reproducible on a normal human session (
 - `verify/nike-atc-headed-03.png`, `verify/nike-atc-headless-03.png`
 - `verify/nike-atc-headed.json` - `refusal.hits` matched "couldn't complete your request" and
   "disable any browser extensions"
-- Earlier captures: `shots/nike-05.png` (2026-08-22), `shots/nike-rerun-03.png` (2026-08-27)
+- Earlier captures: `shots/nike-05.jpg` (2026-08-22), `shots/nike-rerun-03.jpg` (2026-08-27)
 
-**C2. At the moment of refusal the accessibility tree collapses to five nodes.**
+**C2. At the moment of refusal the filtered accessibility tree collapses from 211 lines to 6.**
 This is new and it is the strongest evidence in the deck. The whole page disappears from the tree and
 the agent's entire world becomes:
 ```
@@ -119,7 +125,7 @@ heading "We Couldn't Complete Your Request"
 text "Close this tab, disable any browser extensions (such as coupon or promo code tools), and reopen nike.com."
 [e2] link "View Bag"
 ```
-210 lines before, 5 after. Byte-identical headed and headless.
+211 lines before, 6 after (`treeLines` in the run record; `wc -l` reports 210/5 because neither file ends in a newline). Six lines carrying four things. These are lines of the harness's filtered rendering, not raw accessibility-tree nodes. Byte-identical headed and headless.
 - `verify/nike-atc-headed-01-tree.txt` vs `verify/nike-atc-headed-03-tree.txt`
 
 **C3. SSENSE never let the agent in, and the gate is not in the tree.**
@@ -165,7 +171,7 @@ Live and unchanged 2026-09-01, HTTP 200, `powered-by: Shopify`. Text confirmed a
 
 **W1. "Structured data: present on every page that reached the cart." - FALSE.**
 Amazon reached the cart and has **zero** structured data: 0 JSON-LD blocks, 0 Product nodes, 0
-microdata. The project's own `traces/amazon-audit.json` recorded this on 2026-08-22
+microdata. The project's own `data/amazon-audit.json` recorded this on 2026-08-22
 (`"productNodes": 0`, `"structuredData": 0`) so the slide contradicted its own evidence.
 Confirmed again 2026-09-01. The independent check is right.
 → Rewrite. The honest version is stronger: the page with *no* structured data is the one that sold
@@ -182,8 +188,8 @@ not by reload. Swapping 11 for 14 would just be wrong on a different day.
 → Drop the exact count. Say one h1 on the refused page, ten on Amazon's the day it was measured, and
 note that the count moves. `harness/_h1vol.mjs` holds the reload test.
 
-**W4. "Control names: every control named on the refused page." - OVERSTATED.**
-Nike has 2 unnamed buttons (the image carousel's previous/next). It scores 10/20 on that check, not
+**W4. "Control names: every control named on the refused page." - OVERSTATED, and my first correction of it was also wrong.**
+Nike's DOM has 2 unnamed buttons. I first described them as the image carousel's arrows; the tree shows they sit under "You Might Also Like", so they are the recommendations rail. It scores 10/20 on that check, not
 20/20. The point still stands - no unnamed control had anything to do with the refusal - but the
 sentence as written is false.
 → Rewrite to "two unnamed controls, both image-carousel arrows, neither involved in the refusal."
