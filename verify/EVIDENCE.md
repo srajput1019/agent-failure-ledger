@@ -192,7 +192,7 @@ note that the count moves. `harness/_h1vol.mjs` holds the reload test.
 Nike's DOM has 2 unnamed buttons. I first described them as the image carousel's arrows; the tree shows they sit under "You Might Also Like", so they are the recommendations rail. It scores 10/20 on that check, not
 20/20. The point still stands - no unnamed control had anything to do with the refusal - but the
 sentence as written is false.
-→ Rewrite to "two unnamed controls, both image-carousel arrows, neither involved in the refusal."
+→ Do NOT write "image-carousel arrows"; the tree shows they sit under "You Might Also Like". The deck now says only that the band counts unnamed buttons, which is what the evidence supports.
 
 **W5. Zara "Pass" is a 2026-08-22 result and did not reproduce.**
 On 2026-09-01 Zara refused the add on an automated session: "WARNING - Your request could not be

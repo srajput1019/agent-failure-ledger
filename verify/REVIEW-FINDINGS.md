@@ -130,6 +130,17 @@ Re-scoring Nike on its own stated instrument moves named controls from 10/20 to 
 | Allbirds | C / 70 | C / 70 |
 | Amazon | F / 0 | F / 0 |
 
+> **WITHDRAWN 2 September 2026.** The B/80 recompute below is wrong and is retained only so the
+> mistake is on the record. The five extra unnamed nodes are Nike's "You Might Also Like" rail,
+> which exists in `verify/nike-headed-tree.txt` only because `harness/verify.mjs` scrolls the page
+> and lazy-loads it. `harness/atc.mjs` does not scroll, so the tree of the session that was actually
+> refused, `verify/nike-atc-headed-01-tree.txt`, contains exactly two unnamed nodes: a `status` and
+> an `alert`, neither actionable. Scored on the refusal session's own accessibility tree Nike takes
+> 20/20 on named controls and lands at **A/100**, above the published A/90. So no honest instrument
+> applied to the session that was refused turns Nike into a B. The deck publishes **A/90**, scored on
+> the DOM, and has removed the tree-versus-DOM claim entirely rather than ship a figure produced by
+> the harness's own scroll loop.
+
 **"An A was refused" becomes "a B was refused."** The gap that carries the thesis (80 vs 0) survives,
 but the specific headline does not.
 
@@ -200,11 +211,10 @@ These were attacked and held. They are the real findings:
 
 ## G. Decisions that are yours, not mine
 
-1. **Scoring instrument.** Keep DOM scoring (fast, but your own published tree file contradicts
-   slide 4), switch to AX-tree scoring (honest, Nike becomes B/80, headline weakens), or publish the
-   gap itself as the finding: *"the checker said 2 unnamed controls; the tree the agent reads said 7."*
-   I recommend the third. It is a genuinely novel result, it is the study's own instrument catching
-   its own scoring layer, and it is stronger than the line it replaces.
+1. **Scoring instrument. CLOSED 2 September 2026.** This recommendation was acted on and then
+   withdrawn, see the note in section C. The tree count it rested on was an artifact of the audit
+   load's scroll, not a property of Nike's page. The deck keeps DOM scoring, publishes Nike as A/90,
+   states its basis on the slide-2 rubric line, and makes no claim about tree unnamed-node counts.
 2. **The human session.** Run one yourself on the same machine and network, screenshot it, and the
    causal sentence becomes defensible. Otherwise it has to be downgraded.
 3. **Amazon add-to-cart.** Re-run it, or stop claiming the F completed the task.
