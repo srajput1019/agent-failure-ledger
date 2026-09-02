@@ -194,8 +194,8 @@ Nike's DOM has 2 unnamed buttons. I first described them as the image carousel's
 sentence as written is false.
 → Do NOT write "image-carousel arrows"; the tree shows they sit under "You Might Also Like". The deck now says only that the band counts unnamed buttons, which is what the evidence supports.
 
-**W5. Zara "Pass" is a 2026-08-22 result and did not reproduce.**
-On 2026-09-01 Zara refused the add on an automated session: "WARNING - Your request could not be
+**W5. Zara "Pass" is a 2026-08-22 result and did not reproduce. (Amended 2 Sep: call it non-reproduction, not a refusal.)**
+On 2026-09-01 the same flow returned a generic warning on an automated session, with `sizeSelected: false` in the run record, so a bot wall cannot be separated from a stock-out or a transient error: "WARNING - Your request could not be
 completed at this time. Please try again later." Bag stayed at 0.
 - `verify/zara-atc-headed-04.png`, `verify/zara-atc-headed.json`
 → This is the clearest possible argument for your framing rule. Either date the Zara row or mark it
