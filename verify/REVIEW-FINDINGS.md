@@ -60,7 +60,7 @@ image count - and therefore Amazon's score band - depends on a loop count.
 "Every" covers four sessions; two have the number.
 
 **A8. Slide 3 "re-confirmed 1 Sep."** The quoted tree line is verbatim from 22 Aug
-(`traces/amazon-snap-05.txt:278`, including `value="10.5"`). On 1 Sep the tree reads
+(`data/snapshots/amazon-snap-05.txt:278`, including `value="10.5"`). On 1 Sep the tree reads
 `[e165] combobox (unnamed) expanded=false` with **no `value="10.5"`**. What re-confirmed on 1 Sep
 was the DOM state (`selectedIndex: 40, selectedText: "10.5"`), not the tree line.
 

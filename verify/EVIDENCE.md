@@ -141,7 +141,7 @@ Confirmed fresh. Tree: `text "Size:"` then `[e165] combobox (unnamed) expanded=f
 `#native_dropdown_selected_size_name` has `selectedIndex: 40`, `selectedText: "10.5"` on load, while
 the task asked for 9.
 - `verify/amazon-headed-tree.txt:261-262`, `verify/amazon-headed-audit.json` → `metrics.selects[2]`
-- The tree line quoted on slide 3 is verbatim authentic: `traces/amazon-snap-05.txt:278`
+- The tree line quoted on slide 3 is verbatim authentic: `data/snapshots/amazon-snap-05.txt:278`
 
 **C5. Glossier opens on a default shade, and after choosing another, two radios both report checked.**
 Confirmed fresh. Before: `[e20] radio "Dark Brown variant option" checked=true`. After clicking Brown:
@@ -220,7 +220,7 @@ be labelled as a redraw of the 2026-09-01 capture rather than presented as a scr
 
 The thesis survives intact, and is now better supported:
 
-- The page that scored **A/90** was refused. The page that scored **F/0** completed the task.
+- A page that scored **A/90** on this rubric was refused. The page that scored **F/0** completed the task on 22 August. (The instrument question raised in the review is closed: see the withdrawal note in REVIEW-FINDINGS section C.)
 - Not one of the four checks (structured data, headings, control names, alt text) touched the thing
   that actually blocked or steered the agent in any of the six runs.
 - What decided the outcome was the session type, and what the page had already selected before the
